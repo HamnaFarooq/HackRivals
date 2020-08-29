@@ -41,37 +41,37 @@
 
           <div class="form-group">
             <label for="statement">Problem Statement:</label>
-            <input type="textarea" class="form-control" name="statement" placeholder="Enter problem statement" required>
+            <input type="textarea" rows="40" class="form-control" name="statement" placeholder="Enter problem statement" required>
           </div>
 
           <div class="form-group">
             <label for="name">Problem Description:</label>
-            <input type="textarea" class="form-control" name="description" placeholder="Enter problem description" required>
+            <input type="textarea" rows="40" class="form-control" name="description" placeholder="Enter problem description" required>
           </div>
 
           <div class="form-group">
             <label for="constraints">Constraints:</label>
-            <input type="textarea" class="form-control" name="constraints" placeholder="Enter constraints" required>
+            <input type="textarea" rows="5" class="form-control" name="constraints" placeholder="Enter constraints" required>
           </div>
 
           <div class="form-group">
             <label for="input_format">Input Format:</label>
-            <input type="textarea" class="form-control" name="input_format" placeholder="Enter input format" required>
+            <input type="textarea" rows="5" class="form-control" name="input_format" placeholder="Enter input format" required>
           </div>
 
           <div class="form-group">
             <label for="output_format">Output Format:</label>
-            <input type="textarea" class="form-control" name="output_format" placeholder="Enter output format" required>
+            <input type="textarea" rows="5" class="form-control" name="output_format" placeholder="Enter output format" required>
           </div>
 
           <div class="form-group">
             <label for="explaination">Output Explaination:</label>
-            <input type="textarea" class="form-control" name="explaination" placeholder="Enter explaination (optional)" >
+            <input type="textarea" rows="5" class="form-control" name="explaination" placeholder="Enter explaination (optional)" >
           </div>
 
           <div class="form-group">
             <label for="hint">Hint:</label>
-            <input type="textarea" class="form-control" name="hint" placeholder="Enter hint (optional)" >
+            <input type="textarea" rows="5" class="form-control" name="hint" placeholder="Enter hint (optional)" >
           </div>
 
           @if($errors->any())
