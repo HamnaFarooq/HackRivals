@@ -24,4 +24,5 @@ Route::resource('/competition','CompetitionController');
 Route::resource('/classroom','ClassroomController');
 Route::resource('/problem','ProblemController');
 Route::resource('/class_material','ClassMaterialController');
+Route::resource('/test_case','TestCaseController');
 
