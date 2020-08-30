@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contest extends Model
+class Competition extends Model
 {
     protected $fillable = [
-        'name', 'password', 'contest_type', 'creator_id', 'starts', 'ends',
+        'name', 'password', 'competition_type', 'creator_id', 'starts', 'ends',
     ];
 
     /**

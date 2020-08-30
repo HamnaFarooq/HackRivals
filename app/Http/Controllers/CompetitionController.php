@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Announcement;
+use App\competition;
+use Auth;
 use Illuminate\Http\Request;
 
-class AnnouncementController extends Controller
+class competitionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $announcements = Announcement::all();
-        return view('announcement.index',compact('announcements'));
+        $competitions = competition::all();
+        return view('competition.index',compact('competitions'));
     }
 
     /**
@@ -25,7 +26,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('announcement.create');
+        return view('competition.create');
     }
 
     /**
@@ -36,7 +37,8 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        Announcement::create($request->all());
+        $request->merge(['creator_id' => Auth::id() ]);
+        competition::create($request->all());
         return redirect()->back();
     }
 
@@ -48,8 +50,8 @@ class AnnouncementController extends Controller
      */
     public function show($id)
     {
-        $announcement = Announcement::find($id)->first();
-        return view('announcement.show',compact('announcement',$announcement));
+        $competition = competition::find($id)->first();
+        return view('competition.show',compact('competition',$competition));
     }
 
     /**
@@ -60,8 +62,8 @@ class AnnouncementController extends Controller
      */
     public function edit($id)
     {
-        $announcement = Announcement::where('id', $id)->first();
-        return view('announcement.edit',compact('announcement'));
+        $competition = competition::where('id', $id)->first();
+        return view('competition.edit',compact('competition'));
     }
 
     /**
@@ -73,9 +75,9 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updatedannouncement = Announcement::find($id)->first();
-        $updatedannouncement->update($request->all());
-        return redirect('/announcement');
+        $updatedcompetition = competition::find($id)->first();
+        $updatedcompetition->update($request->all());
+        return redirect('/competition');
     }
 
     /**
@@ -86,7 +88,7 @@ class AnnouncementController extends Controller
      */
     public function destroy($id)
     {
-        Announcement::find($id)->first()->delete();
-        return redirect('/announcement');
+        competition::find($id)->first()->delete();
+        return redirect('/competition');
     }
 }

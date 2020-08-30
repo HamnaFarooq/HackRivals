@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Contest;
-use Auth;
+use App\Class_material;
 use Illuminate\Http\Request;
 
-class ContestController extends Controller
+class ClassMaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class ContestController extends Controller
      */
     public function index()
     {
-        $contests = Contest::all();
-        return view('contest.index',compact('contests'));
+        $class_materials = Class_material::all();
+        return view('class_material.index',compact('class_materials'));
     }
 
     /**
@@ -26,7 +25,7 @@ class ContestController extends Controller
      */
     public function create()
     {
-        return view('contest.create');
+        return view('class_material.create');
     }
 
     /**
@@ -37,8 +36,8 @@ class ContestController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['creator_id' => Auth::id() ]);
-        Contest::create($request->all());
+        $request->merge(['in_classroom_id' => 1]);
+        Class_material::create($request->all());
         return redirect()->back();
     }
 
@@ -50,8 +49,8 @@ class ContestController extends Controller
      */
     public function show($id)
     {
-        $contest = contest::find($id)->first();
-        return view('contest.show',compact('contest',$contest));
+        $class_material = Class_material::find($id)->first();
+        return view('class_material.show',compact('class_material',$class_material));
     }
 
     /**
@@ -62,8 +61,8 @@ class ContestController extends Controller
      */
     public function edit($id)
     {
-        $contest = Contest::where('id', $id)->first();
-        return view('contest.edit',compact('contest'));
+        $class_material = Class_material::where('id', $id)->first();
+        return view('class_material.edit',compact('class_material'));
     }
 
     /**
@@ -75,9 +74,9 @@ class ContestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updatedcontest = Contest::find($id)->first();
-        $updatedcontest->update($request->all());
-        return redirect('/contest');
+        $updatedclass_material = Class_material::find($id)->first();
+        $updatedclass_material->update($request->all());
+        return redirect('/class_material');
     }
 
     /**
@@ -88,7 +87,7 @@ class ContestController extends Controller
      */
     public function destroy($id)
     {
-        Contest::find($id)->first()->delete();
-        return redirect('/contest');
+        Class_material::find($id)->first()->delete();
+        return redirect('/class_material');
     }
 }

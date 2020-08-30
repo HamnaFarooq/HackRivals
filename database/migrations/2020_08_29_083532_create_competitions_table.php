@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContestsTable extends Migration
+class CreateCompetitionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateContestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contests', function (Blueprint $table) {
+        Schema::create('competitions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('password');
-            $table->string('contest_type')->nullable();
+            $table->string('competition_type')->nullable();
             $table->foreignId('creator_id')->constrained('users');
             $table->dateTime('starts')->nullable();
             $table->dateTime('ends')->nullable();
@@ -33,6 +33,6 @@ class CreateContestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contests');
+        Schema::dropIfExists('competitions');
     }
 }

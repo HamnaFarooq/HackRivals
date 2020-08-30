@@ -20,8 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/contest','ContestController');
+Route::resource('/competition','CompetitionController');
 Route::resource('/classroom','ClassroomController');
 Route::resource('/problem','ProblemController');
-Route::resource('/announcement','AnnouncementController');
+Route::resource('/class_material','ClassMaterialController');
 
