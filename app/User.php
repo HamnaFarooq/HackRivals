@@ -41,4 +41,24 @@ class User extends Authenticatable
     {
         return $this->id;
     }
+
+    public function competitions()
+    {
+        return $this->hasMany('App\Competition');
+    }
+
+    public function classrooms()
+    {
+        return $this->hasMany('App\Classroom');
+    }
+
+    public function problems()
+    {
+        return $this->hasMany('App\Problem');
+    }
+
+    public function Solved_problems()
+    {
+        return $this->hasMany('App\Solved_problems');
+    }
 }

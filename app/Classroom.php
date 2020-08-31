@@ -18,4 +18,10 @@ class Classroom extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

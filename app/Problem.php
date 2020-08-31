@@ -11,4 +11,14 @@ class Problem extends Model
         'statement', 'description', 'constraints', 'input_format', 'output_format', 'hint', 'explaination',
     ];
     
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function Test_case()
+    {
+        return $this->hasMany('App\Test_case');
+    }
+
 }
