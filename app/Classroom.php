@@ -24,4 +24,19 @@ class Classroom extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function materials()
+    {
+        return $this->hasMany('App\Class_material');
+    }
+
+    public function students()
+    {
+        return $this->HasManyThrough('App\User', 'App\Users_in_classroom');
+    }
+
+    public function ranks()
+    {
+        return $this->HasManyThrough('App\Rank', 'App\Users_in_competition');
+    }
+
 }

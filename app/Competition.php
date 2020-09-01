@@ -24,4 +24,19 @@ class Competition extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function participents()
+    {
+        return $this->HasManyThrough('App\User', 'App\Users_in_competition');
+    }
+
+    public function ranks()
+    {
+        return $this->HasManyThrough('App\Rank', 'App\Users_in_competition');
+    }
+
+    public function problems()
+    {
+        return $this->HasManyThrough('App\Problem', 'App\Problems_in_competition');
+    }
+
 }
