@@ -1,10 +1,12 @@
 @extends('layouts.app')
 @section('pagename')
-Home
+Dummy
 @endsection
 
 @section('content')
 <div class="container">
+
+
 
 </div>
 @endsection
