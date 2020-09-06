@@ -72,7 +72,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/my_competitions">My Competitions</a>
                                     <a class="dropdown-item" href="/my_classrooms">My Classrooms</a>
-                                    <a class="dropdown-item" href="/user_administration">Administration</a>
+                                    <a class="dropdown-item" href="/user_admin">Administration</a>
                                     <a class="dropdown-item" href="/profile">Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

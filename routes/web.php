@@ -23,9 +23,8 @@ Route::get('/home', 'HomeController@home');
 Route::get('/my_competitions', 'HomeController@competitions');
 Route::get('/my_classrooms', 'HomeController@classrooms');
 Route::get('/rankings', 'HomeController@rankings');
-
-
-
+Route::get('/user_admin', 'HomeController@user_admin');
+Route::get('/profile', 'HomeController@profile');
 
 
 

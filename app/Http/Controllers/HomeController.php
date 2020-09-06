@@ -40,4 +40,14 @@ class HomeController extends Controller
     {
         return view('rankings');
     }
+
+    public function user_admin()
+    {
+        return view('user_admin');
+    }
+
+    public function profile()
+    {
+        return view('profile');
+    }
 }
