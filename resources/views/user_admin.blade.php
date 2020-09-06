@@ -1,3 +1,6 @@
+@include('partials.createclassroomform')
+@include('partials.createproblemform')
+
 @extends('layouts.app')
 @section('pagename')
 User Administration
@@ -22,9 +25,9 @@ User Administration
     </ul>
 
     <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade  pt-3 show active" id="classrooms">
+        <div class="tab-pane fade show active" id="classrooms">
 
-            <div class="text-right"> <button type="button" class="btn btn-primary">Create Classrooms</button></div>
+            <div class="text-right"> <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#createclassroom">Create Classrooms</button></div>
             <div class="row">
                 <table class="table table-hover">
                     <thead>
@@ -52,9 +55,9 @@ User Administration
                 </table>
             </div>
         </div>
-        <div class="tab-pane fade  pt-3" id="competitions">
+        <div class="tab-pane fade" id="competitions">
 
-            <div class="text-right"> <button type="button" class="btn btn-primary">Create Competition</button></div>
+            <div class="text-right"> <button type="button" class="btn btn-primary my-3">Create Competition</button></div>
             <div class="row">
                 <table class="table table-hover">
                     <thead>
@@ -82,8 +85,8 @@ User Administration
                 </table>
             </div>
         </div>
-        <div class="tab-pane fade pt-3" id="problems">
-            <div class="text-right"> <button type="button" class="btn btn-primary">Create Problems</button></div>
+        <div class="tab-pane fade" id="problems">
+            <div class="text-right"> <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#createproblem">Create Problems</button></div>
             <div class="row">
                 <table class="table table-hover">
                     <thead>

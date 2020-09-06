@@ -8,26 +8,6 @@ use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $classrooms = Classroom::all();
-        return view('classroom.index',compact('classrooms'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('classroom.create');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,8 +18,8 @@ class ClassroomController extends Controller
     public function store(Request $request)
     {
         $request->merge(['creator_id' => Auth::id() ]);
-        Classroom::create($request->all());
-        return redirect()->back();
+        $created = Classroom::create($request->all());
+        return redirect('/classroom/'.$created["id"].'/edit');
     }
 
     /**
@@ -50,7 +30,7 @@ class ClassroomController extends Controller
      */
     public function show($id)
     {
-        $classroom = Classroom::find($id)->first();
+        $classroom = Classroom::where('id', $id)->first();
         return view('classroom.show',compact('classroom',$classroom));
     }
 
