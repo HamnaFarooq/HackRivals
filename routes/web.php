@@ -32,7 +32,7 @@ Route::get('/profile', 'HomeController@profile');
 Route::resource('/competition','CompetitionController');
 Route::resource('/classroom','ClassroomController');
 Route::resource('/problem','ProblemController');
-Route::resource('/class_material','ClassMaterialController');
+Route::resource('/classroom/{id}/class_material','ClassMaterialController');
 Route::resource('/test_case','TestCaseController');
 Route::resource('/rank','RankController');
 

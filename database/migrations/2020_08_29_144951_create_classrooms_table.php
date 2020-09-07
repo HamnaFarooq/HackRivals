@@ -18,7 +18,7 @@ class CreateClassroomsTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->string('classroom_type')->nullable();
-            $table->foreignId('creator_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users');
             $table->dateTime('starts')->nullable();
             $table->dateTime('ends')->nullable();
             $table->timestamps();

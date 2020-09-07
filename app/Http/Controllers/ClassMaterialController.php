@@ -11,12 +11,12 @@ class ClassMaterialController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $class_materials = Class_material::all();
-        return view('class_material.index',compact('class_materials'));
-    }
+    */
+    // public function index()
+    // {
+    //     $class_materials = Class_material::all();
+    //     return view('class_material.index',compact('class_materials'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +36,7 @@ class ClassMaterialController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['in_classroom_id' => 1]);
+        // $request->merge(['in_classroom_id' => 1]);
         Class_material::create($request->all());
         return redirect()->back();
     }
@@ -72,11 +72,13 @@ class ClassMaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $mid)
     {
-        $updatedclass_material = Class_material::find($id)->first();
+        $updatedclass_material = Class_material::find($mid)->first();
         $updatedclass_material->update($request->all());
-        return redirect('/class_material');
+        // return redirect('/class_material');
+        return redirect()->back();
+
     }
 
     /**
@@ -85,9 +87,11 @@ class ClassMaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $mid)
     {
-        Class_material::find($id)->first()->delete();
-        return redirect('/class_material');
+        Class_material::find($mid)->first()->delete();
+        // return redirect('/class_material');
+        return redirect()->back();
+
     }
 }

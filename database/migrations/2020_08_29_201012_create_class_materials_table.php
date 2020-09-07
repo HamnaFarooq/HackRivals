@@ -17,7 +17,7 @@ class CreateClassMaterialsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('announcement')->nullable();
-            $table->foreignId('in_classroom_id')->constrained('classrooms');
+            $table->foreignId('classroom_id')->constrained('classrooms');
             $table->foreignId('competition_id')->references('id')->on('competitions')->nullable();
             $table->timestamps();
         });

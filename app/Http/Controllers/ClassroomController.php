@@ -17,11 +17,12 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['creator_id' => Auth::id() ]);
+        $request->merge(['user_id' => Auth::id() ]);
+        // dd($request);
         $created = Classroom::create($request->all());
         return redirect('/classroom/'.$created["id"].'/edit');
     }
-    // Hamna
+    
     /**
      * Display the specified resource.
      *
@@ -30,7 +31,7 @@ class ClassroomController extends Controller
      */
     public function show($id)
     {
-        $classroom = Classroom::where('id', $id)->first();
+        $classroom = Classroom::where('id', $id)->with('materials')->first();
         return view('classroom.show',compact('classroom',$classroom));
     }
 
@@ -42,7 +43,7 @@ class ClassroomController extends Controller
      */
     public function edit($id)
     {
-        $classroom = Classroom::where('id', $id)->first();
+        $classroom = Classroom::where('id', $id)->with('materials')->first();
         return view('classroom.edit',compact('classroom'));
     }
 
@@ -57,7 +58,7 @@ class ClassroomController extends Controller
     {
         $updatedclassroom = Classroom::find($id)->first();
         $updatedclassroom->update($request->all());
-        return redirect('/classroom');
+        return redirect('/classroom/'.$updatedclassroom["id"].'/edit');
     }
 
     /**
@@ -69,6 +70,6 @@ class ClassroomController extends Controller
     public function destroy($id)
     {
         Classroom::find($id)->first()->delete();
-        return redirect('/classroom');
+        return redirect('/home');
     }
 }

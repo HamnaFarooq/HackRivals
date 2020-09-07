@@ -31,31 +31,27 @@
 
 <div class="container">
     <h3 class="text-center">{{$classroom->name}}</h3>
+
     <div class="row">
 
         <div class="col-sm-8">
-            <h5>Competitions</h5>
+            <h5>Material</h5>
 
-            <div class="row">
+            <div class="">
+
+                @foreach ($classroom->materials as $material)
 
                 <div class="col">
                     <div class="card border-info mb-3">
-                        <div class="card-header">Competition Name</div>
+                        <div class="card-header">{{$material->title}}</div>
                         <div class="card-body">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Notes: fffffffffdddddddssd</p>
-                            <!-- competition -->
-                            <div class="card border-info mb-3">
-                                <div class="card-header">Competition Name</div>
-                                <div class="card-body">
-                                    <h4 class="card-title">CreatedBy:</h4>
-                                    <h6 class="card-text">Created Date:</h6>
-                                    <button type="button" class="btn btn-primary">Participate</button>
-                                </div>
-                            </div>
+                            <p class="card-text"> {{$material->announcement}}</p>
+                            <p class="card-text">Competition: <button type="button" class="btn btn-primary ml-1">Competitionname</button></p>
                         </div>
                     </div>
                 </div>
+                
+                @endforeach
 
             </div>
         </div>
@@ -64,13 +60,11 @@
 
             <h2>Class Rankings</h2>
             <table class="table table-hover">
-
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Email</th>
                         <th scope="col">Points</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -78,27 +72,18 @@
                         <td>33</td>
                         <td> user@email.com</td>
                         <td>Points</td>
-
                     </tr>
                     <tr class="table-active">
                         <td>33</td>
                         <td> user@email.com</td>
                         <td>Points</td>
-
-                    </tr>
-                    <tr class="table-active">
-                        <td>33</td>
-                        <td> user@email.com</td>
-                        <td>Points</td>
-
                     </tr>
                 </tbody>
             </table>
 
         </div>
 
-
-        <button type="button" class="btn btn-primary">Leave ClassRoom</button>
+        <button type="button" class="btn btn-primary mb-5">Leave ClassRoom</button>
 
     </div>
 </div>
