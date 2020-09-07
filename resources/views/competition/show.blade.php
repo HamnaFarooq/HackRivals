@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<div class="content">
-    <div class="title m-b-md">
+<!--<div class="content">
+   <div class="title m-b-md">
     {{$competition->name}}
     </div>
 
@@ -23,9 +23,89 @@
                 </div>
             </div>
         </div>
+    </div>
 
+</div>-->
+<div class="container">
+<h3 class="text-center">{{$competition->name}}</h3>
+<div class="row">
+
+    <div class="col-sm-8">
+        <h5>Problems</h5>
+
+        <div class="">
+            <div class="card border-info mb-3">
+                <div class="card-header">Problem Name</div>
+                <div class="card-body">
+                    <h4 class="card-title">Problem Statement:</h4>
+                    <p class="card-text">1 line ki statement</p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="">
+            <div class="card border-info mb-3">
+                <div class="card-header">Problem Name</div>
+                <div class="card-body">
+                    <h4 class="card-title">Problem Statement:</h4>
+                    <p class="card-text">1 line ki statement</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <div class="card border-info mb-3">
+                <div class="card-header">Problem Name</div>
+                <div class="card-body">
+                    <h4 class="card-title">Problem Statement:</h4>
+                    <p class="card-text">1 line ki statement</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-4">
+
+        <h2>Users Rankings</h2>
+        <table class="table table-hover">
+
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Points</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active">
+                    <td>33</td>
+                    <td> user@email.com</td>
+                    <td>Points</td>
+
+                </tr>
+                <tr class="table-active">
+                    <td>33</td>
+                    <td> user@email.com</td>
+                    <td>Points</td>
+
+                </tr>
+                <tr class="table-active">
+                    <td>33</td>
+                    <td> user@email.com</td>
+                    <td>Points</td>
+
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 
 </div>
+
+
 @endsection

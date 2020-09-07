@@ -37,9 +37,9 @@ class competitionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['creator_id' => Auth::id() ]);
-        competition::create($request->all());
-        return redirect()->back();
+        $request->merge(['user_id' => Auth::id() ]);
+        $competition = competition::create($request->all());
+        return redirect('/competition/'.$competition['id']);
     }
 
     /**
@@ -50,7 +50,7 @@ class competitionController extends Controller
      */
     public function show($id)
     {
-        $competition = competition::find($id)->first();
+        $competition = competition::where('id', $id)->first();
         return view('competition.show',compact('competition',$competition));
     }
 
@@ -75,9 +75,9 @@ class competitionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updatedcompetition = competition::find($id)->first();
+        $updatedcompetition = competition::where('id', $id)->first();
         $updatedcompetition->update($request->all());
-        return redirect('/competition');
+        return redirect('/competition/'.$updatedcompetition['id']);
     }
 
     /**

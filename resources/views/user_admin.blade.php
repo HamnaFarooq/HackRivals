@@ -57,7 +57,7 @@ User Administration
         </div>
         <div class="tab-pane fade" id="competitions">
 
-            <div class="text-right"> <button type="button" class="btn btn-primary my-3">Create Competition</button></div>
+            <div class="text-right"> <a href="/competition/create" <button type="button" class="btn btn-primary my-3">Create Competition</button> </a></div>
             <div class="row">
                 <table class="table table-hover">
                     <thead>
