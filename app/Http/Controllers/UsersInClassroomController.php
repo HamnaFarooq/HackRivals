@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Users_in_classroom;
+use App\Classroom;
 use Illuminate\Http\Request;
 
 class UsersInClassroomController extends Controller
@@ -35,7 +36,9 @@ class UsersInClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // check class id...
+        // take that class and match password 
+        // save this users id and class id in users in classroom table
     }
 
     /**

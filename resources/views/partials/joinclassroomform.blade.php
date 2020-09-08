@@ -1,8 +1,6 @@
 <div class="modal ml-sm-5  fade" id="joinclassroom" tabindex="-1" role="dialog" aria-labelledby="joinclassroom" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
 
-        <form target="" action="POST">
-
             <div class="modal-content">
                 <div class="modal-header">
 
@@ -15,16 +13,36 @@
 
                 <div class="modal-body">
                     <!-- form -->
+                    <form action="" method="POST">
+                    @csrf
+                    @method('patch')
 
-                </div>
+                    <div class="form-group">
+                        <label for="classroom_id">Class id:</label>
+                        <input type="text" class="form-control" name="classroom_id" placeholder="Enter id" required>
+                    </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="text" class="form-control" name="password" placeholder="Enter Output" required>
+                    </div>
+
+                    @if($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{$error}}
+                    </div>
+                    @endforeach
+                    @endif
+
                     <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
 
-        </form>
+                </form>
+
+
+                </div>
+
+            </div>
 
     </div>
 </div>
