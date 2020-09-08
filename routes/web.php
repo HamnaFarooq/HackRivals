@@ -28,6 +28,8 @@ Route::get('/profile', 'HomeController@profile');
 
 
 
+Route::post('/joinclass', 'UsersInClassroomController@store');
+Route::get('/leaveclass/{id}', 'UsersInClassroomController@destroy');
 
 Route::resource('/competition','CompetitionController');
 Route::resource('/classroom','ClassroomController');

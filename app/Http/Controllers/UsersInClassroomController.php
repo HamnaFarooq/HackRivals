@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Users_in_classroom;
 use App\Classroom;
+use Auth;
 use Illuminate\Http\Request;
 
 class UsersInClassroomController extends Controller
@@ -36,8 +37,18 @@ class UsersInClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        // check class id...
+        $class = Classroom::where('id', $request->classroom_id)->first();
         // take that class and match password 
+        if ($class->password == $request->password) 
+        {
+            $request->merge(['user_id' => Auth::id()]);
+            Users_in_classroom::create($request->all());
+            return redirect('/classroom/' . $request->classroom_id);
+        } 
+        else 
+        {
+            return redirect()->back();
+        }
         // save this users id and class id in users in classroom table
     }
 
@@ -81,8 +92,9 @@ class UsersInClassroomController extends Controller
      * @param  \App\Users_in_classroom  $users_in_classroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users_in_classroom $users_in_classroom)
+    public function destroy($classroom_id)
     {
-        //
+        Users_in_classroom::where([['user_id', '=', Auth::id()],['classroom_id', '=', $classroom_id]])->first()->delete();
+        return redirect('/my_classrooms');
     }
 }

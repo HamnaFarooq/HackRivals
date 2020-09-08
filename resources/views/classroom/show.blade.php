@@ -68,22 +68,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-active">
+                    <!-- <tr class="table-active">
                         <td>33</td>
                         <td> user@email.com</td>
                         <td>Points</td>
-                    </tr>
-                    <tr class="table-active">
-                        <td>33</td>
-                        <td> user@email.com</td>
-                        <td>Points</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
 
         </div>
 
-        <button type="button" class="btn btn-primary mb-5">Leave ClassRoom</button>
+        <a href="/leaveclass/{{ $classroom->id }}"> <button type="button" class="btn btn-primary mb-5">Leave ClassRoom</button>
 
     </div>
 </div>

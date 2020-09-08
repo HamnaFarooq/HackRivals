@@ -13,9 +13,8 @@
 
                 <div class="modal-body">
                     <!-- form -->
-                    <form action="" method="POST">
+                    <form action="/joinclass" method="POST">
                     @csrf
-                    @method('patch')
 
                     <div class="form-group">
                         <label for="classroom_id">Class id:</label>
