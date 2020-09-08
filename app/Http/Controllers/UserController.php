@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Auth;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -45,8 +46,9 @@ class HomeController extends Controller
 
     public function user_admin()
     {
-        $user = User::find(Auth::id())->with('classrooms')->with('problems')->with('competitions')->first();
-        return view('user_admin',compact('user',$user));
+        $data = User::find(Auth::id())->with('classrooms')->with('problems')->with('competitions')->first();
+        dd($data);
+        return view('user_admin');
     }
 
     public function profile()

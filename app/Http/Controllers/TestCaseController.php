@@ -12,10 +12,10 @@ class TestCaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $test_cases = test_case::all();
-        return view('test_case.index',compact('test_cases'));
+        $test_cases = test_case::where('problem_id',$id)->get();
+        return view('test_case.index',compact('test_cases'),compact('id'));
     }
 
     /**
@@ -23,10 +23,10 @@ class TestCaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('test_case.create');
-    }
+    // public function create()
+    // {
+    //     return view('test_case.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +36,6 @@ class TestCaseController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['problem_id' => 3]);
         test_case::create($request->all());
         return redirect()->back();
     }
@@ -47,11 +46,11 @@ class TestCaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $test_case = test_case::find($id)->first();
-        return view('test_case.show',compact('test_case',$test_case));
-    }
+    // public function show($probid,$id)
+    // {
+    //     $test_case = test_case::find($id)->first();
+    //     return view('test_case.show',compact('test_case',$test_case));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -59,11 +58,11 @@ class TestCaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $test_case = test_case::where('id', $id)->first();
-        return view('test_case.edit',compact('test_case'));
-    }
+    // public function edit($probid,$id)
+    // {
+    //     $test_case = test_case::where('id', $id)->first();
+    //     return view('test_case.edit',compact('test_case'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -72,7 +71,7 @@ class TestCaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $probid, $id)
     {
         $updatedtest_case = test_case::find($id)->first();
         $updatedtest_case->update($request->all());
@@ -85,9 +84,9 @@ class TestCaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $probid, $id)
     {
         test_case::find($id)->first()->delete();
-        return redirect('/test_case');
+        return redirect()->back();
     }
 }

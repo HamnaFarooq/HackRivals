@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<a href="problem" class="btn"> Go Back </a>
-
     <div class="container-fluid">
       <div class="container">
         <h2>Edit problem</h2>

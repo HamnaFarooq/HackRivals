@@ -24,10 +24,10 @@ class ProblemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('problem.create');
-    }
+    // public function create()
+    // {
+    //     return view('problem.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +37,7 @@ class ProblemController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['creator_id' => Auth::id() , 'points' => 10 ]);
+        $request->merge(['user_id' => Auth::id() , 'points' => 10 ]);
         problem::create($request->all());
         return redirect()->back();
     }
@@ -50,7 +50,7 @@ class ProblemController extends Controller
      */
     public function show($id)
     {
-        $problem = problem::find($id)->first();
+        $problem = problem::find($id)->with('user')->first();
         return view('problem.show',compact('problem',$problem));
     }
 
@@ -77,7 +77,7 @@ class ProblemController extends Controller
     {
         $updatedproblem = problem::find($id)->first();
         $updatedproblem->update($request->all());
-        return redirect('/problem');
+        return redirect()->back();
     }
 
     /**
@@ -89,6 +89,6 @@ class ProblemController extends Controller
     public function destroy($id)
     {
         problem::find($id)->first()->delete();
-        return redirect('/problem');
+        return redirect()->back();
     }
 }

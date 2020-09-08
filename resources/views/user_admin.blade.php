@@ -1,5 +1,5 @@
 @include('partials.createclassroomform')
-@include('partials.createproblemform')
+@include('partials.create_problem_form')
 
 @extends('layouts.app')
 @section('pagename')
@@ -39,18 +39,15 @@ User Administration
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $user->classrooms as $classroom )
                         <tr class="table-active">
-                            <td>567</td>
-                            <td> user@email.com</td>
-                            <td> user@email.com</td>
-                            <td> user@email.com</td>
+                            <td> {{ $classroom->name }} </td>
+                            <td> 0 </td>
+                            <td> {{ $classroom->starts }} </td>
+                            <td> {{ $classroom->ends }} </td>
+                            <td> <a href="/classroom/{{$classroom->id}}/edit" class="btn btn-primary">Manage</a> </td>
                         </tr>
-                        <tr>
-                            <td>567</td>
-                            <td>username@gmail.com</td>
-                            <td>username@gmail.com</td>
-                            <td>username@gmail.com</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -69,24 +66,21 @@ User Administration
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $user->competitions as $competition )
                         <tr class="table-active">
-                            <td>567</td>
-                            <td> user@email.com</td>
-                            <td> user@email.com</td>
-                            <td> user@email.com</td>
+                            <td> {{ $competition->name }}</td>
+                            <td> {{ $competition->starts }} </td>
+                            <td> {{ $competition->ends }} </td>
+                            <td> 0 </td>
+                            <td> <a href="/competition/{{$competition->id}}/edit" class="btn btn-primary">Manage</a> </td>
                         </tr>
-                        <tr>
-                            <td>567</td>
-                            <td>username@gmail.com</td>
-                            <td>username@gmail.com</td>
-                            <td>username@gmail.com</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="tab-pane fade" id="problems">
-            <div class="text-right"> <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#createproblem">Create Problems</button></div>
+            <div class="text-right"> <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_problem">Create Problems</button></div>
             <div class="row">
                 <table class="table table-hover">
                     <thead>
@@ -95,14 +89,13 @@ User Administration
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $user->problems as $problem )
                         <tr class="table-active">
-                            <td>Hamna</td>
-
+                            <td> {{ $problem->name }} </td>
+                            <td> <a href="/problem/{{$problem->id}}/edit" class="btn btn-primary">Manage</a> </td>
+                            <td> <a href="/problem/{{$problem->id}}/test_case" class="btn btn-primary">Manage test cases</a> </td>
                         </tr>
-                        <tr>
-                            <td>Shani PF</td>
-
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Problem extends Model
 {
     protected $fillable = [
-        'name', 'creator_id', 'points', 'level', 'sub_level', 'solved_by', 'total_attempts',
+        'name', 'user_id', 'points', 'level', 'sub_level', 'solved_by', 'total_attempts',
         'statement', 'description', 'constraints', 'input_format', 'output_format', 'hint', 'explaination',
     ];
     
@@ -16,7 +16,7 @@ class Problem extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function Test_case()
+    public function test_cases()
     {
         return $this->hasMany('App\Test_case');
     }
