@@ -8,7 +8,7 @@ https://getcomposer.org/download/
 2. Download and install XAMPP
 https://www.apachefriends.org/download.html
 
-3. Start xanmpp
+3. Start xampp
 
 4. Start Apache and MySQL.
 
