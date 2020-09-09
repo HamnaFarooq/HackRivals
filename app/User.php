@@ -64,11 +64,11 @@ class User extends Authenticatable
 
     public function joined_classrooms()
     {
-        return $this->HasManyThrough('App\Classroom', 'App\Users_in_classroom');
+        return $this->belongsToMany('App\Classroom', 'users_in_classrooms');
     }
 
     public function joined_competitions()
     {
-        return $this->HasManyThrough('App\Competition', 'App\Users_in_competition');
+        return $this->belongsToMany('App\Competition', 'users_in_competitions');
     }
 }

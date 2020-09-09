@@ -16,15 +16,19 @@ My Classrooms
 
       <div class="row">
 
+      @foreach ($user->joined_classrooms as $classroom)
+
         <div class="col-sm-4">
           <div class="card border-info mb-3">
-            <div class="card-header">Class Name</div>
+            <div class="card-header"> {{ $classroom->name }} </div>
             <div class="card-body">
-              <h5 class="card-title">USerName</h5>
-              <h6 class="card-text">Date Created: 10/2/2020</h6>
+              <h5 class="card-title"></h5>
+              <h6 class="card-text">Date Started: {{ $classroom->starts }} </h6>
             </div>
           </div>
         </div>
+
+        @endforeach
 
       </div>
 

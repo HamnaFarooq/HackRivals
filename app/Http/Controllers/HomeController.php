@@ -30,8 +30,8 @@ class HomeController extends Controller
 
     public function classrooms()
     {
-        // $user = User::find(Auth::id())->with('joined_classrooms')->first();
-        return view('my_classrooms');
+        $user = User::find(Auth::id())->with('joined_classrooms')->first();
+        return view('my_classrooms',compact('user',$user));
     }
 
     public function competitions()
