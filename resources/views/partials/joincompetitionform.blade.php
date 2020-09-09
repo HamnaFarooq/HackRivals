@@ -1,8 +1,6 @@
 <div class="modal ml-sm-5  fade" id="joincompetition" tabindex="-1" role="dialog" aria-labelledby="joincompetition" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
 
-        <form target=" " action="POST">
-
             <div class="modal-content">
                 <div class="modal-header">
 
@@ -15,17 +13,35 @@
 
                 <div class="modal-body">
                     <!-- form -->
-                    
+                    <form action="/joincompetition" method="POST">
+                    @csrf
 
-                </div>
+                    <div class="form-group">
+                        <label for="competition_id">Competition id:</label>
+                        <input type="text" class="form-control" name="competition_id" placeholder="Enter id" required>
+                    </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="text" class="form-control" name="password" placeholder="Enter Password" required>
+                    </div>
+
+                    @if($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{$error}}
+                    </div>
+                    @endforeach
+                    @endif
+
                     <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
 
-        </form>
+                </form>
+
+
+                </div>
+
+            </div>
 
     </div>
 </div>

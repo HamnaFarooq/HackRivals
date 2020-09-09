@@ -36,7 +36,8 @@ class HomeController extends Controller
 
     public function competitions()
     {
-        return view('my_competitions');
+        $user = User::find(Auth::id())->with('joined_competitions')->first();
+        return view('my_competitions',compact('user',$user));
     }
 
     public function rankings()
