@@ -37,4 +37,11 @@ Route::resource('/problem','ProblemController');
 Route::resource('/classroom/{id}/class_material','ClassMaterialController');
 Route::resource('/problem/{id}/test_case','TestCaseController');
 Route::resource('/rank','RankController');
+Route::get('/admin', 'AdminController@home');
+Route::get('/classroomsList', 'AdminController@classroomsList');
+Route::get('/privateCompetitionList', 'AdminController@privateCompetitionList');
+Route::get('/publicCompetition', 'AdminController@publicCompetition');
 
+Route::get('/editPublicCompetition', 'AdminController@editPublicCompetition');
+Route::get('/editPrivateCompetition', 'AdminController@editPrivateCompetition');
+Route::get('/editClassrooms', 'AdminController@editClassrooms');
