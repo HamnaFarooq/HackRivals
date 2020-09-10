@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         <label for="announcement">Announcement (optional):</label>
-                        <input type="textarea" rows="40" class="form-control" name="announcement" value="{{$material->announcement}}" placeholder="Enter announcement" required>
+                        <textarea rows="3" class="form-control" name="announcement" value="{{$material->announcement}}" placeholder="Enter announcement" required></textarea>
                     </div>
 
                     <!-- <div class="form-group">

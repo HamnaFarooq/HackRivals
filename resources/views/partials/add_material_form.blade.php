@@ -25,7 +25,7 @@
 
                     <div class="form-group">
                         <label for="announcement">Announcement:</label>
-                        <input type="textarea" rows="40" class="form-control" name="announcement" placeholder="Enter announcement" required>
+                        <textarea rows="3" class="form-control" name="announcement" placeholder="Enter announcement" required> </textarea>
                         <p class="text-muted">( Optional )</p>
                     </div>
 

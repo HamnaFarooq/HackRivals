@@ -47,39 +47,39 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="statement">Problem Statement:</label>
-                        <input type="textarea" rows="40" class="form-control" name="statement" placeholder="Enter problem statement" required>
-                    </div>
+            <label for="statement">Problem Statement:</label>
+            <textarea rows="2" class="form-control" name="statement" placeholder="Enter problem statement" required></textarea>
+          </div>
 
-                    <div class="form-group">
-                        <label for="name">Problem Description:</label>
-                        <input type="textarea" rows="40" class="form-control" name="description" placeholder="Enter problem description" required>
-                    </div>
+          <div class="form-group">
+            <label for="name">Problem Description:</label>
+            <textarea rows="5" class="form-control" name="description" placeholder="Enter problem description" required></textarea>
+          </div>
 
-                    <div class="form-group">
-                        <label for="constraints">Constraints:</label>
-                        <input type="textarea" rows="5" class="form-control" name="constraints" placeholder="Enter constraints" required>
-                    </div>
+          <div class="form-group">
+            <label for="constraints">Constraints:</label>
+            <textarea rows="1" class="form-control" name="constraints" placeholder="Enter constraints" required></textarea>
+          </div>
 
-                    <div class="form-group">
-                        <label for="input_format">Input Format:</label>
-                        <input type="textarea" rows="5" class="form-control" name="input_format" placeholder="Enter input format" required>
-                    </div>
+          <div class="form-group">
+            <label for="input_format">Input Format:</label>
+            <textarea rows="2" class="form-control" name="input_format" placeholder="Enter input format" required></textarea>
+          </div>
 
-                    <div class="form-group">
-                        <label for="output_format">Output Format:</label>
-                        <input type="textarea" rows="5" class="form-control" name="output_format" placeholder="Enter output format" required>
-                    </div>
+          <div class="form-group">
+            <label for="output_format">Output Format:</label>
+            <textarea rows="2" class="form-control" name="output_format" placeholder="Enter output format" required></textarea>
+          </div>
 
-                    <div class="form-group">
-                        <label for="explaination">Output Explaination:</label>
-                        <input type="textarea" rows="5" class="form-control" name="explaination" placeholder="Enter explaination (optional)">
-                    </div>
+          <div class="form-group">
+            <label for="explaination">Output Explaination:</label>
+            <textarea class="form-control" rows="3" name="explaination" placeholder="Enter explaination (optional)"></textarea>
+          </div>
 
-                    <div class="form-group">
-                        <label for="hint">Hint:</label>
-                        <input type="textarea" rows="5" class="form-control" name="hint" placeholder="Enter hint (optional)">
-                    </div>
+          <div class="form-group">
+            <label for="hint">Hint:</label>
+            <textarea rows="1" class="form-control" name="hint" placeholder="Enter hint (optional)"></textarea>
+          </div>
 
                     @if($errors->any())
                     @foreach ($errors->all() as $error)

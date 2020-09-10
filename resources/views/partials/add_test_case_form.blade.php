@@ -20,12 +20,12 @@
 
                         <div class="form-group">
                             <label for="input">test_case Input:</label>
-                            <input type="textarea" rows="40" class="form-control" name="input" placeholder="Enter Input" required>
+                            <textarea rows="5" class="form-control" name="input" placeholder="Enter Input" required></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="output">test_case Output:</label>
-                            <input type="textarea" rows="40" class="form-control" name="output" placeholder="Enter Output" required>
+                            <textarea rows="5" class="form-control" name="output" placeholder="Enter Output" required></textarea>
                         </div>
 
                         @if($errors->any())

@@ -19,12 +19,12 @@
 
                     <div class="form-group">
                         <label for="input">test_case Input:</label>
-                        <input type="textarea" rows="40" class="form-control" name="input" value="{{$test_case->input}}" placeholder="Enter Input" required>
+                        <textarea rows="5" class="form-control" name="input" value="{{$test_case->input}}" placeholder="Enter Input" required>
                     </div>
 
                     <div class="form-group">
                         <label for="output">test_case Output:</label>
-                        <input type="textarea" rows="40" class="form-control" name="output" value="{{$test_case->output}}" placeholder="Enter Output" required>
+                        <textarea rows="5" class="form-control" name="output" value="{{$test_case->output}}" placeholder="Enter Output" required>
                     </div>
 
                     <input type="hidden" name="problem_id" value="{{$id}}">
