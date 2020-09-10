@@ -32,7 +32,7 @@ Route::get('/leaveclass/{id}', 'UsersInClassroomController@destroy');
 Route::post('/joincompetition', 'UsersInCompetitionController@store');
 Route::get('/leavecompetition/{id}', 'UsersInCompetitionController@destroy');
 
-Route::post('/competition/{id}/addproblem', 'ProblemsInCompetitionController@store');
+Route::get('/competition/{id}/addproblem/{probid}', 'ProblemsInCompetitionController@store');
 Route::get('/competition/{id}/removeproblem/{probid}', 'ProblemsInCompetitionController@destroy');
 
 Route::resource('/competition','CompetitionController');

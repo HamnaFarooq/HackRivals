@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="add_problem" tabindex="-1" role="dialog" aria-labelledby="add_problem" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
 
@@ -14,34 +13,36 @@
 
             <div class="modal-body">
                 <!-- form -->
-                <form action="/competition/{{ $competition->id }}/addproblem" method="POST" autocomplete="off">
-                    @csrf
 
-                    <input type="hidden" name="competition_id" value="{{ $competition->id }}">
+                <div class="form-group">
+                    <label for="problem_id">Problem</label>
+                    <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search for Problems" name="problem_id">
 
-                    <div class="form-group">
-                        <label for="problem_id">Problem:</label>
-                        <select name="problem_id" class="form-control">
-                            @foreach ( $hackrivalprob as $problem )
-                            <option value="{{ $problem->id }}"> {{ $problem->name }} </option>
-                            @endforeach
-                        </select>
-                        <p class="text-muted">Create a Problem and select here</p>
-                    </div>
+                    <ul id="myUL" class="form-group">
+                        @foreach ( $hackrivalprob as $problem )
+                        <li class="form-control"><a href="/competition/{{ $competition->id }}/addproblem/{{ $problem->id }}">{{$problem->name}}</a></li>
+                        @endforeach
+                    </ul>
 
-
-
-                    @if($errors->any())
-                    @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{$error}}
-                    </div>
-                    @endforeach
-                    @endif
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                </form>
+                    <script>
+                        function myFunction() {
+                            var input, filter, ul, li, a, i, txtValue;
+                            input = document.getElementById("myInput");
+                            filter = input.value.toUpperCase();
+                            ul = document.getElementById("myUL");
+                            li = ul.getElementsByTagName("li");
+                            for (i = 0; i < li.length; i++) {
+                                a = li[i].getElementsByTagName("a")[0];
+                                txtValue = a.textContent || a.innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                    li[i].style.display = "";
+                                } else {
+                                    li[i].style.display = "none";
+                                }
+                            }
+                        }
+                    </script>
+                </div>
 
             </div>
 

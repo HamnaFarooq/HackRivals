@@ -13,34 +13,39 @@
 
             <div class="modal-body">
                 <!-- form -->
-                <form action="/competition/{{ $competition->id }}/addproblem" method="POST" autocomplete="off">
-                    @csrf
 
-                    <input type="hidden" name="competition_id" value="{{ $competition->id }}">
+                <div class="form-group">
+                    <label for="problem_id">Problem:</label>
+                    <p class="text-muted">Create a Problem and select here</p>
 
-                    <div class="form-group">
-                        <label for="problem_id">Problem:</label>
-                        <select name="problem_id" class="form-control">
-                            @foreach ( $problems as $problem )
-                            <option value="{{ $problem->id }}"> {{ $problem->name }} </option>
-                            @endforeach
-                        </select>
-                        <p class="text-muted">Create a Problem and select here</p>
-                    </div>
+                    <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search for Problems" name="problem_id">
 
+                    <ul id="myUL" class="form-group">
+                        @foreach ( $problems as $problem )
+                        <a href="/competition/{{ $competition->id }}/addproblem/{{ $problem->id }}"><li class="form-control">{{$problem->name}}</li></a>
+                        @endforeach
+                    </ul>
 
+                    <script>
+                        function myFunction() {
+                            var input, filter, ul, li, a, i, txtValue;
+                            input = document.getElementById("myInput");
+                            filter = input.value.toUpperCase();
+                            ul = document.getElementById("myUL");
+                            li = ul.getElementsByTagName("li");
+                            for (i = 0; i < li.length; i++) {
+                                a = li[i].getElementsByTagName("a")[0];
+                                txtValue = a.textContent || a.innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                    li[i].style.display = "";
+                                } else {
+                                    li[i].style.display = "none";
+                                }
+                            }
+                        }
+                    </script>
 
-                    @if($errors->any())
-                    @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{$error}}
-                    </div>
-                    @endforeach
-                    @endif
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                </form>
+                </div>
 
             </div>
 

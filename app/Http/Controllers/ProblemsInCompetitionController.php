@@ -35,12 +35,12 @@ class ProblemsInCompetitionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $compid)
+    public function store( $compid , $probid)
     {
-        $problem = Problem::where('id', $request->problem_id)->first();
+        $problem = Problem::where('id', $probid)->first();
         $competition = Competition::where('id', $compid)->first();
         if ($problem && $competition) {
-            Problems_in_competition::create($request->all());
+            Problems_in_competition::create(['competition_id' => $compid , 'problem_id' => $probid]);
         }
         return redirect()->back();
     }
