@@ -1,15 +1,14 @@
 @include('partials.edit_classroom_form')
 @include('partials.add_material_form')
-
+@include('partials.create_competition_form')
 
 @extends('layouts.app')
-
 @section('pagename')
 Edit {{$classroom->name}}
 @endsection
 
-
 @section('content')
+
 
 <div class="container">
   <h3 class="text-center">{{$classroom->name}}</h3>
@@ -17,6 +16,7 @@ Edit {{$classroom->name}}
   <div class="text-right py-3 my-3">
     <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#add_material">Add Material</button>
     <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#edit_classroom">Settings</button>
+    <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_competition" >Create Competition</button>
   </div>
 
   <div class="row">
