@@ -21,9 +21,9 @@
                     <div class="form-group">
                         <label for="problem_id">Problem:</label>
                         <select name="problem_id" class="form-control">
-                            <!-- @foreach ( $problems as $problem ) -->
+                            @foreach ( $problems as $problem )
                             <option value="{{ $problem->id }}"> {{ $problem->name }} </option>
-                            <!-- @endforeach -->
+                            @endforeach
                         </select>
                         <p class="text-muted">Create a Problem and select here</p>
                     </div>

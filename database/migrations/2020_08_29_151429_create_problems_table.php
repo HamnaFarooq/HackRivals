@@ -16,6 +16,7 @@ class CreateProblemsTable extends Migration
         Schema::create('problems', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('problem_type');
             $table->integer('points');
             $table->foreignId('user_id')->constrained('users');
             $table->integer('level');

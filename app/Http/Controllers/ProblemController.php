@@ -16,7 +16,7 @@ class ProblemController extends Controller
     public function index()
     {
         $problems = problem::all();
-        return view('problem.index',compact('problems'));
+        return view('problem.index', compact('problems'));
     }
 
     /**
@@ -37,7 +37,13 @@ class ProblemController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['user_id' => Auth::id() , 'points' => 10 ]);
+        if (Auth::user()->user_type == 'super') {
+            $request->merge(['problem_type' => 'HackRivals']);
+        }
+        else{
+            $request->merge(['problem_type' => 'private']);
+        }
+        $request->merge(['user_id' => Auth::id(), 'points' => 10]);
         problem::create($request->all());
         return redirect()->back();
     }
@@ -51,7 +57,7 @@ class ProblemController extends Controller
     public function show($id)
     {
         $problem = problem::find($id)->with('user')->first();
-        return view('problem.show',compact('problem',$problem));
+        return view('problem.show', compact('problem', $problem));
     }
 
     /**
@@ -63,8 +69,8 @@ class ProblemController extends Controller
     public function edit($id)
     {
         $problem = problem::where('id', $id)->first();
-        if ($problem && (Auth::id() == $problem->user_id || Auth::user()->user_type == 'admin')){
-            return view('problem.edit',compact('problem'));
+        if ($problem && (Auth::id() == $problem->user_id || Auth::user()->user_type == 'admin')) {
+            return view('problem.edit', compact('problem'));
         } else {
             return redirect('/user_admin');
         }
