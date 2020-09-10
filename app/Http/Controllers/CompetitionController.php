@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\competition;
+use App\Users_in_competition;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -24,10 +25,10 @@ class competitionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+   /* public function create()
     {
         return view('competition.create');
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -51,7 +52,16 @@ class competitionController extends Controller
     public function show($id)
     {
         $competition = competition::where('id', $id)->first();
-        return view('competition.show',compact('competition',$competition));
+        if($competition){
+            $check = Users_in_competition::where([['user_id', '=', Auth::id()], ['competition_id', '=', $competition->id]])->get();
+            if($check){
+                return view('competition.show',compact('competition',$competition));
+            } else{
+                return redirect('/my_competitions');
+            }
+        } else{
+            return redirect('/my_competitions');
+        }
     }
 
     /**
@@ -63,7 +73,11 @@ class competitionController extends Controller
     public function edit($id)
     {
         $competition = competition::where('id', $id)->first();
-        return view('competition.edit',compact('competition'));
+        if ($competition && (Auth::id() == $competition->user_id || Auth::user()->user_type == 'admin')){
+            return view('competition.edit',compact('competition'));
+        } else {
+            return redirect('/user_admin');
+        }   
     }
 
     /**

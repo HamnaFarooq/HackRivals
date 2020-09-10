@@ -63,7 +63,11 @@ class ProblemController extends Controller
     public function edit($id)
     {
         $problem = problem::where('id', $id)->first();
-        return view('problem.edit',compact('problem'));
+        if ($problem && (Auth::id() == $problem->user_id || Auth::user()->user_type == 'admin')){
+            return view('problem.edit',compact('problem'));
+        } else {
+            return redirect('/user_admin');
+        }
     }
 
     /**

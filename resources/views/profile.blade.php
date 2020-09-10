@@ -7,12 +7,11 @@ Profile
 <div class="container">
 
     <div class="row">
-
         <div class="col-sm-5">
             <div class="text-center pb-3 pt-5">
                 {!! file_get_contents('images/profilepic.svg') !!}
-                <h3 class="m-3">UserName</h3>
-                <h5>Username@email.com</h5>
+                <h3 class="m-3">{{ Auth::user()->name }}</h3>
+                <h5>{{ Auth::user()->email }}</h5>
             </div>
         </div>
 

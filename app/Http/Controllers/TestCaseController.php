@@ -15,7 +15,12 @@ class TestCaseController extends Controller
     public function index($id)
     {
         $test_cases = test_case::where('problem_id',$id)->get();
-        return view('test_case.index',compact('test_cases'),compact('id'));
+        if ($test_case && (Auth::id() == $problem->user_id || Auth::user()->user_type == 'admin')){
+            return view('test_case.index',compact('test_cases'),compact('id'));
+        }
+        else {
+            return redirect('/user_admin');
+        }
     }
 
     /**

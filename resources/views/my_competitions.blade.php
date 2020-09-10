@@ -29,8 +29,8 @@ My Competitions
 
         @foreach ($user->joined_competitions as $competition)
         @if($competition->competition_type == 'private')
-        <a href="/competition/{{$competition->id}}">
           <div class="col-sm-4">
+        <a href="/competition/{{$competition->id}}">
             <div class="card border-info mb-3">
               <div class="card-header">{{$competition->name}}</div>
               <div class="card-body">
@@ -38,8 +38,9 @@ My Competitions
                 <h6 class="card-text">End Time: {{ $competition->ends }}</h6>
               </div>
             </div>
+            </a>
           </div>
-        </a>
+        
         @endif
         @endforeach
 
