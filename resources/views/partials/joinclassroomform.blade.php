@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <h5 class="modal-title" id="exampleModalLongTitle">Title</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Join Classroom</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="text" class="form-control" name="password" placeholder="Enter Output" required>
+                        <input type="text" class="form-control" name="password" placeholder="Enter Password" required>
                     </div>
 
                     @if($errors->any())

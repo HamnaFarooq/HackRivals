@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Users_in_competition;
 use Illuminate\Http\Request;
+use App\Competition;
+use Auth;
 
 class UsersInCompetitionController extends Controller
 {
@@ -35,7 +37,19 @@ class UsersInCompetitionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd('hello');
+        $compete = Competition::where('id', $request->competition_id)->first();
+        // take that class and match password 
+        if ($compete->password == $request->password) 
+        {
+            $request->merge(['user_id' => Auth::id()]);
+            Users_in_competition::create($request->all());
+            return redirect('/competition/' . $request->competition_id);
+        } 
+        else 
+        {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -78,8 +92,10 @@ class UsersInCompetitionController extends Controller
      * @param  \App\Users_in_competition  $users_in_competition
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users_in_competition $users_in_competition)
+    public function destroy($competition_id)
     {
         //
+        Users_in_competition::where([['user_id', '=', Auth::id()],['competition_id', '=', $competition_id]])->first()->delete();
+        return redirect('/my_competitions');
     }
 }

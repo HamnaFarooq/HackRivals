@@ -60,35 +60,20 @@ My Competitions
 
         <div class="tab-pane fade pt-4" id="public-joined">
           <div class="row">
-            <div class="col-sm-4">
-              <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
-                <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
-                <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
-                </div>
-              </div>
-            </div>
+            
+        @foreach ($user->joined_competitions as $competition)
 
-            <div class="col-sm-4">
-              <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
-                <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
-                </div>
-              </div>
-            </div>
-
+        <div class="col-sm-4">
+        <div class="card border-info mb-3">
+          <div class="card-header">{{$competition->name}}</div>
+          <div class="card-body">
+            <h6 class="card-text">Start Time: {{ $competition->starts }}</h6>
+            <h6 class="card-text">End Time: {{ $competition->ends }}</h6>
+          </div>
+        </div>
+        </div>
+        @endforeach
+            
 
           </div>
         </div>
