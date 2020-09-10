@@ -36,7 +36,7 @@ class ClassroomController extends Controller
         $classroom = Classroom::where('id', $id)->with('materials')->first();
         if ($classroom) {
             //find this user and this class both in Users in classroom table
-            $check = UsersInClassroom::where([['user_id', '=', Auth::id()], ['classroom_id', '=', $classroom->id]])->get();
+            $check = Users_in_classroom::where([['user_id', '=', Auth::id()], ['classroom_id', '=', $classroom->id]])->get();
             if ($check) {
                 return view('classroom.show', compact('classroom', $classroom));
             } else {
