@@ -18,6 +18,8 @@ https://www.apachefriends.org/download.html
 
 7. Open terminal or cmd and cd to the copy you have of this repository.
 
-8. When you are in this folder, type the command "php artisan serve" 
+8. When you are in this folder, type the command "php artisan migrate" to migrate the database to phpMyAdmin
+
+9. Type the command "php artisan serve" and follow the link.
 
 ## The project should be running now.
