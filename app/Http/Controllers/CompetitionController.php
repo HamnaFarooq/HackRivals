@@ -39,7 +39,7 @@ class competitionController extends Controller
     {
         $request->merge(['user_id' => Auth::id() ]);
         $competition = competition::create($request->all());
-        return redirect('/competition/'.$competition['id']);
+        return redirect('/competition/'.$competition['id'].'/edit');
     }
 
     /**
@@ -77,7 +77,7 @@ class competitionController extends Controller
     {
         $updatedcompetition = competition::where('id', $id)->first();
         $updatedcompetition->update($request->all());
-        return redirect('/competition/'.$updatedcompetition['id']);
+        return redirect('/competition/'.$updatedcompetition['id'].'/edit');
     }
 
     /**
