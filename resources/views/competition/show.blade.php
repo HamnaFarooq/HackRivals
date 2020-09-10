@@ -82,24 +82,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-active">
+
+                <!-- <tr class="table-active">
                     <td>33</td>
                     <td> user@email.com</td>
                     <td>Points</td>
+                </tr> -->
 
-                </tr>
-                <tr class="table-active">
-                    <td>33</td>
-                    <td> user@email.com</td>
-                    <td>Points</td>
-
-                </tr>
-                <tr class="table-active">
-                    <td>33</td>
-                    <td> user@email.com</td>
-                    <td>Points</td>
-
-                </tr>
             </tbody>
         </table>
         <a href="/leavecompetition/{{ $competition->id }}"> <button type="button" class="btn btn-primary mb-5">Leave Competition</button>

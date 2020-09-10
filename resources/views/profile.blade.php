@@ -19,17 +19,17 @@ Profile
         <div class="col-sm-7 text-center">
             <h3 class="m-3"> <b>Rank:</b> <i> Professional </i></h3>
             <div class="bg-primary m-3 p-1 pt-2 rounded">
-                <p> <b class="mx-2">Problems Attempted: </b> 53 </p>
+                <p> <b class="mx-2">Problems Attempted: </b> 0 </p>
             </div>
-            <p> <b class="mx-2">Problems Solved: </b> 17 </p>
+            <p> <b class="mx-2">Problems Solved: </b> 0 </p>
             <div class="bg-primary m-3 p-1 pt-2 rounded">
-                <p> <b class="mx-2">Joined Competitions: </b> 5 </p>
+                <p> <b class="mx-2">Joined Competitions: </b> 0 </p>
             </div>
-            <p> <b class="mx-2">Joined Classes: </b> 7 </p>
+            <p> <b class="mx-2">Joined Classes: </b> 0 </p>
             <div class="bg-primary m-3 p-1 pt-2 rounded">
-                <p> <b class="mx-2">Last Login: </b> 13 September 200AD </p>
+                <p> <b class="mx-2">Last Login: </b> 11 September 2020 </p>
             </div>
-            <p> <b class="mx-2">Join Date: </b> 30 August 2020 </p>
+            <p> <b class="mx-2">Join Date: </b> 11 September 2020 </p>
         </div>
     </div>
 

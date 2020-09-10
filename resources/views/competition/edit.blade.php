@@ -60,9 +60,9 @@
       <li class="nav-item">
         <a class="nav-link active" data-toggle="tab" href="#details">Details</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#landing_page">Landing Page</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#problems">Problems</a>
       </li>
@@ -118,17 +118,17 @@
 
           <div class="form-group">
             <label for="tagline">Competition Tagline:</label>
-            <input type="text" class="form-control" name="tagline" placeholder="Enter Tagline" required>
+            <input type="text" class="form-control" name="tagline" placeholder="Enter Tagline" >
           </div>
 
           <div class="form-group">
             <label for="description">Competition Description:</label>
-            <input type="text" class="form-control" name="description" placeholder="Enter Description" required>
+            <input type="text" class="form-control" name="description" placeholder="Enter Description" >
           </div>
 
           <div class="form-group">
             <label for="rules">Competition Rules:</label>
-            <input type="text" class="form-control" name="rules" placeholder="Enter Rules" required>
+            <input type="text" class="form-control" name="rules" placeholder="Enter Rules" >
           </div>
 
         </div>
@@ -144,7 +144,7 @@
           <br>
           <div class="dropdown-divider"></div>
 
-          <div class="text-right"> <button type="submit" class="btn btn-success">Submit</button> </div>
+          <div class="text-right"> <button type="submit" class="btn btn-success">Update</button> </div>
 
 
         </div>
@@ -154,7 +154,7 @@
               <div class="card border-info mb-3">
                 <div class="card-header">Signup Count:</div>
                 <div class="card-body">
-                  <p class="card-text">30</p>
+                  <p class="card-text">0</p>
                 </div>
               </div>
             </div>
@@ -163,7 +163,7 @@
               <div class="card border-info mb-3">
                 <div class="card-header">Number of Submissions:</div>
                 <div class="card-body">
-                  <p class="card-text">9</p>
+                  <p class="card-text">0</p>
                 </div>
               </div>
             </div>
@@ -181,30 +181,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="table-active">
+                        <!-- <tr>
                           <td>567</td>
-                          <td> user@email.com</td>
-                        </tr>
-                        <tr>
-                          <td>567</td>
-                          <td>username@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td>567</td>
-                          <td>username@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td>567</td>
-                          <td>username@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td>567</td>
-                          <td>username@gmail.com</td>
-                        </tr>
+                          <td>user@email.com</td>
+                        </tr> -->
                       </tbody>
                     </table>
                   </div>
-
                 </div>
               </div>
             </div>

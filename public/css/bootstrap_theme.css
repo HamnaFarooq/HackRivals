@@ -163,14 +163,14 @@
  }
  
  a {
-   color: #00bc8c;
+   color: inherit;
    text-decoration: none;
    background-color: transparent;
  }
  
  a:hover {
-   color: #007053;
-   text-decoration: underline;
+   color: inherit;
+   /* text-decoration: underline; */
  }
  
  a:not([href]):not([class]) {

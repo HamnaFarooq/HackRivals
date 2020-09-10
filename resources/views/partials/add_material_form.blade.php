@@ -33,9 +33,9 @@
                         <label for="competition_id">Competition:</label>
                         <select name="competition_id" class="form-control">
                             <option value="">No Competition</option>
-                            <option value="id">Competition name</option>
-                            <option value="id">Competition name</option>
-                            <option value="id">Competition name</option>
+                            @foreach ( $competitions as $competition )
+                            <option value="{{ $competition->id }}"> {{ $competition->name }} </option>
+                            @endforeach
                         </select>
                         <p class="text-muted">( Optional )  Create a private Competition and select one</p>
                     </div>

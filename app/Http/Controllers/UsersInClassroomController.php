@@ -38,8 +38,7 @@ class UsersInClassroomController extends Controller
     public function store(Request $request)
     {
         $class = Classroom::where('id', $request->classroom_id)->first();
-        // take that class and match password 
-        if ($class->password == $request->password) 
+        if ($class && $class->password == $request->password) 
         {
             $request->merge(['user_id' => Auth::id()]);
             Users_in_classroom::create($request->all());
@@ -49,7 +48,6 @@ class UsersInClassroomController extends Controller
         {
             return redirect()->back();
         }
-        // save this users id and class id in users in classroom table
     }
 
     /**

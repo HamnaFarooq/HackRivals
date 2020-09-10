@@ -27,10 +27,10 @@
                         <input type="textarea" rows="40" class="form-control" name="announcement" value="{{$material->announcement}}" placeholder="Enter announcement" required>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="announcement">Competition (optional):</label>
                         <button class="btn btn-secondary">Create Competition</button>
-                    </div>
+                    </div> -->
 
                     @if($errors->any())
                     @foreach ($errors->all() as $error)

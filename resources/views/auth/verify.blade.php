@@ -1,4 +1,10 @@
 @extends('layouts.app')
+<script>
+    function pageRedirect() {
+        window.location.replace("http://127.0.0.1:8000/");
+    }      
+    pageRedirect();
+</script>
 
 @section('content')
 <div class="container">

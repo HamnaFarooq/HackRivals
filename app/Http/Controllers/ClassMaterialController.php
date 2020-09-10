@@ -36,7 +36,6 @@ class ClassMaterialController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->merge(['in_classroom_id' => 1]);
         Class_material::create($request->all());
         return redirect()->back();
     }

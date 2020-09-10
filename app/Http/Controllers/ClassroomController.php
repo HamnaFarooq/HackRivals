@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Classroom;
+use App\Competition;
+use App\Users_in_classroom;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -17,12 +19,11 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['user_id' => Auth::id() ]);
-        // dd($request);
+        $request->merge(['user_id' => Auth::id()]);
         $created = Classroom::create($request->all());
-        return redirect('/classroom/'.$created["id"].'/edit');
+        return redirect('/classroom/' . $created["id"] . '/edit');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -31,8 +32,19 @@ class ClassroomController extends Controller
      */
     public function show($id)
     {
+        //check if joined only
         $classroom = Classroom::where('id', $id)->with('materials')->first();
-        return view('classroom.show',compact('classroom',$classroom));
+        if ($classroom) {
+            //find this user and this class both in Users in classroom table
+            $check = UsersInClassroom::where([['user_id', '=', Auth::id()], ['classroom_id', '=', $classroom->id]])->get();
+            if ($check) {
+                return view('classroom.show', compact('classroom', $classroom));
+            } else {
+                return redirect('/my_classrooms');
+            }
+        } else {
+            return redirect('/my_classrooms');
+        }
     }
 
     /**
@@ -43,8 +55,14 @@ class ClassroomController extends Controller
      */
     public function edit($id)
     {
+        //check if creator or admin only
         $classroom = Classroom::where('id', $id)->with('materials')->first();
-        return view('classroom.edit',compact('classroom'));
+        if ($classroom && (Auth::id() == $classroom->user_id || Auth::user()->user_type == 'admin')) {
+            $competitions = Competition::where([['user_id', '=', Auth::id()], ['competition_type', '=', 'private']])->get();
+            return view('classroom.edit', compact('classroom', 'competitions'));
+        } else {
+            return redirect('/user_admin');
+        }
     }
 
     /**
@@ -58,7 +76,7 @@ class ClassroomController extends Controller
     {
         $updatedclassroom = Classroom::find($id)->first();
         $updatedclassroom->update($request->all());
-        return redirect('/classroom/'.$updatedclassroom["id"].'/edit');
+        return redirect('/classroom/' . $updatedclassroom["id"] . '/edit');
     }
 
     /**

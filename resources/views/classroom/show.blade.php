@@ -45,12 +45,20 @@
                     <div class="card border-info mb-3">
                         <div class="card-header">{{$material->title}}</div>
                         <div class="card-body">
+                            @if( $material->announcement )
                             <p class="card-text"> {{$material->announcement}}</p>
-                            <p class="card-text">Competition: <button type="button" class="btn btn-primary ml-1">Competitionname</button></p>
-                        </div>
+                            @endif
+                            @if( $material->competition_id )
+                            <form action="/joincompetition" method="POST">
+                                @csrf
+                                <input type="hidden" name="competition_id" value="{{$material->competition_id}}">
+                                <input type="hidden" name="password" value="class">
+                                <button type="submit" class="btn btn-primary">Join Competition</button>
+                            </form>
+                            @endif</div>
                     </div>
                 </div>
-                
+
                 @endforeach
 
             </div>

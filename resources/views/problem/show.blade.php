@@ -75,11 +75,11 @@
           <div class="col-sm-3 text-center">
             <p> <b class="mx-3">Author:</b> {{$problem->user->name}} </p>
             <br>
-            <p> <b class="mx-3">Difficulty:</b> Easy </p>
+            <p> <b class="mx-3">Difficulty:</b> {{$problem->level}} </p>
             <br>
             <p> <b class="mx-3">Max Points:</b> {{$problem->points}} </p>
             <br>
-            <p> <b class="mx-3">Solved by:</b> 283 </p>
+            <p> <b class="mx-3">Solved by:</b> 0 </p>
           </div>
         </div>
 

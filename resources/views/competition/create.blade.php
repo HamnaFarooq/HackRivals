@@ -8,14 +8,11 @@
       <li class="nav-item">
         <a class="nav-link active" data-toggle="tab" href="#details">Details</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#landing_page">Landing Page</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#problems">Problems</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#statistics">Statistics</a>
       </li>
 
     </ul>
@@ -65,17 +62,17 @@
 
           <div class="form-group">
             <label for="tagline">Competition Tagline:</label>
-            <input type="text" class="form-control" name="tagline" placeholder="Enter Tagline" required>
+            <input type="text" class="form-control" name="tagline" placeholder="Enter Tagline" >
           </div>
 
           <div class="form-group">
             <label for="description">Competition Description:</label>
-            <input type="text" class="form-control" name="description" placeholder="Enter Description" required>
+            <input type="text" class="form-control" name="description" placeholder="Enter Description" >
           </div>
 
           <div class="form-group">
             <label for="rules">Competition Rules:</label>
-            <input type="text" class="form-control" name="rules" placeholder="Enter Rules" required>
+            <input type="text" class="form-control" name="rules" placeholder="Enter Rules" >
           </div>
 
 
@@ -96,70 +93,7 @@
 
 
         </div>
-        <div class="tab-pane fade pt-3" id="statistics">
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="card border-info mb-3">
-                <div class="card-header">Signup Count:</div>
-                <div class="card-body">
-                  <p class="card-text">30</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="card border-info mb-3">
-                <div class="card-header">Number of Submissions:</div>
-                <div class="card-body">
-                  <p class="card-text">9</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <div class="card border-info mb-3">
-                <div class="card-header">Sigups:</div>
-                <div class="card-body">
-                  <div class="row">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">Email</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="table-active">
-                          <td>567</td>
-                          <td> user@email.com</td>
-                        </tr>
-                        <tr>
-                          <td>567</td>
-                          <td>username@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td>567</td>
-                          <td>username@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td>567</td>
-                          <td>username@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td>567</td>
-                          <td>username@gmail.com</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+        
       </div>
 
       @if($errors->any())

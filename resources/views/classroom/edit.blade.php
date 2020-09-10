@@ -41,9 +41,12 @@ Edit Classroom
                 <div class="card border-primary mb-3">
                   <div class="card-header">{{$material->title}}</div>
                   <div class="card-body">
-                    <h4 class="card-title">Note:</h4>
+                    @if( $material->announcement )
                     <p class="card-text"> {{$material->announcement}}</p>
-                    <p class="card-text"><b> Competition:</b> {{$material->contest_id}}</p>
+                    @endif
+                    @if( $material->competition_id )
+                    <p class="card-text"><b> Competition:</b> {{$material->competition_id}}</p>
+                    @endif
                   </div>
                 </div>
               </td>
@@ -77,24 +80,13 @@ Edit Classroom
           </tr>
         </thead>
         <tbody>
-          <tr class="table-active">
+
+          <!-- <tr>
             <td>33</td>
             <td> user@email.com</td>
             <td>Points</td>
+          </tr> -->
 
-          </tr>
-          <tr class="table-active">
-            <td>33</td>
-            <td> user@email.com</td>
-            <td>Points</td>
-
-          </tr>
-          <tr class="table-active">
-            <td>33</td>
-            <td> user@email.com</td>
-            <td>Points</td>
-
-          </tr>
         </tbody>
       </table>
 

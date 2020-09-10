@@ -53,6 +53,7 @@ class HomeController extends Controller
 
     public function profile()
     {
+        $user = User::find(Auth::id())->first();
         return view('profile');
     }
 }
