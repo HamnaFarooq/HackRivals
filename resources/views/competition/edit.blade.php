@@ -1,5 +1,6 @@
 @include('partials.edit_competition_form')
 @include('partials.add_user_problem_form')
+@include('partials.create_problem_form')
 @include('partials.add_problem_form')
 
 @extends('layouts.app')
@@ -32,13 +33,35 @@ Edit {{$competition->name}}
       <div class="tab-pane fade show active" id="problems">
 
         <div class="text-right py-3">
+          <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_problem">Create New Problem</button>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_user_problem">Add Your Problem</button>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_problem">Add HackRival Problem</button>
         </div>
 
-        <div class="card border-info mb-3">
-          <div class="card-header">Problem Name</div>
-        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Problem Name</th>
+              <th scope="col" class="text-right">View</th>
+              <th scope="col" class="text-right">Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          @foreach ( $competition->problems as $problem )
+            <tr>
+              <td>
+                <h5>{{$problem->name}}</h5>
+              </td>
+              <td class="text-right"> <a href="/problem/{{$problem->id}}"> <button type="button" class="btn btn-primary"> View </button> </a> </td>
+              <td class="text-right"> <a href="/competition/{{$competition->id}}/removeproblem/{{$problem->id}}"> <button type="button" class="btn btn-danger"> Remove </button> </a> </td>
+            </tr>
+            @endforeach
+
+          </tbody>
+        </table>
+
+
 
       </div>
       <div class="tab-pane fade pt-3" id="statistics">

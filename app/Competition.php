@@ -31,12 +31,12 @@ class Competition extends Model
 
     public function ranks()
     {
-        return $this->HasManyThrough('App\Rank', 'App\Users_in_competition');
+        return $this->belongsToMany('App\Rank', 'competition_rankings');
     }
 
     public function problems()
     {
-        return $this->HasManyThrough('App\Problem', 'App\Problems_in_competition');
+        return $this->belongsToMany('App\Problem', 'problems_in_competitions');
     }
 
 }

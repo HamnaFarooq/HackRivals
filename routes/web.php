@@ -26,13 +26,14 @@ Route::get('/rankings', 'HomeController@rankings');
 Route::get('/user_admin', 'HomeController@user_admin');
 Route::get('/profile', 'HomeController@profile');
 
-
-
 Route::post('/joinclass', 'UsersInClassroomController@store');
 Route::get('/leaveclass/{id}', 'UsersInClassroomController@destroy');
 
 Route::post('/joincompetition', 'UsersInCompetitionController@store');
 Route::get('/leavecompetition/{id}', 'UsersInCompetitionController@destroy');
+
+Route::post('/competition/{id}/addproblem', 'ProblemsInCompetitionController@store');
+Route::get('/competition/{id}/removeproblem/{probid}', 'ProblemsInCompetitionController@destroy');
 
 Route::resource('/competition','CompetitionController');
 Route::resource('/classroom','ClassroomController');

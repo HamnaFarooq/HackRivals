@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\competition;
+use App\Problem;
 use App\Users_in_competition;
 use Auth;
 use Illuminate\Http\Request;
@@ -72,9 +73,10 @@ class competitionController extends Controller
      */
     public function edit($id)
     {
-        $competition = competition::where('id', $id)->first();
+        $competition = competition::where('id', $id)->with('problems')->first();
         if ($competition && (Auth::id() == $competition->user_id || Auth::user()->user_type == 'admin')){
-            return view('competition.edit',compact('competition'));
+            $problems = Problem::where([['user_id', '=', Auth::id()] ])->get();
+            return view('competition.edit',compact('competition','problems'));
         } else {
             return redirect('/user_admin');
         }   

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Competition;
+use App\Problem;
 use App\Problems_in_competition;
 use Illuminate\Http\Request;
 
@@ -33,9 +35,14 @@ class ProblemsInCompetitionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $compid)
     {
-        //
+        $problem = Problem::where('id', $request->problem_id)->first();
+        $competition = Competition::where('id', $compid)->first();
+        if ($problem && $competition) {
+            Problems_in_competition::create($request->all());
+        }
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +85,9 @@ class ProblemsInCompetitionController extends Controller
      * @param  \App\Problems_in_competition  $problems_in_competition
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Problems_in_competition $problems_in_competition)
+    public function destroy($compid, $proid)
     {
-        //
+        Problems_in_competition::where([['competition_id', '=', $compid], ['problem_id', '=', $proid]])->first()->delete();
+        return redirect('/competition/'. $compid .'/edit');
     }
 }
