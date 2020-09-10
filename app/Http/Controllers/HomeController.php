@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\competition;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,8 @@ class HomeController extends Controller
     public function competitions()
     {
         $user = User::find(Auth::id())->with('joined_competitions')->first();
-        return view('my_competitions',compact('user',$user));
+        $public = Competition::where([['competition_type','=','public']])->get();
+        return view('my_competitions',compact('user','public'));
     }
 
     public function rankings()

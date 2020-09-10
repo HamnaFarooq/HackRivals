@@ -1,4 +1,6 @@
 @include('partials.joincompetitionform')
+@include('partials.join_public_competitions')
+
 
 @extends('layouts.app')
 @section('pagename')
@@ -20,7 +22,8 @@ My Competitions
   </ul>
 
   <div class="text-right">
-    <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#joincompetition">Join a Competition</button>
+    <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#joincompetition">Join private Competition</button>
+    <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#joinpubliccompetition">Join public Competition</button>
   </div>
 
   <div id="myTabContent" class="tab-content">
