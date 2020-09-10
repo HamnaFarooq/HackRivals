@@ -1,4 +1,4 @@
-<div class="modal ml-sm-5  fade" id="createclassroom" tabindex="-1" role="dialog" aria-labelledby="createclassroom" aria-hidden="true">
+<div class="modal fade" id="createclassroom" tabindex="-1" role="dialog" aria-labelledby="createclassroom" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
 
         <div class="modal-content">
