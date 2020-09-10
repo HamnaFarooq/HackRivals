@@ -5,8 +5,9 @@
 @extends('layouts.app')
 
 @section('pagename')
-Edit Classroom
+Edit {{$classroom->name}}
 @endsection
+
 
 @section('content')
 

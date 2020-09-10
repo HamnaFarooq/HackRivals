@@ -1,5 +1,6 @@
 @include('partials.createclassroomform')
 @include('partials.create_problem_form')
+@include('partials.create_competition_form')
 
 @extends('layouts.app')
 @section('pagename')
@@ -54,7 +55,7 @@ User Administration
         </div>
         <div class="tab-pane fade" id="competitions">
 
-            <div class="text-right"> <a href="/competition/create" <button type="button" class="btn btn-primary my-3">Create Competition</button> </a></div>
+            <div class="text-right"> <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_competition" >Create Competition</button> </div>
             <div class="row">
                 <table class="table table-hover">
                     <thead>
