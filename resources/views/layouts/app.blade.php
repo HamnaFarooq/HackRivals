@@ -120,7 +120,7 @@
         data: {
             labels: ["Total Points", "Aggregate Points"],
             datasets: [{
-                label: '',
+                label: 'Your Points',
                 // sizes
                 data: [12, 19],
                 backgroundColor: [

@@ -5,6 +5,9 @@ Home
 
 @section('content')
 <div class="container">
+    <div>
+    <a href=""> <button type="button" class="btn btn-primary"> Go Back </button> </a>
+    </div>
     <div class="row">
         <div class="col">
             <div class="py-3">
@@ -91,9 +94,9 @@ Home
                 </div>
                 <div class="col-sm-4">
                     <div class="card border-info mb-3">
-                        <div class="card-header">Problem Name</div>
+                        <div class="card-header">testcase number Name</div>
                         <div class="card-body">
-                            <h4 class="card-title">Statement:</h4>
+                            <h4 class="card-title">tick/Cross:</h4>
 
                         </div>
                     </div>
@@ -101,9 +104,9 @@ Home
 
                 <div class="col-sm-4">
                     <div class="card border-info mb-3">
-                        <div class="card-header">Problem Name</div>
+                        <div class="card-header">testcase number Name</div>
                         <div class="card-body">
-                            <h4 class="card-title">Statement:</h4>
+                            <h4 class="card-title">tick/Cross:</h4>
 
                         </div>
                     </div>
@@ -111,18 +114,18 @@ Home
 
                 <div class="col-sm-4">
                     <div class="card border-info mb-3">
-                        <div class="card-header">Problem Name</div>
+                        <div class="card-header">testcase number Name</div>
                         <div class="card-body">
-                            <h4 class="card-title">Statement:</h4>
+                            <h4 class="card-title">tick/Cross:</h4>
 
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="card border-info mb-3">
-                        <div class="card-header">Problem Name</div>
+                        <div class="card-header">testcase number Name</div>
                         <div class="card-body">
-                            <h4 class="card-title">Statement:</h4>
+                            <h4 class="card-title">tick/Cross:</h4>
 
                         </div>
                     </div>
@@ -130,9 +133,9 @@ Home
 
                 <div class="col-sm-4">
                     <div class="card border-info mb-3">
-                        <div class="card-header">Problem Name</div>
+                        <div class="card-header">testcase number Name</div>
                         <div class="card-body">
-                            <h4 class="card-title">Statement:</h4>
+                            <h4 class="card-title">tick/Cross:</h4>
 
                         </div>
                     </div>
