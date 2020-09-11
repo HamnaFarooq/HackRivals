@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Classrooms;
+use App\Competition;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -54,9 +55,10 @@ class AdminController extends Controller
         return view('admin.editPublicCompetition');
     }
 
-    public function editPrivateCompetition()
+    public function editCompetition($id)
     {
-        return view('admin.editPrivateCompetition');
+        $competition = Competition::find($id)->first();
+        return view('admin.editPrivateCompetition',compact('competition'));
     }
 
     public function editClassrooms()

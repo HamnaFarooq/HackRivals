@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('pagename')
-Home
+Edit Competition
 @endsection
 
 @section('content')
@@ -18,57 +18,27 @@ Home
 
     </ul>
 
-    <form action="/competition" method="POST" autocomplete="off">
+    <form action="/competition/{{$competition->id}}" method="POST">
       @csrf
+      @method('patch')
 
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade  pt-3 show active" id="details">
+      <div class="form-group">
+        <label for="name">Edit Competition Name:</label>
+        <input type="text" class="form-control" name="name" value="{{$competition->name}}" placeholder="Enter Competition Name" required>
+      </div>
 
-          <div class="form-group">
-            <label for="name">Edit Competition Name:</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter Competition Name" required>
-          </div>
+      <div class="form-group">
+        <label for="competition_type">Edit Type:</label>
+        <select value="{{$competition->competition_type}}" name="competition_type" class="form-control" required>
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+        </select>
+      </div>
 
-          <div class="form-group">
-            <label for="competition_type">Edit Type:</label>
-            <select name="competition_type" class="form-control" required>
-              <option value="public">Public</option>
-              <option value="private">Private</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="password">Edit Password:</label>
-            <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
-          </div>
-
-
-        </div>
-        <div class="tab-pane fade pt-3" id="landing_page">
-
-          <div class="form-group">
-            <label for="landing_image">Landing Page image</label>
-            <input type="file" class="form-control-file" id="landing_image" aria-describedby="fileHelp">
-            <small id="fileHelp" class="form-text text-muted">The image should be 1024 x 768 at least.</small>
-          </div>
-
-          <div class="form-group">
-            <label for="tagline">Edit Competition Tagline:</label>
-            <input type="text" class="form-control" name="tagline" placeholder="Enter Tagline" required>
-          </div>
-
-          <div class="form-group">
-            <label for="description">Edit Competition Description:</label>
-            <input type="text" class="form-control" name="description" placeholder="Enter Description" required>
-          </div>
-
-          <div class="form-group">
-            <label for="rules">Edit Competition Rules:</label>
-            <input type="text" class="form-control" name="rules" placeholder="Enter Rules" required>
-          </div>
-
-
-        </div>
+      <div class="form-group">
+        <label for="password">Edit Password:</label>
+        <input type="password" class="form-control" name="password" value="{{$competition->name}}"  placeholder="Enter Password" required>
+      </div>
 
 
       @if($errors->any())
@@ -79,7 +49,7 @@ Home
       @endforeach
       @endif
 
-      <div class="text-right"><button type="button" class="btn btn-primary">Update</button></div>
+      <button type="submit" class="btn btn-primary">Update</button>
 
     </form>
   </div>

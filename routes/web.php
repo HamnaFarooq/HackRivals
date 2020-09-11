@@ -42,6 +42,8 @@ Route::get('/classroomsList', 'AdminController@classroomsList');
 Route::get('/privateCompetitionList', 'AdminController@privateCompetitionList');
 Route::get('/publicCompetition', 'AdminController@publicCompetition');
 
-Route::get('/editPublicCompetition', 'AdminController@editPublicCompetition');
-Route::get('/editPrivateCompetition', 'AdminController@editPrivateCompetition');
+Route::get('/editCompetition/{id}', 'AdminController@editCompetition');
 Route::get('/editClassrooms', 'AdminController@editClassrooms');
+
+
+Route::get('/problem_attempt', 'HomeController@problem_attempt');
