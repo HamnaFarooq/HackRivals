@@ -8,6 +8,8 @@
 
 <div class="container">
     <h3 class="text-center">{{$classroom->name}}</h3>
+    <div class="text-right"><button type="button" class="btn btn-primary mb-5">Share</button>
+    <a href="/leaveclass/{{ $classroom->id }}"> <button type="button" class="btn btn-primary mb-5">Leave ClassRoom</button></div>
 
     <div class="row">
 
@@ -63,7 +65,7 @@
 
         </div>
 
-        <a href="/leaveclass/{{ $classroom->id }}"> <button type="button" class="btn btn-primary mb-5">Leave ClassRoom</button>
+        
 
     </div>
 </div>

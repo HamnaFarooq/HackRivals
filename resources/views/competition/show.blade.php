@@ -8,6 +8,8 @@
 
 <div class="container">
 <h3 class="text-center">{{$competition->name}}</h3>
+<div class="text-right"><button type="button" class="btn btn-primary mb-5">Share</button>
+<a href="/leavecompetition/{{ $competition->id }}"> <button type="button" class="btn btn-primary mb-5">Leave Competition</button></div>
 <div class="row">
 
     <div class="col-sm-8">
@@ -71,7 +73,7 @@
 
             </tbody>
         </table>
-        <a href="/leavecompetition/{{ $competition->id }}"> <button type="button" class="btn btn-primary mb-5">Leave Competition</button>
+       
     </div>
 
 </div>

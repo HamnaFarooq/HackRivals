@@ -38,22 +38,33 @@ class UsersInCompetitionController extends Controller
     public function store(Request $request)
     {
         $compete = Competition::where('id', $request->competition_id)->first();
-        if ( $compete && ( $compete->password == $request->password || $request->password == 'class' )  )
-        {
-            $request->merge(['user_id' => Auth::id()]);
-            Users_in_competition::create($request->all());
-            return redirect('/competition/' . $request->competition_id);
-        } 
-        else 
-        {
+        $alreadyexist = Users_in_competition::where([['competition_id', '=', $request->competition_id],['user_id', '=', Auth::id()]])->first();
+        if($alreadyexist){
             return redirect()->back();
+        } else {
+            if ( $compete && ( $compete->password == $request->password || $request->password == 'class' )  )
+            {
+                $request->merge(['user_id' => Auth::id()]);
+                Users_in_competition::create($request->all());
+                return redirect('/competition/' . $request->competition_id);
+            } 
+            else 
+            {
+                return redirect()->back();
+            }
         }
+       
+       
     }
 
     public function storepub($id)
     {
         $compete = Competition::where('id', $id)->first();
-        if ( $compete )
+        $existing = Users_in_competition::where([['competition_id', '=', $id],['user_id', '=', Auth::id()]])->first();
+        if($existing){
+            return redirect()->back();
+        } else {
+            if ( $compete )
         {
             $data = (['user_id' => Auth::id() , 'competition_id' => $id]);
             Users_in_competition::create($data);
@@ -62,6 +73,7 @@ class UsersInCompetitionController extends Controller
         else 
         {
             return redirect()->back();
+        }
         }
     }
 

@@ -40,9 +40,16 @@ class ProblemsInCompetitionController extends Controller
         $problem = Problem::where('id', $probid)->first();
         $competition = Competition::where('id', $compid)->first();
         if ($problem && $competition) {
-            Problems_in_competition::create(['competition_id' => $compid , 'problem_id' => $probid]);
+            //get problems in competition where
+            $alreadyexist =  Problems_in_competition::where([['competition_id' ,'=', $compid],[ 'problem_id','=', $probid]])->first();
+            if($alreadyexist){
+                return redirect()->back();
+            } else {
+                Problems_in_competition::create(['competition_id' => $compid , 'problem_id' => $probid]);
+            }
+            
         }
-        return redirect()->back();
+        
     }
 
     /**

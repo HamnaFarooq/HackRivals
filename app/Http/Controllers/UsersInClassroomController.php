@@ -38,7 +38,11 @@ class UsersInClassroomController extends Controller
     public function store(Request $request)
     {
         $class = Classroom::where('id', $request->classroom_id)->first();
-        if ($class && $class->password == $request->password) 
+        $existing = Users_in_classroom::where([['classroom_id', '=', $request->classroom_id],['user_id', '=', Auth::id()]])->first();
+        if($existing){
+            return redirect()->back();
+        } else {
+            if ($class && $class->password == $request->password) 
         {
             $request->merge(['user_id' => Auth::id()]);
             Users_in_classroom::create($request->all());
@@ -47,6 +51,7 @@ class UsersInClassroomController extends Controller
         else 
         {
             return redirect()->back();
+        }
         }
     }
 
