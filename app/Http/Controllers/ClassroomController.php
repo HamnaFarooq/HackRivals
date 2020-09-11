@@ -58,7 +58,7 @@ class ClassroomController extends Controller
         //check if creator or admin only
         $classroom = Classroom::where('id', $id)->with('materials')->first();
         if ($classroom && (Auth::id() == $classroom->user_id || Auth::user()->user_type == 'admin')) {
-            $competitions = Competition::where([['user_id', '=', Auth::id()], ['competition_type', '=', 'private']])->get();
+            $competitions = Competition::where([['user_id', '=', Auth::id()], ['competition_type', '=', 'private']])->get()->first();
             return view('classroom.edit', compact('classroom', 'competitions'));
         } else {
             return redirect('/user_admin');

@@ -30,6 +30,7 @@ Route::post('/joinclass', 'UsersInClassroomController@store');
 Route::get('/leaveclass/{id}', 'UsersInClassroomController@destroy');
 
 Route::post('/joincompetition', 'UsersInCompetitionController@store');
+Route::get('/joincompetition/{id}', 'UsersInCompetitionController@storepub');
 Route::get('/leavecompetition/{id}', 'UsersInCompetitionController@destroy');
 
 Route::get('/competition/{id}/addproblem/{probid}', 'ProblemsInCompetitionController@store');

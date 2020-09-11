@@ -13,7 +13,34 @@
 
                 <div class="modal-body">
                     <!-- form -->
-                    
+                    <div class="form-group">
+                    <label for="competition_id">Competition</label>
+                    <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search for Competition" name="competition_id">
+                </div>
+                    <ul id="myUL" class="form-group">
+                        @foreach ( $public as $competition )
+                        <li class="form-control"><a href="/joincompetition/{{ $competition->id }} ">{{$competition->name}}</a></li>
+                        @endforeach
+                    </ul>
+
+                    <script>
+                        function myFunction() {
+                            var input, filter, ul, li, a, i, txtValue;
+                            input = document.getElementById("myInput");
+                            filter = input.value.toUpperCase();
+                            ul = document.getElementById("myUL");
+                            li = ul.getElementsByTagName("li");
+                            for (i = 0; i < li.length; i++) {
+                                a = li[i].getElementsByTagName("a")[0];
+                                txtValue = a.textContent || a.innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                    li[i].style.display = "";
+                                } else {
+                                    li[i].style.display = "none";
+                                }
+                            }
+                        }
+                    </script>
 
                 </div>
 

@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label for="problem_id">Problem</label>
                     <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search for Problems" name="problem_id">
-
+                </div>
                     <ul id="myUL" class="form-group">
                         @foreach ( $hackrivalprob as $problem )
                         <li class="form-control"><a href="/competition/{{ $competition->id }}/addproblem/{{ $problem->id }}">{{$problem->name}}</a></li>
@@ -42,7 +42,7 @@
                             }
                         }
                     </script>
-                </div>
+                
 
             </div>
 

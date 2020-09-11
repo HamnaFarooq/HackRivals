@@ -50,6 +50,21 @@ class UsersInCompetitionController extends Controller
         }
     }
 
+    public function storepub($id)
+    {
+        $compete = Competition::where('id', $id)->first();
+        if ( $compete )
+        {
+            $data = (['user_id' => Auth::id() , 'competition_id' => $id]);
+            Users_in_competition::create($data);
+            return redirect('/competition/' . $id);
+        } 
+        else 
+        {
+            return redirect()->back();
+        }
+    }
+
     /**
      * Display the specified resource.
      *
