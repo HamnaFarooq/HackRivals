@@ -14,9 +14,8 @@ Add Test_cases
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_test_case">Add another test_case</button>
     </div>
 
-    <div class="">
+    <div class="row">
         @foreach ( $test_cases as $test_case )
-        @include('partials.edit_test_case_form')
 
         <div class="col col-md-2" style=" min-width:25rem; padding:10px; border-radius:10px; margin:5px;">
             <div class="card">

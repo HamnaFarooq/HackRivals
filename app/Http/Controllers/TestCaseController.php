@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Test_case;
+use App\Problem;
+use Auth;
 use Illuminate\Http\Request;
 
 class TestCaseController extends Controller
@@ -14,9 +16,10 @@ class TestCaseController extends Controller
      */
     public function index($id)
     {
-        $test_cases = test_case::where('problem_id',$id)->get()->first();
-        if ($test_case && (Auth::id() == $problem->user_id || Auth::user()->user_type == 'admin')){
-            return view('test_case.index',compact('test_cases'),compact('id'));
+        $test_cases = test_case::where('problem_id',$id)->get();
+        $problem = Problem::find($id)->first();
+        if ($problem && (Auth::id() == $problem->user_id || Auth::user()->user_type == 'admin')){
+            return view('test_case.index',compact('test_cases','id'));
         }
         else {
             return redirect('/user_admin');

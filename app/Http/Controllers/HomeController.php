@@ -44,7 +44,10 @@ class HomeController extends Controller
 
     public function rankings()
     {
-        return view('rankings');
+        $user = User::find(Auth::id())->first();
+        // $users = User::all();
+        return view('rankings',compact('user'));
+    
     }
 
     public function user_admin()

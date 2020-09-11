@@ -75,9 +75,9 @@ class competitionController extends Controller
     {
         $competition = competition::where('id', $id)->with('problems')->first();
         if ($competition && (Auth::id() == $competition->user_id || Auth::user()->user_type == 'admin')){
-            $problems = Problem::where([['user_id', '=', Auth::id()] ])->get()->first();
+            $problems = Problem::where([['user_id', '=', Auth::id()] ])->get();
             //here
-            $hackrivalprob = Problem::where([['problem_type','=','HackRivals']])->get()->first();
+            $hackrivalprob = Problem::where([['problem_type','=','HackRivals']])->get();
             return view('competition.edit',compact('competition','problems', 'hackrivalprob'));
         } else {
             return redirect('/user_admin');

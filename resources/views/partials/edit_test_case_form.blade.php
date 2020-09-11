@@ -29,14 +29,6 @@
 
                     <input type="hidden" name="problem_id" value="{{$id}}">
 
-                    @if($errors->any())
-                    @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{$error}}
-                    </div>
-                    @endforeach
-                    @endif
-
                     <button type="submit" class="btn btn-primary">Submit</button>
 
                 </form>

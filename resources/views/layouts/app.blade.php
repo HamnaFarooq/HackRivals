@@ -12,6 +12,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -100,13 +102,46 @@
     </div>
 
     <!-- Footer -->
-  <footer class="py-3 bg-primary" style="position: fixed; bottom: 0; width: 100%;">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; HackRivals 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+    <footer class="py-3 bg-primary" style="position: fixed; bottom: 0; width: 100%;">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; HackRivals 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
 
 </body>
 
 </html>
+
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Total Points", "Aggregate Points"],
+            datasets: [{
+                label: '',
+                // sizes
+                data: [12, 19],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>

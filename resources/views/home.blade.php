@@ -6,8 +6,9 @@ Home
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-sm-8">
       <div class="py-3">
+        Level
         <div class="progress">
           <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
@@ -16,6 +17,7 @@ Home
         </div>
 
         <div class="py-3">
+          SubLevel
         <div class="progress">
           <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
           <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
@@ -28,29 +30,29 @@ Home
           <div class="row">
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
 
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
@@ -62,29 +64,29 @@ Home
           <div class="row">
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
 
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
@@ -99,29 +101,29 @@ Home
           <div class="row">
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
 
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
@@ -133,29 +135,29 @@ Home
           <div class="row">
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
 
             <div class="col-sm-4">
               <div class="card border-info mb-3">
-                <div class="card-header">Competition Name</div>
+                <div class="card-header">Problem Name</div>
                 <div class="card-body">
-                  <h4 class="card-title">CreatedBy:</h4>
-                  <h6 class="card-text">Created Date:</h6>
+                  <h4 class="card-title">Statement:</h4>
+                  
                 </div>
               </div>
             </div>
@@ -167,12 +169,15 @@ Home
       </div>
       </div>
     </div>
-    <div class="col">
-      
+    <div class="col-sm-4">
+    <canvas id="myChart" style="width: 500px; height:100%;"></canvas>
     </div>
   </div>
-  <div class="row">
-    
+  <div class="py-3">
+    SubLevel Progress
+  <div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+</div>
   </div>
 </div>
 
