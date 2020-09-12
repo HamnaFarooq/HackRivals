@@ -32,9 +32,11 @@ Route::get('/leaveclass/{id}', 'UsersInClassroomController@destroy');
 Route::post('/joincompetition', 'UsersInCompetitionController@store');
 Route::get('/joincompetition/{id}', 'UsersInCompetitionController@storepub');
 Route::get('/leavecompetition/{id}', 'UsersInCompetitionController@destroy');
+Route::post('/submitcode', 'SolvedProblemsController@store');
 
 Route::get('/competition/{id}/addproblem/{probid}', 'ProblemsInCompetitionController@store');
 Route::get('/competition/{id}/removeproblem/{probid}', 'ProblemsInCompetitionController@destroy');
+Route::get('/competition/{id}/problem/{id}', 'ProblemsInCompetitionController@show');
 
 Route::resource('/competition','CompetitionController');
 Route::resource('/classroom','ClassroomController');

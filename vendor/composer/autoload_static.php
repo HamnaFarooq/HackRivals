@@ -518,6 +518,7 @@ class ComposerStaticInite48e38d29f60812a7634c351433dadea
         'App\\Http\\Controllers\\ProblemController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProblemController.php',
         'App\\Http\\Controllers\\ProblemsInCompetitionController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProblemsInCompetitionController.php',
         'App\\Http\\Controllers\\RankController' => __DIR__ . '/../..' . '/app/Http/Controllers/RankController.php',
+        'App\\Http\\Controllers\\SolvedProblemsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SolvedProblemsController.php',
         'App\\Http\\Controllers\\TestCaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestCaseController.php',
         'App\\Http\\Controllers\\UsersInClassroomController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersInClassroomController.php',
         'App\\Http\\Controllers\\UsersInCompetitionController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersInCompetitionController.php',

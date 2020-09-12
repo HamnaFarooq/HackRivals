@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Controllers\\ProblemController' => $baseDir . '/app/Http/Controllers/ProblemController.php',
     'App\\Http\\Controllers\\ProblemsInCompetitionController' => $baseDir . '/app/Http/Controllers/ProblemsInCompetitionController.php',
     'App\\Http\\Controllers\\RankController' => $baseDir . '/app/Http/Controllers/RankController.php',
+    'App\\Http\\Controllers\\SolvedProblemsController' => $baseDir . '/app/Http/Controllers/SolvedProblemsController.php',
     'App\\Http\\Controllers\\TestCaseController' => $baseDir . '/app/Http/Controllers/TestCaseController.php',
     'App\\Http\\Controllers\\UsersInClassroomController' => $baseDir . '/app/Http/Controllers/UsersInClassroomController.php',
     'App\\Http\\Controllers\\UsersInCompetitionController' => $baseDir . '/app/Http/Controllers/UsersInCompetitionController.php',
