@@ -1,14 +1,13 @@
 @extends('layouts.app')
 @section('pagename')
-ClassRoomsList
+Competition List
 @endsection
-
-<!-- foreach loop $classrooms -->
 
 @section('content')
 <div class="container">
+
 <div class="row">
-            <h3 class="text-center">All Classrooms List</h3>
+            <h3 class="text-center">All Competition List</h3>
                         <table class="table table-hover">
                          <thead>
                           <tr>
@@ -16,35 +15,29 @@ ClassRoomsList
                           </tr>
                         </thead>
                         <tbody>
-
-
-                        @foreach ($classrooms as $classroom)
-                        
-
+                        @foreach($competitions as $competition)
                           <tr class="table-active">
                             <td>
                               <div class="row-sm-4">
                                   <div class="card border-info mb-3" >
-                                    <div class="card-header">Name: {{$classroom->name}}</div>
+                                    <div class="card-header">Name: {{$competition->name}}</div>
                                     <div class="card-body">
-                                    <p class="card-text">Type: {{$classroom->classroom_type}}<p>
-                                    
-                                      <h4 class="card-title">Password: {{$classroom->password}}</h4>
-                                      
+                                      <h4 class="card-title">Password: {{$competition->password}}</h4>
+                                      <p class="card-text">Type: {{$competition->competition_type}}</p>
                                     </div>
                                   </div>
                                 </div>
                             </td>
                             
-                            <td><a href="/editClassrooms/{{$classroom->id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+                            <td><a href="/editCompetition/{{$competition->id}}"><button type="button" class="btn btn-primary">Edit</button></td></a>
                             
-                            <td><a href="/deleteClassroom/{{$classroom->id}}"><button type="button" class="btn btn-primary">Delete</button></a></td>
-                            
+                            <td><a href="/deleteCompetition/{{$competition->id}}"><button type="button" class="btn btn-primary">Delete</button></td></a>
+                           
                           </tr>
                           @endforeach
-                          
                         </tbody>
                       </table>
-                    </div>
+                    </div>        
+
 </div>
 @endsection

@@ -37,13 +37,23 @@ Route::resource('/problem','ProblemController');
 Route::resource('/classroom/{id}/class_material','ClassMaterialController');
 Route::resource('/problem/{id}/test_case','TestCaseController');
 Route::resource('/rank','RankController');
-Route::get('/admin', 'AdminController@home');
+Route::get('/home', 'AdminController@home');
 Route::get('/classroomsList', 'AdminController@classroomsList');
-Route::get('/privateCompetitionList', 'AdminController@privateCompetitionList');
-Route::get('/publicCompetition', 'AdminController@publicCompetition');
+Route::get('/competitionList', 'AdminController@competitionList');
 
 Route::get('/editCompetition/{id}', 'AdminController@editCompetition');
-Route::get('/editClassrooms', 'AdminController@editClassrooms');
+Route::patch('/updateCompetition/{id}', 'AdminController@updateCompetition');
+Route::patch('/updateClassrooms/{id}', 'AdminController@updateClassrooms');
+Route::get('/editClassrooms/{id}', 'AdminController@editClassrooms');
+Route::patch('/classroomsList/{id}', 'AdminController@updateClassroomsList');
+Route::get('/deleteUser/{id}', 'AdminController@deleteUser');
+Route::get('/deleteSuperUser/{id}', 'AdminController@deleteSuperUser');
+Route::get('/blockUser/{id}', 'AdminController@blockUser');
+Route::get('/unBlockUser/{id}', 'AdminController@unBlockUser');
+Route::get('/deleteClassroom/{id}', 'AdminController@deleteClassroom');
+Route::get('/deleteCompetition/{id}', 'AdminController@deleteCompetition');
+Route::get('/editUsers/{id}', 'AdminController@editUsers');
 
+Route::patch('/updateEditUser/{id}', 'AdminController@updateEditUser');
 
 Route::get('/problem_attempt', 'HomeController@problem_attempt');

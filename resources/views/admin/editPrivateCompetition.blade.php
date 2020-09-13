@@ -6,19 +6,16 @@ Edit Competition
 @section('content')
 <div class="container-fluid">
   <div class="container">
-    <h3>Edit Private Competition</h3>
+    <h3>Edit Competition</h3>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" data-toggle="tab" href="#details">Details</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#landing_page">Landing Page</a>
       </li>
       
 
     </ul>
 
-    <form action="/competition/{{$competition->id}}" method="POST">
+    <form action="/updateCompetition/{{$competition->id}}" method="POST">
       @csrf
       @method('patch')
 

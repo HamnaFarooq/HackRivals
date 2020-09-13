@@ -64,11 +64,11 @@ if (!empty($_POST)){
 
         <div class="">
 
-        <form method="POST">
+        <form method="get">
 
         <div class="form-group">
         <label for="exampleFormControlTextarea1">Write Your Code Here</label>
-        <textarea class="form-control txtarea" name="cppcode2" rows="25">
+        <textarea class="form-control txtarea" name="cppcode" rows="25">
 
 #include<iostream>
 using namespace std;
@@ -86,7 +86,7 @@ int main(){
 
 
 
-        <!-- <textarea name="cppcode2" style="background: blue" disabled class="txtarea" placeholder="See Results"><?php echo $answer; ?></textarea> -->
+        <textarea disabled class="form-control txtarea" name="cppcode2" rows="4"><?php echo $answer; ?></textarea>
 
 
 

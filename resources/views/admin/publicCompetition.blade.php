@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('pagename')
-Home
+Public Competition List
 @endsection
 
 @section('content')

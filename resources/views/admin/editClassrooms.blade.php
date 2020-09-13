@@ -1,27 +1,28 @@
 @extends('layouts.app')
 @section('pagename')
-Home
+Edit Classrooms
 @endsection
 
 @section('content')
 <div class="container">
 
-<a href="/" class="btn"> Go Back </a>
+
 
     <div class="container-fluid">
       <div class="container">
         <h2>Edit classroom</h2>
-        <form action="/classroom" method="POST" autocomplete="off">
-            @csrf
+        <form action="/updateClassrooms/{{$classroom->id}}" method="POST" autocomplete="off">
+        @csrf
+      @method('patch')
 
           <div class="form-group">
             <label for="name">Classroom Name:</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter classroom name" required>
+            <input type="text" value="{{$classroom->name}}" class="form-control" name="name" placeholder="Enter classroom name" required>
           </div>
 
           <div class="form-group">
             <label for="classroom_type">Type:</label>
-            <select name="classroom_type" class="form-control" required>
+            <select value="{{$classroom->classroom_type}}" name="classroom_type" class="form-control" required>
               <option value="public">Public</option>
               <option value="private">Private</option>
             </select>
@@ -29,7 +30,7 @@ Home
 
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
+            <input type="password" value="{{$classroom->password}}" class="form-control" name="password" placeholder="Enter Password" required>
           </div>
 
           @if($errors->any())
@@ -40,7 +41,7 @@ Home
             @endforeach
           @endif
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Update</button>
 
         </form>
         </div>

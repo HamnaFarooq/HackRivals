@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Classrooms;
+use App\Classroom;
 use App\Competition;
 use Auth;
 use Illuminate\Http\Request;
@@ -27,11 +27,11 @@ class AdminController extends Controller
      */
     public function home()
     {
-        
-        // if(Auth::user()->user_type == admin);
-        // else return to '/'
-
-        return view('admin.home');
+        $users = User::where( [ ['user_type','=', 'user'] , ['status' ,'=', 'unBlock' ] ])->get();
+        $superusers = User::where( [ ['user_type','=', 'superuser'] , ['status' ,'=', 'unBlock' ] ])->get();
+        $blockusers = User::where( [ ['user_type','=', 'user'] , ['status' ,'=', 'block' ] ])->get();
+        $blockedsuperusers = User::where( [ ['user_type','=', 'superuser'] , ['status' ,'=', 'block' ] ])->get();
+        return view('admin.home',compact('users','superusers','blockusers','blockedsuperusers'));
     }
 
     public function classroomsList()
@@ -40,13 +40,15 @@ class AdminController extends Controller
         return view('admin.classroomsList',compact('classrooms'));
     }
 
-    public function privateCompetitionList()
+    public function competitionList()
     {
-        return view('admin.privateCompetitionList');
+        $competitions = Competition::all();
+        return view('admin.competitionList',compact('competitions'));
     }
 
     public function publicCompetition()
     {
+        $competitions = Competition::all();
         return view('admin.publicCompetition');
     }
 
@@ -57,47 +59,93 @@ class AdminController extends Controller
 
     public function editCompetition($id)
     {
-        $competition = Competition::find($id)->first();
+        $competition = Competition::where('id',$id)->first();
         return view('admin.editPrivateCompetition',compact('competition'));
-    }
-
-    public function editClassrooms()
-    {
-        return view('admin.editClassrooms');
-    }
-
-    //Admin Operations
-
-    public function blockUser()
-    {
         
     }
 
-    public function unBlockUser()
+    public function editClassrooms($id)
     {
-        
-    }
-
-    public function saveEditClassroom()
-    {
-        
-    }
-
-    public function saveEditCompetition()
-    {
-        
-    }
-
-    public function saveDeleteClassroom()
-    {
-        
-    }
-
-    public function saveDeleteCompetition()
-    {
-        
+        $classroom = Classroom::where('id',$id)->first();
+        return view('admin.editClassrooms',compact('classroom'));
     }
 
 
+    public function updateClassroomsList(Request $request, $id)
+    {
+        $updatedclassroom = Classroom::where('id',$id)->first();
+        $updatedclassroom->update($request->all());
+        return redirect('/classroomsList/');
+    }
+
+    public function updateCompetition(Request $request, $id)
+    {
+        $updatedcompetition = competition::where('id', $id)->first();
+        $updatedcompetition->update($request->all());
+        return redirect('/competitionList/');
+    }
+
+    public function updateClassrooms(Request $request, $id)
+    {
+        $updatedclassrooms = Classroom::where('id', $id)->first();
+        $updatedclassrooms->update($request->all());
+        return redirect('/classroomsList/');
+    }
+
+
+    public function deleteClassroom($id)
+    {
+        Classroom::where('id', $id)->first()->delete();
+        return redirect('/classroomsList');
+    }
+
+
+    public function deleteCompetition($id)
+    {
+        Competition::where('id', $id)->first()->delete();
+        return redirect('/competitionList');
+    }
+
+
+    public function blockUser($id)
+    {
+        $user = User::find($id);
+        $user->status = 'block';
+        $user->save();
+        return redirect('/home');
+    }
+
+    public function unBlockUser($id)
+    {
+        $user = User::find($id);
+        $user->status = 'unBlock';
+        $user->save();
+        return redirect('/home');
+    }
+
+    public function deleteUser($id)
+    {
+        User::where('id', $id)->first()->delete();
+        return redirect('/home');
+    }
+
+    public function deleteSuperUser($id)
+    {
+        User::where('id', $id)->first()->delete();
+        return redirect('/home');
+    }
+
+    public function editUsers($id)
+    {
+        $user = User::where('id',$id)->first();
+        return view('admin.editUsers',compact('user'));
+    }
+
+    public function updateEditUser(Request $request, $id)
+    {
+        $updatedUser = User::where('id',$id)->first();
+        $updatedUser->update($request->all());
+        return redirect('/home/');
+    }
 
 }
