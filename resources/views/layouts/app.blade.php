@@ -55,6 +55,37 @@
                         </li>
                         @endif
                         @else
+                         @if (Auth::user()->user_type == 'admin')
+                        <li class="nav-item {{(request()->is('/admin/users')) ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin/users">Users</a>
+                        </li>
+                        <li class="nav-item {{(request()->is('/admin/competitions')) ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin/competitions">Competitiions</a>
+                        </li>
+                        <li class="nav-item {{(request()->is('/admin/classrooms')) ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin/classrooms">Classrooms</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/admin/competitions">Competitions</a>
+                                <a class="dropdown-item" href="/admin/classrooms">Classrooms</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @else
                         <li class="nav-item {{(request()->is('home')) ? 'active' : '' }}">
                             <a class="nav-link" href="/home">Home</a>
                         </li>
@@ -89,6 +120,7 @@
                                 </form>
                             </div>
                         </li>
+                        @endif
                         @endguest
                     </ul>
                 </div>
