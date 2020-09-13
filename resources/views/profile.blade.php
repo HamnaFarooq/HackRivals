@@ -18,17 +18,17 @@ Profile
         <div class="col-sm-7 text-center">
             <h3 class="m-3"> <b>Rank:</b> <i> Professional </i></h3>
             <div class="bg-primary m-3 p-1 pt-2 rounded">
-                <p> <b class="mx-2">Problems Attempted: </b> 0 </p>
+                <p> <b class="mx-2">Problems Attempted: </b> {{$attempts}} </p>
             </div>
-            <p> <b class="mx-2">Problems Solved: </b> 0 </p>
+            <p> <b class="mx-2">Problems Solved: </b> {{$solvedproblems}} </p>
             <div class="bg-primary m-3 p-1 pt-2 rounded">
-                <p> <b class="mx-2">Joined Competitions: </b> 0 </p>
+                <p> <b class="mx-2">Joined Competitions: </b> {{$user->joined_competitions_count}} </p>
             </div>
-            <p> <b class="mx-2">Joined Classes: </b> 0 </p>
+            <p> <b class="mx-2">Joined Classes: </b> {{$user->joined_classrooms_count}} </p>
             <div class="bg-primary m-3 p-1 pt-2 rounded">
-                <p> <b class="mx-2">Last Login: </b> 11 September 2020 </p>
+                <p> <b class="mx-2">Last Problem Solved: </b> {{$user->last_solved_on}} </p>
             </div>
-            <p> <b class="mx-2">Join Date: </b> 11 September 2020 </p>
+            <p> <b class="mx-2">Join Date: </b> {{$user->created_at}} </p>
         </div>
     </div>
 

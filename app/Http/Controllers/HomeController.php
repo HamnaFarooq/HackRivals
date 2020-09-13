@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\competition;
 use App\Problem;
+use App\Classroom;
+use App\Solved_problems;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -303,7 +305,13 @@ class HomeController extends Controller
 
     public function profile()
     {
-        $user = User::find(Auth::id())->first();
-        return view('profile');
+        $user = User::where([['id', '=', Auth::id()]])->withCount('joined_classrooms')->withCount('joined_competitions')->first();
+        $solved = Solved_problems::where([['source','=','practice'],['user_id','=',Auth::id()]])->get();
+        $solvedproblems = count($solved);
+        $attempts = 0;
+        foreach($solved as $row){
+            $attempts = $attempts + $row->attempts;
+        }
+        return view('profile',compact('user','solvedproblems','attempts'));
     }
 }
