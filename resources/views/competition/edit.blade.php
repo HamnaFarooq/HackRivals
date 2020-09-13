@@ -70,7 +70,7 @@ Edit {{$competition->name}}
             <div class="card border-info mb-3">
               <div class="card-header">Signup Count:</div>
               <div class="card-body">
-                <p class="card-text">0</p>
+                <p class="card-text">{{ 0 + $competition->participents_count }}</p>
               </div>
             </div>
           </div>
@@ -79,7 +79,7 @@ Edit {{$competition->name}}
             <div class="card border-info mb-3">
               <div class="card-header">Number of Submissions:</div>
               <div class="card-body">
-                <p class="card-text">0</p>
+                <p class="card-text">{{ 0 + $competition->ranks_count }}</p>
               </div>
             </div>
           </div>
@@ -97,10 +97,12 @@ Edit {{$competition->name}}
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- <tr>
-                          <td>567</td>
-                          <td> user@email.com</td>
-                        </tr> -->
+                      @foreach ( $competition->participents as $user)
+                      <tr>
+                          <td> {{ $user->id }} </td>
+                          <td> {{ $user->email }} </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>

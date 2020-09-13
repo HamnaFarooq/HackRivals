@@ -40,10 +40,10 @@ User Administration
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $user->classrooms as $classroom )
+                        @foreach ( $classrooms as $classroom )
                         <tr class="table-active">
                             <td> {{ $classroom->name }} </td>
-                            <td> 0 </td>
+                            <td> {{ $classroom->students_count }} </td>
                             <td> {{ $classroom->starts }} </td>
                             <td> {{ $classroom->ends }} </td>
                             <td> <a href="/classroom/{{$classroom->id}}/edit" class="btn btn-primary">Manage</a> </td>
@@ -67,12 +67,12 @@ User Administration
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $user->competitions as $competition )
+                        @foreach ( $competitions as $competition )
                         <tr class="table-active">
                             <td> {{ $competition->name }}</td>
                             <td> {{ $competition->starts }} </td>
                             <td> {{ $competition->ends }} </td>
-                            <td> 0 </td>
+                            <td> {{ $competition->participents_count }} </td>
                             <td> <a href="/competition/{{$competition->id}}/edit" class="btn btn-primary">Manage</a> </td>
                         </tr>
                         @endforeach

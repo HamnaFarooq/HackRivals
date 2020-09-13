@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\competition;
+use App\Competition;
+use App\Classroom;
 use App\Problem;
 use Auth;
 use Illuminate\Http\Request;
@@ -297,8 +298,10 @@ class HomeController extends Controller
 
     public function user_admin()
     {
-        $user = User::find(Auth::id())->with('classrooms')->with('problems')->with('competitions')->first();
-        return view('user_admin',compact('user',$user));
+        $user = User::where('id',Auth::id())->with('problems')->first();
+        $classrooms = Classroom::where('user_id',Auth::id())->withCount('students')->get();
+        $competitions = Competition::where('user_id',Auth::id())->withCount('participents')->get();
+        return view('user_admin',compact('user', 'classrooms', 'competitions' ));
     }
 
     public function profile()
