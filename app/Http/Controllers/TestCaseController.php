@@ -17,7 +17,7 @@ class TestCaseController extends Controller
     public function index($id)
     {
         $test_cases = test_case::where('problem_id',$id)->get();
-        $problem = Problem::find($id)->first();
+        $problem = Problem::where('id',$id)->first();
         if ($problem && (Auth::id() == $problem->user_id || Auth::user()->user_type == 'admin')){
             return view('test_case.index',compact('test_cases','id'));
         }
@@ -81,9 +81,9 @@ class TestCaseController extends Controller
      */
     public function update(Request $request, $probid, $id)
     {
-        $updatedtest_case = test_case::find($id)->first();
+        $updatedtest_case = test_case::where('id',$id)->first();
         $updatedtest_case->update($request->all());
-        return redirect('/test_case');
+        return redirect()->back();
     }
 
     /**
@@ -94,7 +94,7 @@ class TestCaseController extends Controller
      */
     public function destroy( $probid, $id)
     {
-        test_case::find($id)->first()->delete();
+        test_case::where('id',$id)->first()->delete();
         return redirect()->back();
     }
 }
