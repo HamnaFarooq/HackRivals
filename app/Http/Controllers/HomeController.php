@@ -6,7 +6,6 @@ use App\User;
 use App\Competition;
 use App\Classroom;
 use App\Problem;
-use App\Classroom;
 use App\Solved_problems;
 use Auth;
 use Illuminate\Http\Request;
