@@ -24,7 +24,7 @@ class SolvedProblemsController extends Controller
 
     public function getCorrectSubmissions($request)
     {
-        $prob = Problem::find($request->problem_id)->with('test_cases')->first();
+        $prob = Problem::where('id',$request->problem_id)->with('test_cases')->first();
         $test_cases = $prob->test_cases;
         function httpPost($url, $data)
         {
@@ -36,7 +36,6 @@ class SolvedProblemsController extends Controller
             curl_close($curl);
             return $response;
         }
-
         $matches = [];
         $num = 1;
         foreach ($test_cases as $case) {
@@ -149,7 +148,7 @@ class SolvedProblemsController extends Controller
         if ($request->source == 'practice') {
             $go = "/problem/" . $request->problem_id;
         } else {
-            $go = "/contest/" . $request->source;
+            $go = "/competition/" . $request->source;
         }
 
         return view('problem.submit', compact('test_cases', 'points', 'aggregatepoints', 'pointspercent', 'aggregatepointspercent', "total" , 'go' , 'id'));
@@ -191,8 +190,16 @@ class SolvedProblemsController extends Controller
             {
                 $points = $points + $d->points_earned ;
             }
+            //if row already exists
+            $exists = Competition_rankings::where([['user_id','=',Auth::id()],['competition_id','=',$id]])->first();
+            if($exists)
+            {
+                $exists->update(['points' => $points]);
+            }
+            else{
             Competition_rankings::create([ 'user_id' => Auth::id() , 'competition_id' => $id , 'points' => $points ]);
         }
+    }
         return redirect($request->go);
     }
 

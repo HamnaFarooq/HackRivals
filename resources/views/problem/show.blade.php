@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('pagename')
+{{$problem->name}}
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -49,7 +54,7 @@
       <br>
       <p> <b class="mx-3">Max Points:</b> {{$problem->points}} </p>
       <br>
-      <p> <b class="mx-3">Solved by:</b> 0 </p>
+      <p> <b class="mx-3">Solved by:</b> {{$problem->solved_by}} </p>
     </div>
 
 

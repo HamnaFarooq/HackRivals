@@ -162,7 +162,7 @@ class ProblemController extends Controller
      */
     public function show($id)
     {
-        $problem = problem::find($id)->with('user')->first();
+        $problem = problem::where('id',$id)->with('user')->first();
         $comp = null;
         return view('problem.show', compact('problem', $problem , 'comp'));
     }

@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('pagename')
+Edit {{$competition->name}}
+@endsection
+
 @section('content')
 
     <div class="container-fluid">

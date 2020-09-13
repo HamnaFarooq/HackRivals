@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Classroom;
 use App\Competition;
+use App\Competition_rankings;
+use App\Classroom_rankings;
+use App\Class_material;
 use App\Users_in_classroom;
 use Auth;
 use Illuminate\Http\Request;
@@ -91,12 +94,30 @@ class ClassroomController extends Controller
     public function updateRankings($id)
     {
         //id classrom.... is competitions -> rankings and save those in classroom rankings
-        $classroom = Classroom::find($id)->with('materials')->get();
-        $materials = $classroom->materials;
-
-        foreach ( $materials as $material )
-        {
-            //
+        $classroom = Classroom::where('id',$id)->with('materials')->get();
+        if ($classroom) {
+            $materials = Class_material::where('classroom_id',$id)->get();
+            Classroom_rankings::where('classroom_id', $id)->delete();
+            foreach ($materials as $material) {
+                $cid = $material->competition_id;
+                if ($cid) {
+                    $ranks = Competition_rankings::where('competition_id', $cid)->get();
+                    foreach ($ranks as $rank) {
+                        $user = $rank->user_id;
+                        $points = $rank->points;
+                        $exists = Classroom_rankings::where([['user_id', '=', $user], ['classroom_id', '=', $id]])->first();
+                        if ($exists) {
+                            // add this points to already there points
+                            $exists->points = $exists->points + $points;
+                            $exists->update(['points' => $points]);
+                        } else {
+                            // create new user, class and this points
+                            Classroom_rankings::create(['points' => $points, 'user_id' => $user, 'classroom_id' => $id]);
+                        }
+                    }
+                }
+            }
         }
+        return redirect()->back();
     }
 }

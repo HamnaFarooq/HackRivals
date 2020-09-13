@@ -16,7 +16,7 @@ Edit {{$classroom->name}}
   <div class="text-right py-3 my-3">
     <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#add_material">Add Material</button>
     <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#edit_classroom">Settings</button>
-    <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_competition" >Create Competition</button>
+    <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_competition">Create Competition</button>
   </div>
 
   <div class="row">
@@ -35,8 +35,8 @@ Edit {{$classroom->name}}
             </tr>
           </thead>
           <tbody>
-          @foreach ($classroom->materials as $material)
-          @include('partials.edit_material_form')
+            @foreach ($classroom->materials as $material)
+            @include('partials.edit_material_form')
             <tr class="table-active">
               <td>
                 <div class="card border-primary mb-3">
@@ -46,7 +46,7 @@ Edit {{$classroom->name}}
                     <p class="card-text"> {{$material->announcement}}</p>
                     @endif
                     @if( $material->competition_id )
-                    <p class="card-text"><b> Competition:</b> {{$material->competition_id}}</p>
+                    <p class="card-text"><b> Competition:</b> <a href="/competition/{{$material->competition_id}}/edit"> <button class="btn btn-primary"> Edit Competition </button> </a> </p>
                     @endif
                   </div>
                 </div>
@@ -60,7 +60,7 @@ Edit {{$classroom->name}}
                 </form>
               </td>
             </tr>
-          @endforeach
+            @endforeach
           </tbody>
         </table>
 
@@ -75,18 +75,20 @@ Edit {{$classroom->name}}
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Email</th>
+            <th scope="col"></th>
             <th scope="col">Points</th>
 
           </tr>
         </thead>
         <tbody>
 
-          <!-- <tr>
-            <td>33</td>
-            <td> user@email.com</td>
-            <td>Points</td>
-          </tr> -->
+          @foreach ($classroom->rankings as $rank)
+          <tr class="table-active">
+            <td> {{ $rank->user_id }} </td>
+            <td> </td>
+            <td> {{ $rank->points }} </td>
+          </tr>
+          @endforeach
 
         </tbody>
       </table>

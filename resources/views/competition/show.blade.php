@@ -20,7 +20,7 @@
 
             @foreach ($competition->problems as $problem)
             <div class="">
-                <a href="/competition/{{$competition->id}}/problem/">
+                <a href="/competition/{{$competition->id}}/problem/{{$problem->id}}">
                     <div class="card border-info mb-3">
                         <div class="card-header"> {{ $problem->name }} </div>
                         <div class="card-body">

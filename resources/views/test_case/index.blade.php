@@ -16,6 +16,7 @@ Add Test_cases
 
     <div class="row">
         @foreach ( $test_cases as $test_case )
+        @include('partials.edit_test_case')
 
         <div class="col col-md-2" style=" min-width:25rem; padding:10px; border-radius:10px; margin:5px;">
             <div class="card">
@@ -24,7 +25,7 @@ Add Test_cases
                     <p class="card-text ml-5">{{$test_case->input}}</p>
                     <h5 class="card-title">Output:</h5>
                     <p class="card-text ml-5">{{$test_case->output}}</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_test_case"> Edit </button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_{{$test_case->id}}"> Edit </button>
                     <form class="" action="/problem/{{$id}}/test_case/{{$test_case->id}}" method="post">
                         @csrf
                         @method('delete')

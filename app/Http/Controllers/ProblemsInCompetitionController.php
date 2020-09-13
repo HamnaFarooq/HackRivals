@@ -49,6 +49,7 @@ class ProblemsInCompetitionController extends Controller
             }
             
         }
+        return redirect()->back();
         
     }
 
@@ -60,7 +61,7 @@ class ProblemsInCompetitionController extends Controller
      */
     public function show($cid , $pid)
     {
-        $problem = problem::find($pid)->with('user')->first();
+        $problem = problem::where('id',$pid)->with('user')->first();
         $comp = $cid;
         return view('problem.show', compact('problem', $problem , 'comp'));
     }
