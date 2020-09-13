@@ -6,7 +6,13 @@ Submit
 @section('content')
 <div class="container">
     <div>
-        <a href="{{$go}}"> <button type="button" class="btn btn-primary"> Go Back </button> </a>
+        <form action="/eval" method="post">
+        @csrf
+            <input type="hidden" name="go" value="{{$go}}">
+            <input type="hidden" name="points" value="{{$points}}">
+            <input type="hidden" name="problem_id" value="{{$id}}">
+            <button type="submit" class="btn btn-primary"> Go Back </button>
+        </form>
     </div>
     <div class="row">
         <div class="col">

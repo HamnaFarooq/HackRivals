@@ -19,7 +19,7 @@
                 </div>
                     <ul id="myUL" class="form-group">
                         @foreach ( $public as $competition )
-                        <li class="form-control"><a href="/joincompetition/{{ $competition->id }} ">{{$competition->name}}</a></li>
+                        <a href="/joincompetition/{{ $competition->id }} "><li class="form-control text-center pr-4">{{$competition->name}}</li></a>
                         @endforeach
                     </ul>
 

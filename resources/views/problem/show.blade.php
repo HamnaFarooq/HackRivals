@@ -121,7 +121,11 @@
         </div>
         <input type="hidden" name="points" value="{{$problem->points}}">
         <input type="hidden" name="problem_id" value="{{$problem->id}}">
+        @if($comp)
+        <input type="hidden" name="source" value="{{$comp}}">
+        @else
         <input type="hidden" name="source" value="practice">
+        @endif
 
         <div class="text-right">
           <button class="btn btn-primary">

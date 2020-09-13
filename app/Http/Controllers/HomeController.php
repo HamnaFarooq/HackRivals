@@ -26,6 +26,8 @@ class HomeController extends Controller
      */
     public function home()
     {
+        //user points, aggregated points
+        //  here Mahrukh
         return view('home');
     }
 

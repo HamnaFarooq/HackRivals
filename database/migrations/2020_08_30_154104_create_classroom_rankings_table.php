@@ -17,7 +17,8 @@ class CreateClassroomRankingsTable extends Migration
             $table->id();
 
             $table->foreignId('classroom_id')->constrained('classrooms');
-            $table->foreignId('rank_id')->constrained('ranks');
+            $table->foreignId('user_id')->constrained('users');
+            $table->integer('points');
             
             $table->timestamps();
         });

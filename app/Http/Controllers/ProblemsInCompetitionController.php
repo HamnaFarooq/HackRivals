@@ -58,9 +58,11 @@ class ProblemsInCompetitionController extends Controller
      * @param  \App\Problems_in_competition  $problems_in_competition
      * @return \Illuminate\Http\Response
      */
-    public function show(Problems_in_competition $problems_in_competition)
+    public function show($cid , $pid)
     {
-        //
+        $problem = problem::find($pid)->with('user')->first();
+        $comp = $cid;
+        return view('problem.show', compact('problem', $problem , 'comp'));
     }
 
     /**

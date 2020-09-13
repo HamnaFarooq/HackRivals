@@ -37,6 +37,9 @@ Route::post('/submitcode', 'SolvedProblemsController@store');
 Route::get('/competition/{id}/addproblem/{probid}', 'ProblemsInCompetitionController@store');
 Route::get('/competition/{id}/removeproblem/{probid}', 'ProblemsInCompetitionController@destroy');
 Route::get('/competition/{cid}/problem/{pid}', 'ProblemsInCompetitionController@show');
+Route::get('/update_class_rankings/{id}', 'ClassroomController@updateRankings');
+
+Route::post('/eval', 'SolvedProblemsController@eval');
 
 Route::resource('/competition','CompetitionController');
 Route::resource('/classroom','ClassroomController');

@@ -69,7 +69,7 @@ Edit {{$classroom->name}}
 
     <div class="col-lg-4">
 
-      <h2>Class Rankings</h2>
+      <h2>Class Rankings <a href="/update_class_rankings/{{$classroom->id}}"> <button type="button" class="btn btn-primary"> Update </button> </a> </h2>
       <table class="table table-hover">
 
         <thead>

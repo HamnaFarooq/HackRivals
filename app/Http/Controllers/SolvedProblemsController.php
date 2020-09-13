@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Problem;
 use App\Solved_problems;
+use App\User;
+use App\Competition_rankings;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SolvedProblemsController extends Controller
@@ -141,6 +144,7 @@ class SolvedProblemsController extends Controller
         $pointspercent = (($points + 0.05) / $request->points) * 100;
         $aggregatepointspercent = (($aggregatepoints + 0.05) / $request->points) * 100;
         $total = $request->points;
+        $id = $request->problem_id;
 
         if ($request->source == 'practice') {
             $go = "/problem/" . $request->problem_id;
@@ -148,7 +152,48 @@ class SolvedProblemsController extends Controller
             $go = "/contest/" . $request->source;
         }
 
-        return view('problem.submit', compact('test_cases', 'points', 'aggregatepoints', 'pointspercent', 'aggregatepointspercent', "total" , 'go'));
+        return view('problem.submit', compact('test_cases', 'points', 'aggregatepoints', 'pointspercent', 'aggregatepointspercent', "total" , 'go' , 'id'));
+    }
+
+
+    public function eval(Request $request)
+    {
+        if(strpos($request->go, 'problem') !== false){
+            // from prob
+            // add attempt and solved by to problem id
+            $problem = Problem::find($request->problem_id)->first();
+            $solved_by = $problem->solved_by ;
+            if($problem->points == $request->points)
+            {
+                $solved_by = $problem->solved_by + 1 ;
+            }
+            $total_attempts = $problem->total_attempts + 1 ;
+            $problem->update([ 'solved_by' => $solved_by , 'total_attempts' => $total_attempts ]);
+            // add points and agg points to user from Solved prob table
+            $data = Solved_problems::where([ ['user_id','=', Auth::id()],['problem_id','=', $request->problem_id],['source','=', 'practice'] ])->get();
+            $points = 0 ;
+            $aggregate_points = 0 ;
+            foreach( $data as $d )
+            {
+                $points = $points + $d->points_earned ;
+                $aggregate_points = $aggregate_points + $d->aggregated_points ;
+            }
+            $current_date_time = Carbon::now()->toDateTimeString();
+            $user = User::find(Auth::id())->first();
+            $user->update([ 'points' => $points , 'aggregate_points' => $aggregate_points , 'last_solved_on' => $current_date_time]);
+        } else{
+            // from comp
+            //get competition id from $go and save data in rankings
+            $id = str_replace("/competition/","",$request->go);
+            $data = Solved_problems::where([ ['user_id','=', Auth::id()],['problem_id','=', $request->problem_id],['source','=', $id] ])->get();
+            $points = 0 ;
+            foreach( $data as $d )
+            {
+                $points = $points + $d->points_earned ;
+            }
+            Competition_rankings::create([ 'user_id' => Auth::id() , 'competition_id' => $id , 'points' => $points ]);
+        }
+        return redirect($request->go);
     }
 
     /**

@@ -163,7 +163,8 @@ class ProblemController extends Controller
     public function show($id)
     {
         $problem = problem::find($id)->with('user')->first();
-        return view('problem.show', compact('problem', $problem));
+        $comp = null;
+        return view('problem.show', compact('problem', $problem , 'comp'));
     }
 
     /**

@@ -6,6 +6,7 @@ use App\competition;
 use App\Problem;
 use App\Users_in_competition;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class competitionController extends Controller
@@ -18,7 +19,7 @@ class competitionController extends Controller
     public function index()
     {
         $competitions = competition::all();
-        return view('competition.index',compact('competitions'));
+        return view('competition.index', compact('competitions'));
     }
 
     /**
@@ -26,7 +27,7 @@ class competitionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   /* public function create()
+    /* public function create()
     {
         return view('competition.create');
     }*/
@@ -39,9 +40,9 @@ class competitionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['user_id' => Auth::id() ]);
+        $request->merge(['user_id' => Auth::id()]);
         $competition = competition::create($request->all());
-        return redirect('/competition/'.$competition['id'].'/edit');
+        return redirect('/competition/' . $competition['id'] . '/edit');
     }
 
     /**
@@ -52,17 +53,17 @@ class competitionController extends Controller
      */
     public function show($id)
     {
-        $competition = competition::where('id', $id)->first();
-        if($competition){
-            $check = Users_in_competition::where([['user_id', '=', Auth::id()], ['competition_id', '=', $competition->id]])->get()->first();
-            if($check){
-                return view('competition.show',compact('competition',$competition));
-            } else{
-                return redirect('/my_competitions');
+        $competition = competition::where('id', $id)->with('rankings')->with('problems')->first();
+        if ($competition) {
+            $now = Carbon::now()->toDateTimeString();
+            if ($competition->starts < $now && $now < $competition->ends) {
+                $check = Users_in_competition::where([['user_id', '=', Auth::id()], ['competition_id', '=', $competition->id]])->get()->first();
+                if ($check) {
+                    return view('competition.show', compact('competition', $competition));
+                }
             }
-        } else{
-            return redirect('/my_competitions');
         }
+        return redirect('/my_competitions');
     }
 
     /**
@@ -74,14 +75,14 @@ class competitionController extends Controller
     public function edit($id)
     {
         $competition = competition::where('id', $id)->with('problems')->first();
-        if ($competition && (Auth::id() == $competition->user_id || Auth::user()->user_type == 'admin')){
-            $problems = Problem::where([['user_id', '=', Auth::id()] ])->get();
+        if ($competition && (Auth::id() == $competition->user_id || Auth::user()->user_type == 'admin')) {
+            $problems = Problem::where([['user_id', '=', Auth::id()]])->get();
             //here
-            $hackrivalprob = Problem::where([['problem_type','=','HackRivals']])->get();
-            return view('competition.edit',compact('competition','problems', 'hackrivalprob'));
+            $hackrivalprob = Problem::where([['problem_type', '=', 'HackRivals']])->get();
+            return view('competition.edit', compact('competition', 'problems', 'hackrivalprob'));
         } else {
             return redirect('/user_admin');
-        }   
+        }
     }
 
     /**
@@ -95,7 +96,7 @@ class competitionController extends Controller
     {
         $updatedcompetition = competition::where('id', $id)->first();
         $updatedcompetition->update($request->all());
-        return redirect('/competition/'.$updatedcompetition['id'].'/edit');
+        return redirect('/competition/' . $updatedcompetition['id'] . '/edit');
     }
 
     /**

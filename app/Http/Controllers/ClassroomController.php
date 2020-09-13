@@ -33,18 +33,15 @@ class ClassroomController extends Controller
     public function show($id)
     {
         //check if joined only
-        $classroom = Classroom::where('id', $id)->with('materials')->first();
+        $classroom = Classroom::where('id', $id)->with('materials')->with('rankings')->first();
         if ($classroom) {
             //find this user and this class both in Users in classroom table
             $check = Users_in_classroom::where([['user_id', '=', Auth::id()], ['classroom_id', '=', $classroom->id]])->get();
             if ($check) {
                 return view('classroom.show', compact('classroom', $classroom));
-            } else {
-                return redirect('/my_classrooms');
             }
-        } else {
-            return redirect('/my_classrooms');
         }
+        return redirect('/my_classrooms');
     }
 
     /**
@@ -89,5 +86,17 @@ class ClassroomController extends Controller
     {
         Classroom::find($id)->first()->delete();
         return redirect('/home');
+    }
+
+    public function updateRankings($id)
+    {
+        //id classrom.... is competitions -> rankings and save those in classroom rankings
+        $classroom = Classroom::find($id)->with('materials')->get();
+        $materials = $classroom->materials;
+
+        foreach ( $materials as $material )
+        {
+            //
+        }
     }
 }

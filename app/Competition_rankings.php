@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Competition_rankings extends Model
 {
     protected $fillable = [
-        'competition_id', 'rank_id',
+        'competition_id', 'user_id', 'points'
     ];
 }

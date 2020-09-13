@@ -1,3 +1,4 @@
+@include('partials.classroom_info')
 @extends('layouts.app')
 
 @section('pagename')
@@ -8,8 +9,8 @@
 
 <div class="container">
     <h3 class="text-center">{{$classroom->name}}</h3>
-    <div class="text-right"><button type="button" class="btn btn-primary mb-5">Share</button>
-    <a href="/leaveclass/{{ $classroom->id }}"> <button type="button" class="btn btn-primary mb-5">Leave ClassRoom</button></div>
+    <div class="text-right"><button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#share_classroom">Share</button>
+        <a href="/leaveclass/{{ $classroom->id }}"> <button type="button" class="btn btn-primary mb-5">Leave ClassRoom</button></a></div>
 
     <div class="row">
 
@@ -50,22 +51,24 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Email</th>
+                        <th scope="col"></th>
                         <th scope="col">Points</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr class="table-active">
-                        <td>33</td>
-                        <td> user@email.com</td>
-                        <td>Points</td>
-                    </tr> -->
+                    @foreach ($classroom->rankings as $rank)
+                    <tr class="table-active">
+                        <td> {{ $rank->user_id }} </td>
+                        <td> </td>
+                        <td> {{ $rank->points }} </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
 
         </div>
 
-        
+
 
     </div>
 </div>

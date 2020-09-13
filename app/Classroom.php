@@ -34,9 +34,9 @@ class Classroom extends Model
         return $this->HasManyThrough('App\User', 'App\Users_in_classroom');
     }
 
-    public function ranks()
+    public function rankings()
     {
-        return $this->HasManyThrough('App\Rank', 'App\Users_in_competition');
+        return $this->hasMany('App\Classroom_rankings');
     }
 
 }
