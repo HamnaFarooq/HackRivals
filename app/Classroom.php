@@ -31,7 +31,7 @@ class Classroom extends Model
 
     public function students()
     {
-        return $this->HasManyThrough('App\User', 'App\Users_in_classroom');
+        return $this->belongsToMany('App\User', 'users_in_classrooms');
     }
 
     public function rankings()
