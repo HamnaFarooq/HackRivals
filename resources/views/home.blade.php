@@ -8,103 +8,45 @@ Home
     <div class="py-3">
         SubLevel Progress
         <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $progresspercentage; ?>%;"></div>
         </div>
-        <div class="text-right">255 / 300 points</div>
+        <div class="text-right">{{$aggregatedpoints}} / {{$max}} points</div>
     </div>
     <div class="row">
         <div class="col-sm-8">
             <div class="py-3">
                 Level
                 <div class="progress">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 15%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width:<?= $lvlpercentage; ?>%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <div class="text-right">level 2</div>
+                <div class="text-right">level {{$lvl}}</div>
             </div>
 
             <div class="py-3">
                 SubLevel
                 <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width:<?= $sblvlpercentage; ?>%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <div class="text-right">sublevel 3</div>
+                <div class="text-right">sublevel {{$sublvl}}</div>
             </div>
 
             <h3> Practice</h3>
             <p class="text-muted"> to earn points </p>
-            <div class="col">
-                    
+            <div class="col-12">
+             @foreach ($problem as $prob)
                     <div class="row">
                         <div class="card border-info mb-3">
-                            <div class="card-header">Problem Name</div>
+                            <div class="card-header">{{$prob->name}}</div>
                             <div class="card-body">
-                                <h4 class="card-title">Statement:</h4>
-                                <p class="card-text"> Sometimes theoretical issues have clear practical consequences, but sometimes their relevance is less immediately obvious. To identify why the problem matters </p>
-                                <a href="" > <button type="button" class="btn btn-primary"> Attempt </button> </a>
+                                <p class="card-title">{{$prob->statement}} </p>
+                                <a href="/problem/{{$prob->id}}" > <button type="button" class="btn btn-primary"> Attempt </button> </a>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="card border-info mb-3">
-                            <div class="card-header">Problem Name</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Statement:</h4>
-                                <p class="card-text"> Sometimes theoretical issues have clear practical consequences, but sometimes their relevance is less immediately obvious. To identify why the problem matters </p>
-                                <a href="" > <button type="button" class="btn btn-primary"> Attempt </button> </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card border-info mb-3">
-                            <div class="card-header">Problem Name</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Statement:</h4>
-                                <p class="card-text"> Sometimes theoretical issues have clear practical consequences, but sometimes their relevance is less immediately obvious. To identify why the problem matters </p>
-                                <a href="" > <button type="button" class="btn btn-primary"> Attempt </button> </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card border-info mb-3">
-                            <div class="card-header">Problem Name</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Statement:</h4>
-                                <p class="card-text"> Sometimes theoretical issues have clear practical consequences, but sometimes their relevance is less immediately obvious. To identify why the problem matters </p>
-                                <a href="" > <button type="button" class="btn btn-primary"> Attempt </button> </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card border-info mb-3">
-                            <div class="card-header">Problem Name</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Statement:</h4>
-                                <p class="card-text"> Sometimes theoretical issues have clear practical consequences, but sometimes their relevance is less immediately obvious. To identify why the problem matters </p>
-                                <a href="" > <button type="button" class="btn btn-primary"> Attempt </button> </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card border-info mb-3">
-                            <div class="card-header">Problem Name</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Statement:</h4>
-                                <p class="card-text"> Sometimes theoretical issues have clear practical consequences, but sometimes their relevance is less immediately obvious. To identify why the problem matters </p>
-                                <a href="" > <button type="button" class="btn btn-primary"> Attempt </button> </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card border-info mb-3">
-                            <div class="card-header">Problem Name</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Statement:</h4>
-                                <p class="card-text"> Sometimes theoretical issues have clear practical consequences, but sometimes their relevance is less immediately obvious. To identify why the problem matters </p>
-                                <a href="" > <button type="button" class="btn btn-primary"> Attempt </button> </a>
-                            </div>
-                        </div>
-                    </div>
-            
+            @endforeach
+                     
+                
+                   
             </div>
         </div>
 

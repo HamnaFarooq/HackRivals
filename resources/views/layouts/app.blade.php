@@ -122,7 +122,7 @@
             datasets: [{
                 label: 'Your Points',
                 // sizes
-                data: [12, 19],
+                data: [{{$points ?? ''}},{{$aggregatedpoints ?? ''}} ],
                 backgroundColor: [
                     '#c37507',
                     '#478f47'
