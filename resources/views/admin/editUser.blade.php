@@ -11,7 +11,7 @@ Edit User
     <div class="container-fluid">
       <div class="container">
         <h2>Edit User</h2>
-        <form action="/updateEditUser/{{$user->id}}" method="POST" autocomplete="off">
+        <form action="/admin/updateUser/{{$user->id}}" method="POST" autocomplete="off">
         @csrf
       @method('patch')
 

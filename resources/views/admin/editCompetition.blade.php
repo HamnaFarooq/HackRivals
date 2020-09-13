@@ -15,7 +15,7 @@ Edit Competition
 
     </ul>
 
-    <form action="/updateCompetition/{{$competition->id}}" method="POST">
+    <form action="/admin/updateCompetition/{{$competition->id}}" method="POST">
       @csrf
       @method('patch')
 

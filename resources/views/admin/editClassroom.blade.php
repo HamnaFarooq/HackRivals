@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('pagename')
-Edit Classrooms
+Edit Classroom
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Edit Classrooms
     <div class="container-fluid">
       <div class="container">
         <h2>Edit classroom</h2>
-        <form action="/updateClassrooms/{{$classroom->id}}" method="POST" autocomplete="off">
+        <form action="/admin/updateClassroom/{{$classroom->id}}" method="POST" autocomplete="off">
         @csrf
       @method('patch')
 

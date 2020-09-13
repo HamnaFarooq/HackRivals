@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('pagename')
-Competition List
+Competitions
 @endsection
 
 @section('content')
@@ -29,9 +29,9 @@ Competition List
                                 </div>
                             </td>
                             
-                            <td><a href="/editCompetition/{{$competition->id}}"><button type="button" class="btn btn-primary">Edit</button></td></a>
+                            <td><a href="/admin/editCompetition/{{$competition->id}}"><button type="button" class="btn btn-primary">Edit</button></td></a>
                             
-                            <td><a href="/deleteCompetition/{{$competition->id}}"><button type="button" class="btn btn-primary">Delete</button></td></a>
+                            <td><a href="/admin/deleteCompetition/{{$competition->id}}"><button type="button" class="btn btn-primary">Delete</button></td></a>
                            
                           </tr>
                           @endforeach
