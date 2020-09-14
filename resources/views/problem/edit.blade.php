@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pagename')
-Edit {{$competition->name}}
+Edit {{$problem->name}}
 @endsection
 
 @section('content')

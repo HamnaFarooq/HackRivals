@@ -16,7 +16,7 @@ class CreateRanksTable extends Migration
         Schema::create('ranks', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('points');
 
             $table->timestamps();

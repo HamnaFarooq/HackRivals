@@ -16,8 +16,8 @@ class CreateUsersInClassroomsTable extends Migration
         Schema::create('users_in_classrooms', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('classroom_id')->constrained('classrooms');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('classroom_id')->constrained('classrooms')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             
             $table->timestamps();
         });

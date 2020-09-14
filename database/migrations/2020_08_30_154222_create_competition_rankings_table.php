@@ -16,8 +16,8 @@ class CreateCompetitionRankingsTable extends Migration
         Schema::create('competition_rankings', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('competition_id')->constrained('competitions');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('competition_id')->constrained('competitions')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('points');
 
             $table->timestamps();

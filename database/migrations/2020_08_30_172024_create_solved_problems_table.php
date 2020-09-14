@@ -19,8 +19,8 @@ class CreateSolvedProblemsTable extends Migration
             $table->text('solution');
             $table->integer('test_cases_met');
             $table->integer('points_earned');
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('problem_id')->constrained('problems');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('problem_id')->constrained('problems')->onDelete('cascade');
 
             $table->timestamps();
         });

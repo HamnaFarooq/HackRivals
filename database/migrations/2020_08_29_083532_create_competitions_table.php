@@ -18,7 +18,7 @@ class CreateCompetitionsTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->string('competition_type')->nullable();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->dateTime('starts')->nullable();
             $table->dateTime('ends')->nullable();
             $table->timestamps();

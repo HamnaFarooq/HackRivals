@@ -16,8 +16,8 @@ class CreateProblemsInCompetitionsTable extends Migration
         Schema::create('problems_in_competitions', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('competition_id')->constrained('competitions');
-            $table->foreignId('problem_id')->constrained('problems');
+            $table->foreignId('competition_id')->constrained('competitions')->onDelete('cascade');
+            $table->foreignId('problem_id')->constrained('problems')->onDelete('cascade');
 
             $table->timestamps();
         });

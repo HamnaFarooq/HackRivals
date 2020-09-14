@@ -18,7 +18,7 @@ class CreateTestCasesTable extends Migration
 
             $table->text('input');
             $table->text('output');
-            $table->foreignId('problem_id')->constrained('problems');
+            $table->foreignId('problem_id')->constrained('problems')->onDelete('cascade');
 
             $table->timestamps();
         });

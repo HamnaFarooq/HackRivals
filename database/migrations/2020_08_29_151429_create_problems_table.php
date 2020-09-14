@@ -18,7 +18,7 @@ class CreateProblemsTable extends Migration
             $table->string('name');
             $table->string('problem_type');
             $table->integer('points');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('level');
             $table->integer('sub_level');
             $table->integer('solved_by')->nullable();
