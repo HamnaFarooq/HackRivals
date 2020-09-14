@@ -17,15 +17,15 @@ Profile
 
         <div class="col-sm-7 text-center">
             <h3 class="m-3"> <b>Rank:</b> <i> {{$rank}} </i></h3>
-            <div class="bg-primary m-3 p-1 pt-2 rounded">
+            <div class="bg-primary m-3 p-1 pt-2 rounded text-white">
                 <p> <b class="mx-2">Problems Attempted: </b> {{$attempts}} </p>
             </div>
             <p> <b class="mx-2">Problems Solved: </b> {{$solvedproblems}} </p>
-            <div class="bg-primary m-3 p-1 pt-2 rounded">
+            <div class="bg-primary m-3 p-1 pt-2 rounded  text-white">
                 <p> <b class="mx-2">Joined Competitions: </b> {{$user->joined_competitions_count}} </p>
             </div>
             <p> <b class="mx-2">Joined Classes: </b> {{$user->joined_classrooms_count}} </p>
-            <div class="bg-primary m-3 p-1 pt-2 rounded">
+            <div class="bg-primary m-3 p-1 pt-2 rounded text-white">
                 <p> <b class="mx-2">Last Problem Solved: </b> {{$user->last_solved_on}} </p>
             </div>
             <p> <b class="mx-2">Join Date: </b> {{$user->created_at}} </p>

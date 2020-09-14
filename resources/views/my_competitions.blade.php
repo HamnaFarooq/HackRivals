@@ -34,7 +34,7 @@ My Competitions
         @if($competition->competition_type == 'private')
           <div class="col-sm-4">
         <a href="/competition/{{$competition->id}}">
-            <div class="card border-info mb-3">
+            <div class="card bg-light text-primary mb-3">
               <div class="card-header">{{$competition->name}}</div>
               <div class="card-body">
                 <h6 class="card-text">Start Time: {{ $competition->starts }}</h6>
@@ -57,7 +57,7 @@ My Competitions
         @if($competition->competition_type == 'public')
         <div class="col-sm-4">
           <a href="/competition/{{$competition->id}}">
-            <div class="card border-info mb-3">
+            <div class="card bg-light text-primary mb-3">
               <div class="card-header">{{$competition->name}}</div>
               <div class="card-body">
                 <h6 class="card-text">Start Time: {{ $competition->starts }}</h6>

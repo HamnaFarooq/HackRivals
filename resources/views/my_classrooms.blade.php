@@ -19,11 +19,11 @@ My Classrooms
     @foreach ($user->joined_classrooms as $classroom)
     <div class="col-sm-4">
       <a href="/classroom/{{$classroom->id}}">
-        <div class="card border-info mb-3">
-          <div class="card-header"> {{ $classroom->name }} </div>
+        <div class="card bg-light text-primary mb-3" >
+          <div class="card-header"> <b>{{ $classroom->name }}</b> </div>
           <div class="card-body">
             <h5 class="card-title"></h5>
-            <h6 class="card-text">Date Started: {{ $classroom->starts }} </h6>
+            <h6 class="card-text"><b>Date Started:</b> {{ $classroom->starts }} </h6>
           </div>
         </div>
       </a>

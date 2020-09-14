@@ -35,7 +35,7 @@ Home
             <div class="col-12">
              @foreach ($problem as $prob)
                     <div class="row">
-                        <div class="card border-info mb-3">
+                        <div class="card bg-light text-primary mb-3">
                             <div class="card-header">{{$prob->name}}</div>
                             <div class="card-body">
                                 <p class="card-title">{{$prob->statement}} </p>

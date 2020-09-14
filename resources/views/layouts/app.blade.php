@@ -156,8 +156,8 @@
                 // sizes
                 data: [{{$points ?? ''}},{{$aggregatedpoints ?? ''}} ],
                 backgroundColor: [
-                    '#c37507',
-                    '#478f47'
+                    '#6b1111',
+                    '#262626'
                 ],
                 borderColor: [
                     '#444',
