@@ -24,19 +24,19 @@
         <h5>Input Format</h5>
         <p class="mx-3">{{$problem->input_format}}</p>
         <br>
-        <h5>Sample Input</h5>
+        <!-- <h5>Sample Input</h5>
         <p class="bg-primary m-3 p-3 rounded">
           3
           <br>
           0 10 20
         </p>
-        <br>
+        <br> -->
         <h5>Output Format</h5>
         <p class="mx-3">{{$problem->output_format}}</p>
         <br>
-        <h5>Sample Output</h5>
+        <!-- <h5>Sample Output</h5>
         <p class="bg-primary m-3 p-3 rounded">30</p>
-        <br>
+        <br> -->
         <h5>Explaination</h5>
         <p class="mx-3">{{$problem->explaination}}</p>
         <br>

@@ -51,12 +51,14 @@ class SolvedProblemsController extends Controller
             );
             $res_id = json_decode($req, true)['id'];
             $response = file_get_contents("http://api.paiza.io:80/runners/get_details?id=" . $res_id . "&api_key=guest");
+            // dd(json_decode($response, true));
             $ans = json_decode($response, true)['stdout'];
+            $ans = rtrim($ans, "\n");
             //match this ans to case->output
             if ($case->output == $ans) {
                 $matches = array_merge($matches, [$num => 'yes']);
             } else {
-                $matches = array_merge($matches, [$num => 'no']);
+                $matches = array_merge($matches, [$num => json_decode($response, true)['build_stderr'].json_decode($response, true)['stderr'] ]);
             }
             $num = $num + 1;
         }

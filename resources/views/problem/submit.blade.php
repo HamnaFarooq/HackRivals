@@ -7,7 +7,7 @@ Submit
 <div class="container">
     <div>
         <form action="/eval" method="post">
-        @csrf
+            @csrf
             <input type="hidden" name="go" value="{{$go}}">
             <input type="hidden" name="points" value="{{$points}}">
             <input type="hidden" name="problem_id" value="{{$id}}">
@@ -37,7 +37,7 @@ Submit
                 $keys = array_keys( $test_cases );
                 $size = sizeof($test_cases);
                 @endphp
-                @for ($x = 0; $x < $size; $x++ ) @if ( $test_cases[$keys[$x]]=='yes' ) <div class="col-sm-4">
+                @for ($x = 0; $x < $size; $x++ ) @if ( $test_cases[$keys[$x]]=='yes' ) 
                     <div class="col-sm-2">
                         <div class="card border-info mb-3">
                             <div class="card-header">TestCase {{ $keys[$x] }}</div>
@@ -54,6 +54,7 @@ Submit
                             <div class="card-header">TestCase {{ $keys[$x] }}</div>
                             <div class="card-body">
                                 <img src="{{url('/images/cross.svg')}}" alt="Wrong" />
+                                <div class="text-danger"> {{ $test_cases[$keys[$x]] }}</div>
                             </div>
                         </div>
                     </div>
