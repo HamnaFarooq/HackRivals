@@ -84,17 +84,15 @@ class AdminController extends Controller
 
     public function blockUser($id)
     {
-        $user = User::find($id);
-        $user->status = 'block';
-        $user->save();
+        $user = User::where('id',$id);
+        $user->update(['status'=>'block']);
         return redirect('/admin/users');
     }
 
     public function unBlockUser($id)
     {
-        $user = User::find($id);
-        $user->status = 'unBlock';
-        $user->save();
+        $user = User::where('id',$id);
+        $user->update(['status'=>'unBlock']);
         return redirect('/admin/users');
     }
 

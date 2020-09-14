@@ -27,12 +27,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    
-    public function problem_attempt()
-    {
-        return view('problem_attempt');
-    }
-
 
     public function classrooms()
     {
