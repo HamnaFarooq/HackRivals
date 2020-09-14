@@ -314,6 +314,26 @@ class HomeController extends Controller
         foreach($solved as $row){
             $attempts = $attempts + $row->attempts;
         }
-        return view('profile',compact('user','solvedproblems','attempts'));
+        $Authuser = User::where([['id', '=', Auth::id()]])->first();
+        $level = $Authuser->level;
+        if($level == 1)
+        {
+            $rank = 'Beginner';
+        } elseif( $level == 2){
+            $rank = 'Novice';
+        } elseif( $level == 3){
+            $rank = 'Intermediate';
+        } elseif( $level == 4){
+            $rank = 'Advanced';
+        } elseif( $level == 5){
+            $rank = 'Expert';
+        } elseif( $level == 6){
+            $rank = 'Professional';
+        } elseif( $level == 7){
+            $rank = 'Master';
+        } elseif( $level == 8){
+            $rank = 'Legend';
+        }
+        return view('profile',compact('user','solvedproblems','attempts','rank'));
     }
 }

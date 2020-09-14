@@ -16,7 +16,7 @@ Profile
         </div>
 
         <div class="col-sm-7 text-center">
-            <h3 class="m-3"> <b>Rank:</b> <i> Professional </i></h3>
+            <h3 class="m-3"> <b>Rank:</b> <i> {{$rank}} </i></h3>
             <div class="bg-primary m-3 p-1 pt-2 rounded">
                 <p> <b class="mx-2">Problems Attempted: </b> {{$attempts}} </p>
             </div>
