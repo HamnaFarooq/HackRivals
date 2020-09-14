@@ -33,7 +33,7 @@
                                 @csrf
                                 <input type="hidden" name="competition_id" value="{{$material->competition_id}}">
                                 <input type="hidden" name="password" value="class">
-                                <button type="submit" class="btn btn-primary">Join Competition</button>
+                                <button type="submit" class="btn btn-primary">Open</button>
                             </form>
                             @endif</div>
                     </div>

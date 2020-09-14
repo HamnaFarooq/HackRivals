@@ -28,7 +28,7 @@ class ClassroomController extends Controller
     {
         $request->merge(['user_id' => Auth::id()]);
         $created = Classroom::create($request->all());
-        return redirect('/classroom/' . $created["id"] . '/edit');
+        return redirect()->back();
     }
 
     /**
@@ -80,7 +80,7 @@ class ClassroomController extends Controller
     {
         $updatedclassroom = Classroom::find($id)->first();
         $updatedclassroom->update($request->all());
-        return redirect('/classroom/' . $updatedclassroom["id"] . '/edit');
+        return redirect()->back();
     }
 
     /**

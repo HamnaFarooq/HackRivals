@@ -48,7 +48,7 @@ class competitionController extends Controller
     {
         $request->merge(['user_id' => Auth::id()]);
         $competition = competition::create($request->all());
-        return redirect('/competition/' . $competition['id'] . '/edit');
+        return redirect()->back();
     }
 
     /**
@@ -62,14 +62,14 @@ class competitionController extends Controller
         $competition = competition::where('id', $id)->with('rankings')->with('problems')->first();
         if ($competition) {
             $now = Carbon::now()->toDateTimeString();
-            if ($competition->starts < $now && $now < $competition->ends) {
+            if ($now < Carbon::parse($competition->ends)) {
                 $check = Users_in_competition::where([['user_id', '=', Auth::id()], ['competition_id', '=', $competition->id]])->get()->first();
                 if ($check) {
                     return view('competition.show', compact('competition', $competition));
                 }
             }
         }
-        return redirect('/my_competitions');
+        return redirect()->back();
     }
 
     /**
@@ -101,7 +101,7 @@ class competitionController extends Controller
     {
         $updatedcompetition = competition::where('id', $id)->first();
         $updatedcompetition->update($request->all());
-        return redirect('/competition/' . $updatedcompetition['id'] . '/edit');
+        return redirect()->back();
     }
 
     /**

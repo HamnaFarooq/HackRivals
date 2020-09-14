@@ -45,7 +45,7 @@ class UsersInCompetitionController extends Controller
         $compete = Competition::where('id', $request->competition_id)->first();
         $alreadyexist = Users_in_competition::where([['competition_id', '=', $request->competition_id],['user_id', '=', Auth::id()]])->first();
         if($alreadyexist){
-            return redirect()->back();
+            return redirect('competition/'.$request->competition_id);
         } else {
             if ( $compete && ( $compete->password == $request->password || $request->password == 'class' )  )
             {
