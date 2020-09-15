@@ -28,8 +28,71 @@ class SolvedProblemsController extends Controller
         //
     }
 
-    public function getCorrectSubmissions($request)
+    // public function getCorrectSubmissions($request)
+    // {
+    //     $prob = Problem::where('id',$request->problem_id)->with('test_cases')->first();
+    //     $test_cases = $prob->test_cases;
+    //     function httpPost($url, $data)
+    //     {
+    //         $curl = curl_init($url);
+    //         curl_setopt($curl, CURLOPT_POST, true);
+    //         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+    //         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    //         $response = curl_exec($curl);
+    //         curl_close($curl);
+    //         return $response;
+    //     }
+    //     $matches = [];
+    //     $num = 1;
+    //     foreach ($test_cases as $case) {
+    //         $req = httpPost(
+    //             "http://api.paiza.io:80/runners/create",
+    //             array("source_code" => $request->solution, "language" => $request->language, "input" => $case->input, "longpoll" => "true", "api_key" => "guest")
+    //         );
+    //         $res_id = json_decode($req, true)['id'];
+    //         $response = file_get_contents("http://api.paiza.io:80/runners/get_details?id=" . $res_id . "&api_key=guest");
+    //         if(json_decode($response, true)['build_stderr'])
+    //         {
+    //             return redirect('/home');
+    //         }
+    //         $ans = json_decode($response, true)['stdout'];
+    //         $ans = rtrim($ans, "\n");
+    //         //match this ans to case->output
+    //         if ($case->output == $ans) {
+    //             $matches = array_merge($matches, [$num => 'yes']);
+    //         } else {
+    //             $matches = array_merge($matches, [$num => json_decode($response, true)['stderr'] ]);
+    //         }
+    //         $num = $num + 1;
+    //     }
+    //     return $matches;
+    // }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        if ($request->source == 'practice') {
+            $go = "/problem/" . $request->problem_id;
+        } else {
+            $go = "/competition/" . $request->source;
+        }
+
+        //api function start
         $prob = Problem::where('id',$request->problem_id)->with('test_cases')->first();
         $test_cases = $prob->test_cases;
         function httpPost($url, $data)
@@ -51,39 +114,28 @@ class SolvedProblemsController extends Controller
             );
             $res_id = json_decode($req, true)['id'];
             $response = file_get_contents("http://api.paiza.io:80/runners/get_details?id=" . $res_id . "&api_key=guest");
-            // dd(json_decode($response, true));
+            $err = json_decode($response, true)['build_stderr'];
+            if($err)
+            {
+                if($go == "/competition/".$request->source)
+                {
+                    $go = $go . ("/problem/".$request->problem_id);
+                }
+                return view('problem.submit_error',compact('err','go')); // to a page that displays the error and returns back. 
+            }
             $ans = json_decode($response, true)['stdout'];
             $ans = rtrim($ans, "\n");
             //match this ans to case->output
             if ($case->output == $ans) {
                 $matches = array_merge($matches, [$num => 'yes']);
             } else {
-                $matches = array_merge($matches, [$num => json_decode($response, true)['build_stderr'].json_decode($response, true)['stderr'] ]);
+                $matches = array_merge($matches, [$num => json_decode($response, true)['stderr'] ]);
             }
             $num = $num + 1;
         }
-        return $matches;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $test_cases = app('App\Http\Controllers\SolvedProblemsController')->getCorrectSubmissions($request);
+        $test_cases = $matches;
+        //api function end
+        // $test_cases = app('App\Http\Controllers\SolvedProblemsController')->getCorrectSubmissions($request);
         $test_cases_met = 0;
         foreach ($test_cases as $key => $val) {
             if ($val == 'yes') {
@@ -152,12 +204,6 @@ class SolvedProblemsController extends Controller
         $aggregatepointspercent = (($aggregatepoints + 0.05) / $request->points) * 100;
         $total = $request->points;
         $id = $request->problem_id;
-
-        if ($request->source == 'practice') {
-            $go = "/problem/" . $request->problem_id;
-        } else {
-            $go = "/competition/" . $request->source;
-        }
 
         return view('problem.submit', compact('test_cases', 'points', 'aggregatepoints', 'pointspercent', 'aggregatepointspercent', "total" , 'go' , 'id'));
     }
