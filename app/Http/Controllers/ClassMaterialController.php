@@ -11,89 +11,44 @@ class ClassMaterialController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-    */
-    // public function index()
-    // {
-    //     $class_materials = Class_material::all();
-    //     return view('class_material.index',compact('class_materials'));
-    // }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        return redirect('/home');
+    }
+
     public function create()
     {
         return view('class_material.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         Class_material::create($request->all());
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $class_material = Class_material::find($id)->first();
-        return view('class_material.show',compact('class_material',$class_material));
+        return redirect('/home');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $class_material = Class_material::where('id', $id)->first();
-        return view('class_material.edit',compact('class_material'));
+        return redirect('/home');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id, $mid)
     {
         $updatedclass_material = Class_material::find($mid)->first();
         $updatedclass_material->update($request->all());
-        // return redirect('/class_material');
         return redirect()->back();
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id, $mid)
     {
         Class_material::find($mid)->first()->delete();
-        // return redirect('/class_material');
         return redirect()->back();
 
     }

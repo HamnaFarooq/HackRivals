@@ -18,12 +18,11 @@ class ClassroomController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        return redirect('/home');
+    }
+
     public function store(Request $request)
     {
         $request->merge(['user_id' => Auth::id()]);
@@ -31,12 +30,6 @@ class ClassroomController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //check if joined only
@@ -57,12 +50,6 @@ class ClassroomController extends Controller
         return redirect('/my_classrooms')->with('error',$error);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //check if creator or admin only
@@ -76,13 +63,6 @@ class ClassroomController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $updatedclassroom = Classroom::find($id)->first();
@@ -90,12 +70,6 @@ class ClassroomController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Classroom::find($id)->first()->delete();

@@ -19,12 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@home');
-Route::get('/my_competitions', 'HomeController@competitions');
-Route::get('/my_classrooms', 'HomeController@classrooms');
-Route::get('/rankings', 'HomeController@rankings');
-Route::get('/user_admin', 'HomeController@user_admin');
-Route::get('/profile', 'HomeController@profile');
+Route::get('/home', 'UserController@home');
+Route::get('/my_competitions', 'UserController@competitions');
+Route::get('/my_classrooms', 'UserController@classrooms');
+Route::get('/rankings', 'UserController@rankings');
+Route::get('/user_admin', 'UserController@user_admin');
+Route::get('/profile', 'UserController@profile');
 
 Route::post('/joinclass', 'UsersInClassroomController@store');
 Route::get('/leaveclass/{id}', 'UsersInClassroomController@destroy');
@@ -46,8 +46,8 @@ Route::resource('/classroom','ClassroomController');
 Route::resource('/problem','ProblemController');
 Route::resource('/classroom/{id}/class_material','ClassMaterialController');
 Route::resource('/problem/{id}/test_case','TestCaseController');
-Route::resource('/rank','RankController');
 
+//admin routes
 
 Route::get('/admin/users', 'AdminController@users');
 Route::get('/admin/editUser/{id}', 'AdminController@editUser');

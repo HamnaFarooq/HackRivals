@@ -13,32 +13,7 @@ class ProblemsInCompetitionController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store( $compid , $probid)
     {
         $problem = Problem::where('id', $probid)->first();
@@ -57,12 +32,6 @@ class ProblemsInCompetitionController extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Problems_in_competition  $problems_in_competition
-     * @return \Illuminate\Http\Response
-     */
     public function show($cid , $pid)
     {
         $problem = problem::where('id',$pid)->with('user')->first();
@@ -70,35 +39,6 @@ class ProblemsInCompetitionController extends Controller
         return view('problem.show', compact('problem', $problem , 'comp'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Problems_in_competition  $problems_in_competition
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Problems_in_competition $problems_in_competition)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Problems_in_competition  $problems_in_competition
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Problems_in_competition $problems_in_competition)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Problems_in_competition  $problems_in_competition
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($compid, $proid)
     {
         Problems_in_competition::where([['competition_id', '=', $compid], ['problem_id', '=', $proid]])->first()->delete();

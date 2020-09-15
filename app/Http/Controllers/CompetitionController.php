@@ -16,34 +16,12 @@ class competitionController extends Controller
     {
         $this->middleware('auth');
     }
-    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $competitions = competition::all();
-        return view('competition.index', compact('competitions'));
+        return redirect('/home');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /* public function create()
-    {
-        return view('competition.create');
-    }*/
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->merge(['user_id' => Auth::id()]);
@@ -51,12 +29,6 @@ class competitionController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $competition = competition::where('id', $id)->with('rankings')->with('problems')->first();
@@ -78,12 +50,6 @@ class competitionController extends Controller
         return redirect()->back()->with('error', $error);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $competition = competition::where('id', $id)->with('problems')->with('participents')->withCount('participents')->withCount('rankings')->first();
@@ -97,13 +63,6 @@ class competitionController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $updatedcompetition = competition::where('id', $id)->first();
@@ -111,12 +70,6 @@ class competitionController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         competition::find($id)->first()->delete();
