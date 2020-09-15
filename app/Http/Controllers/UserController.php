@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\User;	
+use App\Competition;	
+use App\Classroom;	
+use App\Problem;	
+use App\Solved_problems;	
 use Auth;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {
