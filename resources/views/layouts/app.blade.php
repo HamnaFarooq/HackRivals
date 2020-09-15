@@ -14,11 +14,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap_theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -59,13 +54,13 @@
                         @endif
                         @else
                         @if (Auth::user()->user_type == 'admin')
-                        <li class="nav-item {{(request()->is('/admin/users')) ? 'active' : '' }}">
+                        <li class="nav-item {{(request()->is('admin/users')) ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/users">Users</a>
                         </li>
-                        <li class="nav-item {{(request()->is('/admin/competitions')) ? 'active' : '' }}">
+                        <li class="nav-item {{(request()->is('admin/competitions')) ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/competitions">Competitiions</a>
                         </li>
-                        <li class="nav-item {{(request()->is('/admin/classrooms')) ? 'active' : '' }}">
+                        <li class="nav-item {{(request()->is('admin/classrooms')) ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/classrooms">Classrooms</a>
                         </li>
 
@@ -165,15 +160,7 @@
             datasets: [{
                 label: 'Your Points',
                 // sizes
-                data: [{
-                    {
-                        $points ? ? ''
-                    }
-                }, {
-                    {
-                        $aggregatedpoints ? ? ''
-                    }
-                }],
+                data: [{{$points ?? ''}},{{$aggregatedpoints ?? ''}} ],
                 backgroundColor: [
                     '#6b1111',
                     '#262626'

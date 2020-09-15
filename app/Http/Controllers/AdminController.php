@@ -13,14 +13,14 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        if( !( Auth::user() && Auth::user()->user_type == 'admin') )
-        {
-            return redirect('/home');
-        }
     }
 
     public function users()
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $users = User::where( [ ['user_type','=', 'user'] , ['status' ,'=', 'unBlock' ] ])->get();
         $superusers = User::where( [ ['user_type','=', 'superuser'] , ['status' ,'=', 'unBlock' ] ])->get();
         $blockusers = User::where( [ ['user_type','=', 'user'] , ['status' ,'=', 'block' ] ])->get();
@@ -30,18 +30,30 @@ class AdminController extends Controller
 
     public function classrooms()
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $classrooms = Classroom::all();
         return view('admin.classrooms',compact('classrooms'));
     }
 
     public function competitions()
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $competitions = Competition::all();
         return view('admin.competitions',compact('competitions'));
     }
 
     public function editCompetition($id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $competition = Competition::where('id',$id)->first();
         return view('admin.editCompetition',compact('competition'));
         
@@ -49,6 +61,10 @@ class AdminController extends Controller
 
     public function editClassroom($id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $classroom = Classroom::where('id',$id)->first();
         return view('admin.editClassroom',compact('classroom'));
     }
@@ -56,6 +72,10 @@ class AdminController extends Controller
 
     public function updateClassroom(Request $request, $id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $updatedclassroom = Classroom::where('id',$id)->first();
         $updatedclassroom->update($request->all());
         return redirect('/admin/classrooms');
@@ -63,6 +83,10 @@ class AdminController extends Controller
 
     public function updateCompetition(Request $request, $id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $updatedcompetition = competition::where('id', $id)->first();
         $updatedcompetition->update($request->all());
         return redirect('/admin/competitions');
@@ -70,6 +94,10 @@ class AdminController extends Controller
 
     public function deleteClassroom($id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         Classroom::where('id', $id)->first()->delete();
         return redirect('/admin/classrooms');
     }
@@ -77,6 +105,10 @@ class AdminController extends Controller
 
     public function deleteCompetition($id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         Competition::where('id', $id)->first()->delete();
         return redirect('/admin/competition');
     }
@@ -84,6 +116,10 @@ class AdminController extends Controller
 
     public function blockUser($id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $user = User::where('id',$id);
         $user->update(['status'=>'block']);
         return redirect('/admin/users');
@@ -91,6 +127,10 @@ class AdminController extends Controller
 
     public function unBlockUser($id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $user = User::where('id',$id);
         $user->update(['status'=>'unBlock']);
         return redirect('/admin/users');
@@ -98,18 +138,30 @@ class AdminController extends Controller
 
     public function deleteUser($id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         User::where('id', $id)->first()->delete();
         return redirect('/admin/users');
     }
 
     public function editUser($id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $user = User::where('id',$id)->first();
         return view('admin.editUser',compact('user'));
     }
 
     public function updateUser(Request $request, $id)
     {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
         $updatedUser = User::where('id',$id)->first();
         $updatedUser->update($request->all());
         return redirect('/admin/users');

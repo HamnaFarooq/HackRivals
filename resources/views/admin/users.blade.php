@@ -6,7 +6,7 @@ Users
 @section('content')
 <div class="container">
 
-  <h3>All Users</h3>
+  <h2>All Users</h2>
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#user_list">User List</a>
@@ -25,7 +25,7 @@ Users
   <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade  pt-3 show active" id="user_list">
 
-      <h2>All Users</h2>
+      <h5>Users</h5>
       <table class="table table-hover">
 
         <thead>
@@ -57,7 +57,7 @@ Users
     </div>
     <div class="tab-pane fade pt-3" id="modetator_list">
 
-      <h2>All SuperUsers</h2>
+      <h5>SuperUsers</h5>
 
       <table class="table table-hover">
 
@@ -91,7 +91,7 @@ Users
     </div>
     <div class="tab-pane fade pt-3" id="block_user">
 
-      <h2>Block Users List</h2>
+      <h5>Block Users</h5>
 
       <table class="table table-hover">
 
@@ -120,7 +120,7 @@ Users
     </div>
     <div class="tab-pane fade pt-3" id="block_moderator">
 
-      <h2>Blocked SuperUsers</h2>
+      <h5>Blocked SuperUsers</h5>
 
       <table class="table table-hover">
 
