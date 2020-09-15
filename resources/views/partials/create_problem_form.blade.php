@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="sub_level">Sub-Level:</label>
                         <select name="sub_level" class="form-control" required>
-                            <option value="1">Biginner</option>
+                            <option value="1">Beginner</option>
                             <option value="2">Novice</option>
                             <option value="3">Intermidiate</option>
                             <option value="4">Advanced</option>
