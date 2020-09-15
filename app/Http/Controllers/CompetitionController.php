@@ -61,6 +61,11 @@ class competitionController extends Controller
     {
         $competition = competition::where('id', $id)->with('rankings')->with('problems')->first();
         if ($competition) {
+            if($competition->user_id == Auth::id())
+            {
+                $error = 'Creator can edit competition from here.';
+            return redirect('/competition/'.$id.'/edit')->with('error',$error);
+            }
             $now = Carbon::now()->toDateTimeString();
             if ($now < Carbon::parse($competition->ends)) {
                 $check = Users_in_competition::where([['user_id', '=', Auth::id()], ['competition_id', '=', $competition->id]])->get()->first();

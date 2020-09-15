@@ -43,6 +43,11 @@ class ClassroomController extends Controller
         $classroom = Classroom::where('id', $id)->with('materials')->with('rankings')->first();
         if ($classroom) {
             //find this user and this class both in Users in classroom table
+            if($classroom->user_id == Auth::id())
+            {
+                $error = 'Teacher can edit classroom from here.';
+            return redirect('/classroom/'.$id.'/edit')->with('error',$error);
+            }
             $check = Users_in_classroom::where([['user_id', '=', Auth::id()], ['classroom_id', '=', $classroom->id]])->get();
             if ($check) {
                 return view('classroom.show', compact('classroom', $classroom));
@@ -66,7 +71,7 @@ class ClassroomController extends Controller
             $competitions = Competition::where([['user_id', '=', Auth::id()], ['competition_type', '=', 'private']])->get();
             return view('classroom.edit', compact('classroom', 'competitions'));
         } else {
-            $error = 'Only class-creator can edit classroom.';
+            $error = 'Only teacher can edit classroom.';
             return redirect('/user_admin')->with('error',$error);
         }
     }

@@ -94,6 +94,11 @@ class SolvedProblemsController extends Controller
 
         //api function start
         $prob = Problem::where('id',$request->problem_id)->with('test_cases')->first();
+        if($prob->user_id == Auth::id())
+        {
+            $error = 'Creator cannot solve his own problem';
+            return redirect('/problem/'.$request->problem_id)->with('error',$error);
+        }
         $test_cases = $prob->test_cases;
         function httpPost($url, $data)
         {

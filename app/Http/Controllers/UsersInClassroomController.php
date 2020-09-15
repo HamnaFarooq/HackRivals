@@ -44,9 +44,13 @@ class UsersInClassroomController extends Controller
         $class = Classroom::where('id', $request->classroom_id)->first();
         $existing = Users_in_classroom::where([['classroom_id', '=', $request->classroom_id], ['user_id', '=', Auth::id()]])->first();
         if ($existing) {
-            $error = 'You are already in this classroom';
+            $error = 'You are already a member of this classroom';
             return redirect()->back()->with('error', $error);
-        } else {
+        } elseif(Auth::id() == $class->user_id){
+            $error = 'Teacher cannot join his own classroom';
+            return redirect()->back()->with('error', $error);
+        }
+        else {
             if ($class && $class->password == $request->password) {
                 $request->merge(['user_id' => Auth::id()]);
                 Users_in_classroom::create($request->all());
