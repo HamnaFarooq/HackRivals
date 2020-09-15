@@ -39,14 +39,12 @@
 
                     <div class="form-group">
                         <label for="starts">Starts:</label>
-                        <input type="datetime-local" name="starts" class="form-control" value="{{$classroom->starts}}">
-                        <p class="text-muted">Enter if you want to change previous date and time only</p>
+                        <input type="text" name="starts" value="{{$classroom->starts}}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="ends">Ends:</label>
-                        <input type="datetime-local" name="ends" class="form-control" value="{{$classroom->ends}}">
-                        <p class="text-muted">Enter if you want to change previous date and time only</p>
+                        <input type="text" name="starts" value="{{$classroom->ends}}" class="form-control">
                     </div>
 
                     @if($errors->any())

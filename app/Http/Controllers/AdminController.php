@@ -110,7 +110,7 @@ class AdminController extends Controller
             return redirect('/home');
         }
         Competition::where('id', $id)->first()->delete();
-        return redirect('/admin/competition');
+        return redirect('/admin/competitions');
     }
 
 
