@@ -183,7 +183,8 @@ class ProblemController extends Controller
         if ($problem && (Auth::id() == $problem->user_id || Auth::user()->user_type == 'admin')) {
             return view('problem.edit', compact('problem'));
         } else {
-            return redirect('/user_admin');
+            $error = 'Only problem creator can edit the problem.';
+            return redirect('/user_admin')->with('error',$error);
         }
     }
 

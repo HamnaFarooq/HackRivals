@@ -48,7 +48,8 @@ class ClassroomController extends Controller
                 return view('classroom.show', compact('classroom', $classroom));
             }
         }
-        return redirect('/my_classrooms');
+        $error = 'You are not a member of this class';
+        return redirect('/my_classrooms')->with('error',$error);
     }
 
     /**
@@ -65,7 +66,8 @@ class ClassroomController extends Controller
             $competitions = Competition::where([['user_id', '=', Auth::id()], ['competition_type', '=', 'private']])->get();
             return view('classroom.edit', compact('classroom', 'competitions'));
         } else {
-            return redirect('/user_admin');
+            $error = 'Only class-creator can edit classroom.';
+            return redirect('/user_admin')->with('error',$error);
         }
     }
 

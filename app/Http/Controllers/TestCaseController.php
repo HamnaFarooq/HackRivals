@@ -28,7 +28,8 @@ class TestCaseController extends Controller
             return view('test_case.index',compact('test_cases','id'));
         }
         else {
-            return redirect('/user_admin');
+            $error = 'Only problem creator can edit the test cases.';
+            return redirect('/user_admin')->with('error',$error);
         }
     }
 

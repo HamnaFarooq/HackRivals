@@ -47,11 +47,11 @@ class ProblemsInCompetitionController extends Controller
             //get problems in competition where
             $alreadyexist =  Problems_in_competition::where([['competition_id' ,'=', $compid],[ 'problem_id','=', $probid]])->first();
             if($alreadyexist){
-                return redirect()->back();
+                $error = 'This problem already exists in this competition.';
+                return redirect()->back()->with('error',$error);
             } else {
                 Problems_in_competition::create(['competition_id' => $compid , 'problem_id' => $probid]);
             }
-            
         }
         return redirect()->back();
         

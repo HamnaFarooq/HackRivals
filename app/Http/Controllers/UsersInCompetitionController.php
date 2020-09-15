@@ -45,19 +45,19 @@ class UsersInCompetitionController extends Controller
         $compete = Competition::where('id', $request->competition_id)->first();
         $alreadyexist = Users_in_competition::where([['competition_id', '=', $request->competition_id],['user_id', '=', Auth::id()]])->first();
         if($alreadyexist){
-            return redirect('competition/'.$request->competition_id);
-        } else {
+            $error = 'You have already joined this competition';
+            return redirect()->back()->with('error', $error);
+        } else 
+        {
             if ( $compete && ( $compete->password == $request->password || $request->password == 'class' )  )
             {
                 $request->merge(['user_id' => Auth::id()]);
                 Users_in_competition::create($request->all());
                 return redirect('/competition/' . $request->competition_id);
             } 
-            else 
-            {
-                return redirect()->back();
-            }
         }
+        $error = 'Incorrect competition ID or Password.';
+        return redirect()->back()->with('error',$error);
        
        
     }
@@ -67,19 +67,19 @@ class UsersInCompetitionController extends Controller
         $compete = Competition::where('id', $id)->first();
         $existing = Users_in_competition::where([['competition_id', '=', $id],['user_id', '=', Auth::id()]])->first();
         if($existing){
-            return redirect()->back();
+            $error = 'You have already joined this competition';
+            return redirect()->back()->with('error', $error);
         } else {
             if ( $compete )
-        {
-            $data = (['user_id' => Auth::id() , 'competition_id' => $id]);
-            Users_in_competition::create($data);
-            return redirect('/competition/' . $id);
-        } 
-        else 
-        {
-            return redirect()->back();
+            {
+                 $data = (['user_id' => Auth::id() , 'competition_id' => $id]);
+                Users_in_competition::create($data);
+                return redirect('/competition/' . $id);
+            } 
         }
-        }
+        $error = 'Incorrect competition ID.';
+        return redirect()->back()->with('error',$error);
+       
     }
 
     /**

@@ -69,7 +69,8 @@ class competitionController extends Controller
                 }
             }
         }
-        return redirect()->back();
+        $error='No competition exists with this ID.';
+        return redirect()->back()->with('error', $error);
     }
 
     /**
@@ -86,7 +87,8 @@ class competitionController extends Controller
             $hackrivalprob = Problem::where([['problem_type', '=', 'HackRivals']])->get();
             return view('competition.edit', compact('competition', 'problems', 'hackrivalprob'));
         } else {
-            return redirect('/user_admin');
+            $error = 'Only competition creator can edit the competition.';
+            return redirect('/user_admin')->with('error',$error);
         }
     }
 
