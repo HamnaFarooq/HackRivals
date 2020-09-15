@@ -42,21 +42,19 @@ class UsersInClassroomController extends Controller
     public function store(Request $request)
     {
         $class = Classroom::where('id', $request->classroom_id)->first();
-        $existing = Users_in_classroom::where([['classroom_id', '=', $request->classroom_id],['user_id', '=', Auth::id()]])->first();
-        if($existing){
-            return redirect()->back();
+        $existing = Users_in_classroom::where([['classroom_id', '=', $request->classroom_id], ['user_id', '=', Auth::id()]])->first();
+        if ($existing) {
+            $error = 'You are already in this classroom';
+            return redirect()->back()->with('error', $error);
         } else {
-            if ($class && $class->password == $request->password) 
-        {
-            $request->merge(['user_id' => Auth::id()]);
-            Users_in_classroom::create($request->all());
-            return redirect('/classroom/' . $request->classroom_id);
-        } 
-        else 
-        {
-            return redirect()->back();
+            if ($class && $class->password == $request->password) {
+                $request->merge(['user_id' => Auth::id()]);
+                Users_in_classroom::create($request->all());
+                return redirect('/classroom/' . $request->classroom_id);
+            }
         }
-        }
+        $error = 'Incorrect classroom ID or Password.';
+        return redirect()->back()->with('error',$error);
     }
 
     /**
@@ -101,7 +99,7 @@ class UsersInClassroomController extends Controller
      */
     public function destroy($classroom_id)
     {
-        Users_in_classroom::where([['user_id', '=', Auth::id()],['classroom_id', '=', $classroom_id]])->first()->delete();
+        Users_in_classroom::where([['user_id', '=', Auth::id()], ['classroom_id', '=', $classroom_id]])->first()->delete();
         return redirect('/my_classrooms');
     }
 }

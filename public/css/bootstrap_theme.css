@@ -11004,3 +11004,6 @@ background: linear-gradient(90deg, rgba(107,17,17,1) 0%, rgba(38,38,38,1) 81%, r
    /* text-decoration: underline; */
    cursor: pointer;
  }
+ .bg-gray{
+   background-color: #262626;
+ }

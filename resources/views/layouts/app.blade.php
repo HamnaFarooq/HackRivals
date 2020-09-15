@@ -29,6 +29,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
+                <a class="navbar-brand mr-1" href="{{ url('/') }}">
+                    <img src="{{url('/images/logo.svg')}}" alt="Hackrivals" />
+                </a>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     HACKRIVALS
                 </a>
@@ -55,7 +58,7 @@
                         </li>
                         @endif
                         @else
-                         @if (Auth::user()->user_type == 'admin')
+                        @if (Auth::user()->user_type == 'admin')
                         <li class="nav-item {{(request()->is('/admin/users')) ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/users">Users</a>
                         </li>
@@ -128,6 +131,14 @@
         </nav>
 
         <main class="pt-4 pb-5">
+            @if( Session::get('error') ?? 0 )
+            <div class="container">
+                <div class="row bg-light py-3 justify-content-center">
+                    <div class="bg-light text-danger"> <b> {{ Session::get('error') ?? '' }} </b> </div>
+                </div>
+            </div>
+            @endif
+
             @yield('content')
         </main>
 
@@ -154,7 +165,15 @@
             datasets: [{
                 label: 'Your Points',
                 // sizes
-                data: [{{$points ?? ''}},{{$aggregatedpoints ?? ''}} ],
+                data: [{
+                    {
+                        $points ? ? ''
+                    }
+                }, {
+                    {
+                        $aggregatedpoints ? ? ''
+                    }
+                }],
                 backgroundColor: [
                     '#6b1111',
                     '#262626'

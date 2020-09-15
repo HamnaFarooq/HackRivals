@@ -22,7 +22,9 @@ HackRivals
                 <br>
                 <p>To a place where you can enhance you coding skills at your own pace!</p>
                 <p> A platform that provides personalized algorithmic challenges in an environment where you can compete with your fellow peers. With every solved problem, you will earn points. The platform will also issue the rankings of the competitors according to their earned points.</p>
+                @if ( !( Auth::user() ) )
                 <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#register">Get Started</button>
+                @endif
             </div>
         </div>
     </div>
