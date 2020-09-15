@@ -25,8 +25,8 @@
                     <div class="form-group">
                         <label for="competition_type">Type:</label>
                         <select name="competition_type" class="form-control" required>
-                            <option value="public">Public</option>
-                            <option value="private">Private</option>
+                            <option value="public" {{ ($competition->competition_type == 'public' ? "selected":"") }} >Public</option>
+                            <option value="private" {{ ($competition->competition_type == 'private' ? "selected":"") }} >Private</option>
                         </select>
                     </div>
 

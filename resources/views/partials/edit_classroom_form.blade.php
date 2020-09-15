@@ -22,13 +22,15 @@
                         <input type="text" class="form-control" name="name" value="{{$classroom->name}}" placeholder="Enter classroom name" required>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="classroom_type">Type:</label>
                         <select name="classroom_type" class="form-control" value="{{$classroom->classroom_type}}" required>
                             <option value="public">Public</option>
                             <option value="private">Private</option>
                         </select>
-                    </div>
+                    </div> -->
+                    
+                    <input type="hidden" name="classroom_type" value="private">
 
                     <div class="form-group">
                         <label for="password">Password:</label>
