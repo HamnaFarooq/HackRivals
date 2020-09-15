@@ -22,13 +22,15 @@
                         <input type="text" class="form-control" name="name" value="{{$classroom->name}}" placeholder="Enter classroom name" required>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="classroom_type">Type:</label>
                         <select name="classroom_type" class="form-control" value="{{$classroom->classroom_type}}" required>
                             <option value="public">Public</option>
                             <option value="private">Private</option>
                         </select>
-                    </div>
+                    </div> -->
+                    
+                    <input type="hidden" name="classroom_type" value="private">
 
                     <div class="form-group">
                         <label for="password">Password:</label>
@@ -37,14 +39,12 @@
 
                     <div class="form-group">
                         <label for="starts">Starts:</label>
-                        <input type="datetime-local" name="starts" class="form-control" value="{{$classroom->starts}}">
-                        <p class="text-muted">Enter if you want to change previous date and time only</p>
+                        <input type="text" name="starts" value="{{$classroom->starts}}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="ends">Ends:</label>
-                        <input type="datetime-local" name="ends" class="form-control" value="{{$classroom->ends}}">
-                        <p class="text-muted">Enter if you want to change previous date and time only</p>
+                        <input type="text" name="starts" value="{{$classroom->ends}}" class="form-control">
                     </div>
 
                     @if($errors->any())

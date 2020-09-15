@@ -25,8 +25,8 @@
                     <div class="form-group">
                         <label for="competition_type">Type:</label>
                         <select name="competition_type" class="form-control" required>
-                            <option value="public">Public</option>
-                            <option value="private">Private</option>
+                            <option value="public" {{ ($competition->competition_type == 'public' ? "selected":"") }} >Public</option>
+                            <option value="private" {{ ($competition->competition_type == 'private' ? "selected":"") }} >Private</option>
                         </select>
                     </div>
 
@@ -37,12 +37,12 @@
 
                     <div class="form-group">
                         <label for="starts">Starts:</label>
-                        <input type="datetime-local" name="starts" class="form-control">
+                        <input type="text" name="starts" value="{{$competition->starts}}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="ends">Ends:</label>
-                        <input type="datetime-local" name="ends" class="form-control">
+                        <input type="text" name="ends" value="{{$competition->ends}}" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Update</button>
