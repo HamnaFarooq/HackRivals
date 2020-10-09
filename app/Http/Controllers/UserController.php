@@ -239,6 +239,7 @@ class UserController extends Controller
             return redirect('/admin/users');
         }
         $user = User::find(Auth::id())->with('joined_competitions')->first();
+        // dd($user);
         $public = Competition::where([['competition_type', '=', 'public']])->get();
         return view('my_competitions', compact('user', 'public'));
     }

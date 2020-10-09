@@ -21,25 +21,25 @@ Edit {{$problem->name}}
           <div class="form-group">
             <label for="level">Level:</label>
             <select name="level" class="form-control" required>
-              <option value="1" {{ ($competition->competition_type == '1' ? "selected":"") }} >Introduction</option>
-              <option value="2" {{ ($competition->competition_type == '2' ? "selected":"") }} >Linear Equations</option>
-              <option value="3" {{ ($competition->competition_type == '3' ? "selected":"") }} >Conditions</option>
-              <option value="4" {{ ($competition->competition_type == '4' ? "selected":"") }} >Loops</option>
-              <option value="5" {{ ($competition->competition_type == '5' ? "selected":"") }} >Logic Building</option>
-              <option value="6" {{ ($competition->competition_type == '6' ? "selected":"") }} >Vectors/Arrays</option>
-              <option value="7" {{ ($competition->competition_type == '7' ? "selected":"") }} >References/Pointers</option>
-              <option value="8" {{ ($competition->competition_type == '8' ? "selected":"") }} >Functions</option>
+              <option value="1" {{ ($problem->level == '1' ? "selected":"") }} >Introduction</option>
+              <option value="2" {{ ($problem->level == '2' ? "selected":"") }} >Linear Equations</option>
+              <option value="3" {{ ($problem->level == '3' ? "selected":"") }} >Conditions</option>
+              <option value="4" {{ ($problem->level == '4' ? "selected":"") }} >Loops</option>
+              <option value="5" {{ ($problem->level == '5' ? "selected":"") }} >Logic Building</option>
+              <option value="6" {{ ($problem->level == '6' ? "selected":"") }} >Vectors/Arrays</option>
+              <option value="7" {{ ($problem->level == '7' ? "selected":"") }} >References/Pointers</option>
+              <option value="8" {{ ($problem->level == '8' ? "selected":"") }} >Functions</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="level">Sub-Level:</label>
             <select name="level" class="form-control" required>
-              <option value="1" {{ ($competition->competition_type == '1' ? "selected":"") }}>Biginner</option>
-              <option value="2" {{ ($competition->competition_type == '2' ? "selected":"") }} >Novice</option>
-              <option value="3" {{ ($competition->competition_type == '3' ? "selected":"") }} >Intermidiate</option>
-              <option value="4" {{ ($competition->competition_type == '4' ? "selected":"") }} >Advanced</option>
-              <option value="5" {{ ($competition->competition_type == '5' ? "selected":"") }} >Expert</option>
+              <option value="1" {{ ($problem->sub_level == '1' ? "selected":"") }}>Biginner</option>
+              <option value="2" {{ ($problem->sub_level == '2' ? "selected":"") }} >Novice</option>
+              <option value="3" {{ ($problem->sub_level == '3' ? "selected":"") }} >Intermidiate</option>
+              <option value="4" {{ ($problem->sub_level == '4' ? "selected":"") }} >Advanced</option>
+              <option value="5" {{ ($problem->sub_level == '5' ? "selected":"") }} >Expert</option>
             </select>
           </div>
 
