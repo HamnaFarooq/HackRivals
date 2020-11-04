@@ -16,7 +16,7 @@ class CreateTestCasesTable extends Migration
         Schema::create('test_cases', function (Blueprint $table) {
             $table->id();
 
-            $table->text('input');
+            $table->text('input')->nullable();
             $table->text('output');
             $table->foreignId('problem_id')->constrained('problems')->onDelete('cascade');
 

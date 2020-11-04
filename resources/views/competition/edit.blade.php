@@ -2,6 +2,7 @@
 @include('partials.add_user_problem_form')
 @include('partials.create_problem_form')
 @include('partials.add_problem_form')
+@include('partials.competition_info')
 
 @extends('layouts.app')
 
@@ -16,6 +17,9 @@ Edit {{$competition->name}}
     <h3>Edit {{$competition->name}}</h3>
 
     <div class="text-right">
+      @if($competition->competition_type == 'private')
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#share_competition">Share</button>
+      @endif
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_competition">Settings</button>
     </div>
 
@@ -35,7 +39,7 @@ Edit {{$competition->name}}
         <div class="text-right py-3">
           <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_problem">Create New Problem</button>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_user_problem">Add Your Problem</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_problem">Add HackRival Problem</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_problem">Add Hackrival Problem</button>
         </div>
 
         <table class="table table-hover">

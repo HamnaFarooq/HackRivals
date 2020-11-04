@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit_material" tabindex="-1" role="dialog" aria-labelledby="edit_material" aria-hidden="true">
+<div class="modal fade" id="edit_{{$material->id}}" tabindex="-1" role="dialog" aria-labelledby="edit_material" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
 
         <div class="modal-content">
@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         <label for="announcement">Announcement (optional):</label>
-                        <textarea rows="3" class="form-control" name="announcement" value="{{$material->announcement}}" placeholder="Enter announcement" required></textarea>
+                        <textarea rows="3" class="form-control" name="announcement" placeholder="Enter announcement" required>{{$material->announcement}}</textarea>
                     </div>
 
                     <!-- <div class="form-group">

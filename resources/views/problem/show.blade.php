@@ -24,25 +24,25 @@
         <h5>Input Format</h5>
         <p class="mx-3">{{$problem->input_format}}</p>
         <br>
-        <!-- <h5>Sample Input</h5>
-        <p class="bg-primary m-3 p-3 rounded">
-          3
-          <br>
-          0 10 20
-        </p>
-        <br> -->
         <h5>Output Format</h5>
         <p class="mx-3">{{$problem->output_format}}</p>
         <br>
-        <!-- <h5>Sample Output</h5>
-        <p class="bg-primary m-3 p-3 rounded">30</p>
-        <br> -->
+        <h5>Sample Input</h5>
+        <p class="bg-primary m-3 p-3 text-white rounded">{{$problem->sample_input}}</p>
+        <br>
+        <h5>Sample Output</h5>
+        <p class="bg-primary m-3 p-3 text-white rounded">{{$problem->sample_output}}</p>
+        <br>
+        @if($problem->explaination)
         <h5>Explaination</h5>
         <p class="mx-3">{{$problem->explaination}}</p>
         <br>
+        @endif
+        @if($problem->hint)
         <h5>Hint</h5>
         <p class="mx-3">{{$problem->hint}}</p>
         <br>
+        @endif
       </div>
 
     </div>
@@ -62,7 +62,7 @@
   <div class="row my-5">
     <div class="col-sm-8">
       <h5>Test your code here</h5>
-      <div class="sec-widget" data-widget="c7d80136a36eb015257c244dd0fa71b9"></div>
+      <div class="sec-widget" data-widget="33e3794dd681f8770e91f69247aff06f"></div>
       <script>
         SEC_HTTPS = true;
         SEC_BASE = "compilers.widgets.sphere-engine.com";
@@ -82,6 +82,7 @@
       <h5>Submit your code here</h5>
       <form method="POST" action="/submitcode">
         @csrf
+        @method('POST')
 
         <div class="form-group">
         <label for="language">Language:</label>

@@ -24,15 +24,15 @@
 
                     <div class="form-group">
                         <label for="competition_type">Type:</label>
-                        <select name="competition_type" class="form-control" required>
-                            <option value="public" {{ ($competition->competition_type == 'public' ? "selected":"") }} >Public</option>
-                            <option value="private" {{ ($competition->competition_type == 'private' ? "selected":"") }} >Private</option>
+                        <select name="competition_type" class="form-control" required onchange="showDiv('competition_pass', this)">
+                            <option value="public" {{ ($competition->competition_type == 'public' ? "selected":"") }}>Public</option>
+                            <option value="private" {{ ($competition->competition_type == 'private' ? "selected":"") }}>Private</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="competition_pass">
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" name="password" value="{{$competition->password}}" placeholder="Enter Password" required>
+                        <input type="password" class="form-control" name="password" id="pass" value="{{$competition->password}}" placeholder="Enter Password" required>
                     </div>
 
                     <div class="form-group">
@@ -53,3 +53,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showDiv(divId, element) {
+        if (element.value === "private") {
+            document.getElementById(divId).style.display = 'block'
+        } else {
+            document.getElementById(divId).style.display = 'none'
+            document.getElementById("pass").value = ''
+        }
+        // document.getElementById(divId).style.display = element.value === "private" ? 'block' : 'none';
+    }
+</script>

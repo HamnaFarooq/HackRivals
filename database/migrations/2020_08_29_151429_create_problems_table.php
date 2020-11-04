@@ -28,6 +28,8 @@ class CreateProblemsTable extends Migration
             $table->string('constraints');
             $table->string('input_format');
             $table->string('output_format');
+            $table->string('sample_input');
+            $table->string('sample_output');
             $table->string('hint')->nullable();
             $table->string('explaination')->nullable();
 

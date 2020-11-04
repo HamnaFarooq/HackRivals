@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Auth::routes(['verify' => true]);
 Auth::routes();
 
 Route::get('/home', 'UserController@home');
@@ -65,3 +66,11 @@ Route::get('/admin/competitions', 'AdminController@competitions');
 Route::get('/admin/editCompetition/{id}', 'AdminController@editCompetition');
 Route::patch('/admin/updateCompetition/{id}', 'AdminController@updateCompetition');
 Route::get('/admin/deleteCompetition/{id}', 'AdminController@deleteCompetition');
+
+Route::get('/admin/problems', 'AdminController@problems');
+Route::get('/admin/viewProblem/{id}', 'AdminController@viewProblem');
+Route::get('/admin/copyProblem/{id}', 'AdminController@copyProblem');
+
+Route::get('/admin/admins', 'AdminController@admins');
+Route::get('/admin/makeAdmin/{id}', 'AdminController@makeAdmin');
+Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');

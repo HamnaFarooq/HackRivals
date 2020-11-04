@@ -36,7 +36,6 @@ Edit {{$classroom->name}}
           </thead>
           <tbody>
             @foreach ($classroom->materials as $material)
-            @include('partials.edit_material_form')
             <tr class="table-active">
               <td>
                 <div class="card border-primary mb-3">
@@ -51,7 +50,9 @@ Edit {{$classroom->name}}
                   </div>
                 </div>
               </td>
-              <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_material">Edit</button> </td>
+              <td> 
+              @include('partials.edit_material_form')
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_{{$material->id}}">Edit</button> </td>
               <td>
                 <form action="/classroom/{{$classroom->id}}/class_material/{{$material->id}}" method="post">
                   @csrf

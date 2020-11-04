@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="text" class="form-control" name="password" placeholder="Enter Password" required>
+                        <input type="text" class="form-control" name="password" placeholder="Enter Password" >
                     </div>
 
                     @if($errors->any())

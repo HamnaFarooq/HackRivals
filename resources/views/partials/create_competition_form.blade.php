@@ -23,15 +23,15 @@
 
                     <div class="form-group">
                         <label for="competition_type">Type:</label>
-                        <select name="competition_type" class="form-control" required>
+                        <select name="competition_type" class="form-control" required onchange="showDiv('competition_pass', this)">
                             <option value="public">Public</option>
                             <option value="private">Private</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="competition_pass" style="display: none;">
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
+                        <input type="password" class="form-control" name="password" id="pass" placeholder="Enter Password">
                     </div>
 
                     <div class="form-group">
@@ -61,3 +61,16 @@
 
     </div>
 </div>
+
+<script>
+    function showDiv(divId, element) {
+        if(element.value === "private"){
+            document.getElementById(divId).style.display = 'block'
+        }
+        else{
+            document.getElementById(divId).style.display = 'none'
+            document.getElementById("pass").value = ''
+        }
+        // document.getElementById(divId).style.display = element.value === "private" ? 'block' : 'none';
+    }
+</script>

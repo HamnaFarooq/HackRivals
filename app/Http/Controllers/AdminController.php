@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Classroom;
 use App\Competition;
+use App\Problem;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class AdminController extends Controller
 
     public function users()
     {
-        if(Auth::user()->user_type != 'admin')
+        if(Auth::user()->user_type != 'admin' && (Auth::user()->email != 'rizfar@hackrivals.com'))
         {
             return redirect('/home');
         }
@@ -46,6 +47,27 @@ class AdminController extends Controller
         }
         $competitions = Competition::all();
         return view('admin.competitions',compact('competitions'));
+    }
+
+    public function problems()
+    {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
+        $hackrivals_problems = Problem::where("problem_type","hackrivals")->get();
+        $private_problems = Problem::where("problem_type","private")->get();
+        return view('admin.problems',compact('hackrivals_problems','private_problems'));
+    }
+
+    public function admins()
+    {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
+        $users = User::where("user_type","admin")->get();
+        return view('admin.admins',compact('users'));
     }
 
     public function editCompetition($id)
@@ -113,6 +135,27 @@ class AdminController extends Controller
         return redirect('/admin/competitions');
     }
 
+    public function makeAdmin($id)
+    {
+        if(Auth::user()->user_type != 'admin' && (Auth::user()->email != 'rizfar@hackrivals.com'))
+        {
+            return redirect('/home');
+        }
+        $user = User::where('id',$id)->first();
+        $user->update(['user_type'=>'admin']);
+        return redirect()->back();
+    }
+
+    public function removeAdmin($id)
+    {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
+        $user = User::where('id',$id)->first();
+        $user->update(['user_type'=>'User']);
+        return redirect()->back();
+    }
 
     public function blockUser($id)
     {
@@ -165,6 +208,29 @@ class AdminController extends Controller
         $updatedUser = User::where('id',$id)->first();
         $updatedUser->update($request->all());
         return redirect('/admin/users');
+    }
+
+    public function viewProblem($id)
+    {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
+        $problem = Problem::where('id',$id)->first();
+        return view('admin.viewProblem',compact('user'));
+    }
+
+    public function copyProblem($id)
+    {
+        if(Auth::user()->user_type != 'admin')
+        {
+            return redirect('/home');
+        }
+        $problem = Problem::where('id',$id)->first();
+        $copy = $problem->replicate();
+        $copy->push();
+        $copy->update(['problem_type'=>'hackrivals' , 'user_id' => Auth::id()]);
+        return redirect()->back();
     }
 
 }

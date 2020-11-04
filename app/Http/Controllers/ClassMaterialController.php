@@ -40,7 +40,7 @@ class ClassMaterialController extends Controller
 
     public function update(Request $request, $id, $mid)
     {
-        $updatedclass_material = Class_material::find($mid)->first();
+        $updatedclass_material = Class_material::where([['id', '=', $mid]])->first();
         $updatedclass_material->update($request->all());
         return redirect()->back();
 
@@ -48,7 +48,7 @@ class ClassMaterialController extends Controller
 
     public function destroy($id, $mid)
     {
-        Class_material::find($mid)->first()->delete();
+        Class_material::where([['id', '=', $mid]])->first()->delete();
         return redirect()->back();
 
     }

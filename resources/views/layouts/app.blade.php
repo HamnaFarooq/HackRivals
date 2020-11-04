@@ -8,9 +8,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" href="/images/logo.svg">
-    <title> @yield('pagename')</title>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
@@ -18,6 +15,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap_theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="icon" type="image/svg" href="/images/logo.svg">
+    <title> @yield('pagename')</title>
 
 </head>
 
@@ -64,6 +64,9 @@
                         <li class="nav-item {{(request()->is('admin/classrooms')) ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/classrooms">Classrooms</a>
                         </li>
+                        <li class="nav-item {{(request()->is('admin/problems')) ? 'active' : '' }}">
+                            <a class="nav-link" href="/admin/problems">Problems</a>
+                        </li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -73,6 +76,8 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/admin/competitions">Competitions</a>
                                 <a class="dropdown-item" href="/admin/classrooms">Classrooms</a>
+                                <a class="dropdown-item" href="/admin/problems">Problems</a>
+                                <a class="dropdown-item" href="/admin/admins">Admins</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -89,7 +94,7 @@
                             <a class="nav-link" href="/home">Home</a>
                         </li>
                         <li class="nav-item {{(request()->is('my_competitions')) ? 'active' : '' }}">
-                            <a class="nav-link" href="/my_competitions">My Competitiion</a>
+                            <a class="nav-link" href="/my_competitions">My Competitiions</a>
                         </li>
                         <li class="nav-item {{(request()->is('my_classrooms')) ? 'active' : '' }}">
                             <a class="nav-link" href="/my_classrooms">My Classrooms</a>

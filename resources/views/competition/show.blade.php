@@ -10,7 +10,10 @@
 
 <div class="container">
     <h3 class="text-center">{{$competition->name}}</h3>
-    <div class="text-right"><button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#share_competition">Share</button>
+    <div class="text-right">
+        @if($competition->competition_type == 'private')
+        <button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#share_competition">Share</button>
+        @endif
         <a href="/leavecompetition/{{ $competition->id }}"> <button type="button" class="btn btn-primary mb-5">Leave Competition</button></a>
     </div>
     <div class="row">

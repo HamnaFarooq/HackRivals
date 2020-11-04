@@ -72,6 +72,16 @@
           </div>
 
           <div class="form-group">
+            <label for="sample_input">Sample Input:</label>
+            <textarea rows="2" class="form-control" name="sample_input" placeholder="Enter output format" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="sample_output">Sample Output:</label>
+            <textarea rows="2" class="form-control" name="sample_output" placeholder="Enter output format" required></textarea>
+          </div>
+
+          <div class="form-group">
             <label for="explaination">Output Explaination:</label>
             <textarea class="form-control" rows="3" name="explaination" placeholder="Enter explaination (optional)"></textarea>
           </div>

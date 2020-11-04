@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'user_type' => 'User',
+            'user_type' => 'user',
             'status' => 'unBlock',
             'points' => 0,
             'aggregate_points' => 0,

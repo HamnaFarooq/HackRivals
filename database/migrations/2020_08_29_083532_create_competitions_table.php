@@ -16,7 +16,7 @@ class CreateCompetitionsTable extends Migration
         Schema::create('competitions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('competition_type')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->dateTime('starts')->nullable();

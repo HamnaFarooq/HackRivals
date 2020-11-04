@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','verified']);
     }
 
     public function home()
@@ -219,7 +219,7 @@ class UserController extends Controller
         $sblvlpercentage = ($sublvl / 5) * 100;
         //get problems where type is hackrivals and user's sublevel and level.
 
-        $problem = Problem::where([['problem_type', '=', 'HackRivals'], ['level', '=', $lvl], ['sub_level', '=', $sublvl]])->inRandomOrder()->limit(5)->get();
+        $problem = Problem::where([['problem_type', '=', 'hackrivals'], ['level', '=', $lvl], ['sub_level', '=', $sublvl]])->inRandomOrder()->limit(5)->get();
 
         return view('home', compact('points', 'aggregatedpoints', 'lvl', 'sublvl', 'lvlpercentage', 'sblvlpercentage', 'progresspercentage', 'max', 'problem'));
     }
@@ -229,7 +229,7 @@ class UserController extends Controller
         if (Auth::user()->user_type == 'admin') {
             return redirect('/admin/users');
         }
-        $user = User::find(Auth::id())->with('joined_classrooms')->first();
+        $user = User::where("id",Auth::id())->with('joined_classrooms')->first();
         return view('my_classrooms', compact('user', $user));
     }
 
@@ -238,7 +238,7 @@ class UserController extends Controller
         if (Auth::user()->user_type == 'admin') {
             return redirect('/admin/users');
         }
-        $user = User::find(Auth::id())->with('joined_competitions')->first();
+        $user = User::where("id",Auth::id())->with('joined_competitions')->first();
         // dd($user);
         $public = Competition::where([['competition_type', '=', 'public']])->get();
         return view('my_competitions', compact('user', 'public'));

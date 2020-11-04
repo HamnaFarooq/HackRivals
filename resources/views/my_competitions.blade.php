@@ -12,6 +12,11 @@ My Competitions
 
   <h3 class="text-center">My Competitions</h3>
 
+  <div class="text-right">
+    <button type="button" class="btn btn-primary px-3" data-toggle="modal" data-target="#joincompetition">Join private Competition</button>
+    <button type="button" class="btn btn-primary px-3" data-toggle="modal" data-target="#joinpubliccompetition">Join public Competition</button>
+  </div>
+
   <ul class="nav nav-tabs mb-4">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#private-joined">Private</a>
@@ -20,11 +25,6 @@ My Competitions
       <a class="nav-link" data-toggle="tab" href="#public-joined">Public</a>
     </li>
   </ul>
-
-  <div class="text-right">
-    <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#joincompetition">Join private Competition</button>
-    <button type="button" class="btn btn-primary px-5" data-toggle="modal" data-target="#joinpubliccompetition">Join public Competition</button>
-  </div>
 
   <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade pt-4 active show" id="private-joined">

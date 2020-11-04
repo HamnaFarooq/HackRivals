@@ -1,3 +1,18 @@
 #face { animation: up-down 0.5s ease-in-out infinite alternate; transform-origin: bottom; }
 #shadow { animation: up-down 0.5s ease-in-out infinite alternate; transform-origin: center; }
 @keyframes up-down{ from { transform: rotateX(0deg); } to { transform: rotateX(15deg); }  }
+
+#competition_pass {
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
+    display: none;
+    
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

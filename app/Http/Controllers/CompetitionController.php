@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\competition;
+use App\Competition;
 use App\Problem;
 use App\Users_in_competition;
 use Auth;
@@ -25,13 +25,13 @@ class competitionController extends Controller
     public function store(Request $request)
     {
         $request->merge(['user_id' => Auth::id()]);
-        $competition = competition::create($request->all());
+        Competition::create($request->all());
         return redirect()->back();
     }
 
     public function show($id)
     {
-        $competition = competition::where('id', $id)->with('rankings')->with('problems')->first();
+        $competition = Competition::where('id', $id)->with('rankings')->with('problems')->first();
         if ($competition) {
             if($competition->user_id == Auth::id())
             {
@@ -52,7 +52,7 @@ class competitionController extends Controller
 
     public function edit($id)
     {
-        $competition = competition::where('id', $id)->with('problems')->with('participents')->withCount('participents')->withCount('rankings')->first();
+        $competition = Competition::where('id', $id)->with('problems')->with('participents')->withCount('participents')->withCount('rankings')->first();
         if ($competition && (Auth::id() == $competition->user_id || Auth::user()->user_type == 'admin')) {
             $problems = Problem::where([['user_id', '=', Auth::id()]])->get();
             $hackrivalprob = Problem::where([['problem_type', '=', 'HackRivals']])->get();
@@ -65,7 +65,7 @@ class competitionController extends Controller
 
     public function update(Request $request, $id)
     {
-        $updatedcompetition = competition::where('id', $id)->first();
+        $updatedcompetition = Competition::where('id', $id)->first();
         $updatedcompetition->update($request->all());
         return redirect()->back();
     }

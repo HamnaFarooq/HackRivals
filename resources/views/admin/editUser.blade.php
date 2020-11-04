@@ -16,30 +16,18 @@ Edit User
       @method('patch')
 
           <div class="form-group">
-            <label for="name">Classroom Name:</label>
+            <label for="name">User Name:</label>
             <input type="text" value="{{$user->name}}" class="form-control" name="name" placeholder="Enter user name" required>
           </div>
 
           <div class="form-group">
-            <label for="classroom_type">Email:</label>
+            <label for="email">Email:</label>
             <input type="email" value="{{$user->email}}" class="form-control" name="email" placeholder="Enter user e-mail" required>
           </div>
 
           <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" value="{{$user->password}}" class="form-control" name="password" placeholder="Enter Password" required>
-          </div>
-
-          
-
-          <div class="form-group">
-            <label for="password">User Type:</label>
-            <input type="text" value="{{$user->user_type}}" class="form-control" name="password" placeholder="Enter User Type" required>
-          </div>
-
-          <div class="form-group">
-            <label for="password">Status:</label>
-            <input type="text" value="{{$user->status}}" class="form-control" name="password" placeholder="Enter Status" required>
           </div>
 
           @if($errors->any())

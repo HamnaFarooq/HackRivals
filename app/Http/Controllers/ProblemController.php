@@ -20,7 +20,7 @@ class ProblemController extends Controller
 
     public function store(Request $request)
     {
-        if (Auth::user()->user_type == 'super') {
+        if (Auth::user()->user_type == 'super' || Auth::user()->user_type == 'admin') {
             $request->merge(['problem_type' => 'HackRivals']);
         }
         else{
@@ -164,7 +164,7 @@ class ProblemController extends Controller
 
     public function destroy($id)
     {
-        problem::find($id)->first()->delete();
+        problem::where("id",$id)->first()->delete();
         return redirect()->back();
     }
 }

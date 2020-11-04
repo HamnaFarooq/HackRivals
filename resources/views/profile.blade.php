@@ -26,7 +26,7 @@ Profile
             </div>
             <p> <b class="mx-2">Joined Classes: </b> {{$user->joined_classrooms_count}} </p>
             <div class="bg-gray m-3 p-1 pt-2 rounded text-white">
-                <p> <b class="mx-2">Last Problem Solved: </b> {{$user->last_solved_on}} </p>
+                <p> <b class="mx-2">Last Problem solved on: </b> {{$user->last_solved_on}} </p>
             </div>
             <p> <b class="mx-2">Join Date: </b> {{$user->created_at}} </p>
         </div>

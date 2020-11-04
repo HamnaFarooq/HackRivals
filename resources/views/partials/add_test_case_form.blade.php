@@ -20,7 +20,7 @@
 
                         <div class="form-group">
                             <label for="input">test_case Input:</label>
-                            <textarea rows="5" class="form-control" name="input" placeholder="Enter Input" required></textarea>
+                            <textarea rows="5" class="form-control" name="input" placeholder="Enter Input"></textarea>
                         </div>
 
                         <div class="form-group">
