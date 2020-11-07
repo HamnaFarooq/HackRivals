@@ -80,9 +80,8 @@
 
     <div class="col-sm-4">
       <h5>Submit your code here</h5>
-      <form method="POST" action="/submitcode">
+      <form action="/submitcode" method="POST">
         @csrf
-        @method('POST')
 
         <div class="form-group">
         <label for="language">Language:</label>

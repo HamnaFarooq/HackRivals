@@ -39,12 +39,12 @@
 
                     <div class="form-group">
                         <label for="starts">Starts:</label>
-                        <input type="text" name="starts" value="{{$classroom->starts}}" class="form-control">
+                        <input type="text" name="starts" value="{{$classroom->starts}}"  placeholder="mm/dd/yyyy 00:00 AM" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="ends">Ends:</label>
-                        <input type="text" name="starts" value="{{$classroom->ends}}" class="form-control">
+                        <input type="text" name="starts" value="{{$classroom->ends}}"  placeholder="mm/dd/yyyy 00:00 AM" class="form-control">
                     </div>
 
                     @if($errors->any())

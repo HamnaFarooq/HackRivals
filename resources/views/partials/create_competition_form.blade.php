@@ -36,12 +36,12 @@
 
                     <div class="form-group">
                         <label for="starts">Starts:</label>
-                        <input type="datetime-local" name="starts" class="form-control" required>
+                        <input type="datetime-local" name="starts" class="form-control" placeholder="mm/dd/yyyy 00:00 AM" required>
                     </div>
 
                     <div class="form-group">
                         <label for="ends">Ends:</label>
-                        <input type="datetime-local" name="ends" class="form-control" required>
+                        <input type="datetime-local" name="ends" class="form-control" placeholder="mm/dd/yyyy 00:00 AM" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -73,4 +73,16 @@
         }
         // document.getElementById(divId).style.display = element.value === "private" ? 'block' : 'none';
     }
+
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
 </script>
