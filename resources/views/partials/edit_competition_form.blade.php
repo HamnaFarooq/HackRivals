@@ -45,6 +45,14 @@
                         <input type="text" name="ends" value="{{$competition->ends}}"  placeholder="mm/dd/yyyy 00:00 AM" class="form-control">
                     </div>
 
+                    @if($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div class="text-danger">
+                        {{$error}}
+                    </div>
+                    @endforeach
+                    @endif
+
                     <button type="submit" class="btn btn-primary">Update</button>
 
                 </form>

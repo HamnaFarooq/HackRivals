@@ -44,15 +44,16 @@
                         <input type="datetime-local" name="ends" class="form-control" placeholder="mm/dd/yyyy 00:00 AM" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
                     @if($errors->any())
                     @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
+                    <div class="text-danger">
                         {{$error}}
                     </div>
                     @endforeach
                     @endif
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
                 </form>
 
             </div>

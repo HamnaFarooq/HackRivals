@@ -94,7 +94,7 @@
                             <a class="nav-link" href="/home">Home</a>
                         </li>
                         <li class="nav-item {{(request()->is('my_competitions')) ? 'active' : '' }}">
-                            <a class="nav-link" href="/my_competitions">My Competitiions</a>
+                            <a class="nav-link" href="/my_competitions">My Competitions</a>
                         </li>
                         <li class="nav-item {{(request()->is('my_classrooms')) ? 'active' : '' }}">
                             <a class="nav-link" href="/my_classrooms">My Classrooms</a>
@@ -146,9 +146,17 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-3 bg-primary" style="position: fixed; bottom: 0; width: 100%;">
+    <footer class="py-2 bg-primary" style="position: fixed; bottom: 0; width: 100%;">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; HackRivals 2020</p>
+            <p class="m-0 d-flex justify-content-between text-white">
+                <span>Copyright &copy; HackRivals 2020 </span>
+                <span class="d-flex justify-content-center">
+                    <a target="_blank" href="https://www.facebook.com/HackRivals"> <img style="height: 20px; width:auto" src="/images/facebook.png" alt="" class="mx-1"> </a>
+                    <a target="_blank" href=""> <img style="height: 20px; width:auto" src="/images/linkedin.png" alt="" class="mx-1"> </a>
+                    <a target="_blank" href=""> <img style="height: 20px; width:auto" src="/images/twitter.png" alt="" class="mx-1"> </a>
+                    <a target="_blank" href=""> <img style="height: 20px; width:auto" src="/images/youtube.png" alt="" class="mx-1"> </a>
+                </span>
+            </p>
         </div>
         <!-- /.container -->
     </footer>
@@ -166,7 +174,15 @@
             datasets: [{
                 label: 'Your Points',
                 // sizes
-                data: [{{$points ?? ''}},{{$aggregatedpoints ?? ''}} ],
+                data: [{
+                    {
+                        $points ? ? ''
+                    }
+                }, {
+                    {
+                        $aggregatedpoints ? ? ''
+                    }
+                }],
                 backgroundColor: [
                     '#6b1111',
                     '#262626'
