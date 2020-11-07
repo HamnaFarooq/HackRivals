@@ -157,7 +157,7 @@ class ProblemController extends Controller
 
     public function update(Request $request, $id)
     {
-        $updatedproblem = problem::find($id)->first();
+        $updatedproblem = problem::where('id', $id)->first();
         $updatedproblem->update($request->all());
         return redirect()->back();
     }

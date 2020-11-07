@@ -193,7 +193,7 @@ class SolvedProblemsController extends Controller
         if(strpos($request->go, 'problem') !== false){
             // from prob
             // add attempt and solved by to problem id
-            $problem = Problem::find($request->problem_id)->first();
+            $problem = Problem::where('id', $request->problem_id)->first();
             $solved_by = $problem->solved_by ;
             if($problem->points == $request->points)
             {
@@ -211,7 +211,7 @@ class SolvedProblemsController extends Controller
                 $aggregate_points = $aggregate_points + $d->aggregated_points ;
             }
             $current_date_time = Carbon::now()->toDateTimeString();
-            $user = User::find(Auth::id())->first();
+            $user = User::where('id', Auth::id())->first();
             $user->update([ 'points' => $points , 'aggregate_points' => $aggregate_points , 'last_solved_on' => $current_date_time]);
         } else{
             // from comp

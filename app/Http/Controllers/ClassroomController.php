@@ -65,14 +65,14 @@ class ClassroomController extends Controller
 
     public function update(Request $request, $id)
     {
-        $updatedclassroom = Classroom::find($id)->first();
+        $updatedclassroom = Classroom::where('id', $id)->first();
         $updatedclassroom->update($request->all());
         return redirect()->back();
     }
 
     public function destroy($id)
     {
-        Classroom::find($id)->first()->delete();
+        Classroom::where('id', $id)->first()->delete();
         return redirect('/home');
     }
 

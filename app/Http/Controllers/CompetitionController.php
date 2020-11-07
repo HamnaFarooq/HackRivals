@@ -72,7 +72,7 @@ class competitionController extends Controller
 
     public function destroy($id)
     {
-        competition::find($id)->first()->delete();
+        competition::where('id', $id)->first()->delete();
         return redirect('/competition');
     }
 }
