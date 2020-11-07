@@ -217,7 +217,7 @@ class AdminController extends Controller
             return redirect('/home');
         }
         $problem = Problem::where('id',$id)->first();
-        return view('admin.viewProblem',compact('user'));
+        return view('admin.viewProblem',compact('problem'));
     }
 
     public function copyProblem($id)
