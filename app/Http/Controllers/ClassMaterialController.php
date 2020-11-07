@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Class_material;
 use Illuminate\Http\Request;
+use Validator;
 
 class ClassMaterialController extends Controller
 {

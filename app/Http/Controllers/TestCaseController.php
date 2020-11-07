@@ -6,6 +6,7 @@ use App\Test_case;
 use App\Problem;
 use Auth;
 use Illuminate\Http\Request;
+use Validator;
 
 class TestCaseController extends Controller
 {
