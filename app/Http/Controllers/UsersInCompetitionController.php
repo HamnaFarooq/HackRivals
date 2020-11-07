@@ -21,7 +21,7 @@ class UsersInCompetitionController extends Controller
         if($alreadyexist){
             $error = 'You have already joined this competition';
             return redirect()->back()->with('error', $error);
-        } elseif(Auth::id()==$compete->user_id){
+        } elseif( $compete && Auth::id()==$compete->user_id){
             $error = 'Creator cannot join his own competition.';
             return redirect()->back()->with('error', $error);
         }

@@ -21,7 +21,7 @@ class UsersInClassroomController extends Controller
         if ($existing) {
             $error = 'You are already a member of this classroom';
             return redirect()->back()->with('error', $error);
-        } elseif(Auth::id() == $class->user_id){
+        } elseif( $class && Auth::id() == $class->user_id){
             $error = 'Teacher cannot join his own classroom';
             return redirect()->back()->with('error', $error);
         }
