@@ -8,6 +8,7 @@ use App\Users_in_competition;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Validator;
 
 class competitionController extends Controller
 {
@@ -25,6 +26,26 @@ class competitionController extends Controller
     public function store(Request $request)
     {
         $request->merge(['user_id' => Auth::id()]);
+        // dd($request->starts);
+
+        Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'password' => 'max:255',
+            'competition_type' => 'required|max:255',
+            'starts' => [
+                'required',
+                'date',
+                'after:today',
+                'regex:/(\d\d\:\d\d)/',
+            ],
+            'ends' => [
+                'required',
+                'date',
+                'after:today',
+                'regex:/(\d\d\:\d\d)/',
+            ],
+        ])->validate();
+
         Competition::create($request->all());
         return redirect()->back();
     }
@@ -66,6 +87,25 @@ class competitionController extends Controller
     public function update(Request $request, $id)
     {
         $updatedcompetition = Competition::where('id', $id)->first();
+
+        Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'password' => 'max:255',
+            'competition_type' => 'required|max:255',
+            'starts' => [
+                'required',
+                'date',
+                'after:today',
+                'regex:/(\d\d\:\d\d)/',
+            ],
+            'ends' => [
+                'required',
+                'date',
+                'after:today',
+                'regex:/(\d\d\:\d\d)/',
+            ],
+        ])->validate();
+        
         $updatedcompetition->update($request->all());
         return redirect()->back();
     }

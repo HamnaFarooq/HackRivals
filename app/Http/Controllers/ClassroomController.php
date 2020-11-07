@@ -10,6 +10,7 @@ use App\Class_material;
 use App\Users_in_classroom;
 use Auth;
 use Illuminate\Http\Request;
+use Validator;
 
 class ClassroomController extends Controller
 {
@@ -26,6 +27,25 @@ class ClassroomController extends Controller
     public function store(Request $request)
     {
         $request->merge(['user_id' => Auth::id()]);
+
+        Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'password' => 'max:255',
+            'classroom_type' => 'required|max:255',
+            'starts' => [
+                'required',
+                'date',
+                'after:today',
+                'regex:/(\d\d\:\d\d)/',
+            ],
+            'ends' => [
+                'required',
+                'date',
+                'after:today',
+                'regex:/(\d\d\:\d\d)/',
+            ],
+        ])->validate();
+
         $created = Classroom::create($request->all());
         return redirect()->back();
     }
@@ -66,6 +86,25 @@ class ClassroomController extends Controller
     public function update(Request $request, $id)
     {
         $updatedclassroom = Classroom::where('id', $id)->first();
+        
+        Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'password' => 'max:255',
+            'classroom_type' => 'required|max:255',
+            'starts' => [
+                'required',
+                'date',
+                'after:today',
+                'regex:/(\d\d\:\d\d)/',
+            ],
+            'ends' => [
+                'required',
+                'date',
+                'after:today',
+                'regex:/(\d\d\:\d\d)/',
+            ],
+        ])->validate();
+
         $updatedclassroom->update($request->all());
         return redirect()->back();
     }

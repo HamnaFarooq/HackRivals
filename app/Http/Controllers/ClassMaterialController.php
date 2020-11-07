@@ -25,6 +25,14 @@ class ClassMaterialController extends Controller
     public function store(Request $request)
     {
         Class_material::create($request->all());
+
+        Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'announcement' => 'required|max:255',
+            'classroom_id' => 'required|max:255',
+            'competition_id' => 'required|max:255',
+        ])->validate();
+
         return redirect()->back();
     }
 
@@ -41,6 +49,10 @@ class ClassMaterialController extends Controller
     public function update(Request $request, $id, $mid)
     {
         $updatedclass_material = Class_material::where([['id', '=', $mid]])->first();
+        Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'announcement' => 'required|max:255',
+        ])->validate();
         $updatedclass_material->update($request->all());
         return redirect()->back();
 

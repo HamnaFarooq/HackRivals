@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Problem;
 use Auth;
 use Illuminate\Http\Request;
+use Validator;
 
 class ProblemController extends Controller
 {
@@ -133,6 +134,20 @@ class ProblemController extends Controller
             }
         }
         $request->merge(['user_id' => Auth::id(),'points' => $score, 'solved_by' => 0, 'total_attempts' => 0 ]);
+        
+        Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'statement' => 'required|max:255',
+            'description' => 'required|max:255',
+            'constraints' => 'required|max:255',
+            'input_format' => 'required|max:255',
+            'output_format' => 'required|max:255',
+            'sample_input' => 'required|max:255',
+            'sample_output' => 'required|max:255',
+            'hint' => 'max:255',
+            'explaination' => 'max:255',
+        ])->validate();
+
         problem::create($request->all());
         return redirect()->back();
     }
@@ -158,6 +173,20 @@ class ProblemController extends Controller
     public function update(Request $request, $id)
     {
         $updatedproblem = problem::where('id', $id)->first();
+
+        Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'statement' => 'required|max:255',
+            'description' => 'required|max:255',
+            'constraints' => 'required|max:255',
+            'input_format' => 'required|max:255',
+            'output_format' => 'required|max:255',
+            'sample_input' => 'required|max:255',
+            'sample_output' => 'required|max:255',
+            'hint' => 'max:255',
+            'explaination' => 'max:255',
+        ])->validate();
+        
         $updatedproblem->update($request->all());
         return redirect()->back();
     }
