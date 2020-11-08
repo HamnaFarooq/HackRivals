@@ -36,12 +36,12 @@
 
                     <div class="form-group">
                         <label for="starts">Starts:</label>
-                        <input type="datetime-local" name="starts" class="form-control" placeholder="mm/dd/yyyy 00:00 AM" required>
+                        <input type="datetime-local" name="starts" class="form-control" placeholder="YYYY-MM-DD HH:MM" required>
                     </div>
 
                     <div class="form-group">
                         <label for="ends">Ends:</label>
-                        <input type="datetime-local" name="ends" class="form-control" placeholder="mm/dd/yyyy 00:00 AM" required>
+                        <input type="datetime-local" name="ends" class="form-control" placeholder="YYYY-MM-DD HH:MM" required>
                     </div>
 
                     @if($errors->any())
