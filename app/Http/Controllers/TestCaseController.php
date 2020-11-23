@@ -30,12 +30,12 @@ class TestCaseController extends Controller
     }
 
     public function store(Request $request)
-    {
-        test_case::create($request->all());
-        
+    {        
         Validator::make($request->all(), [
-            'input' => 'required|max:255', 'output' => 'required|max:255', 'problem_id' => 'required|max:255',
+            'input' => 'max:255', 'output' => 'required|max:255', 'problem_id' => 'required|max:255',
         ])->validate();
+
+        test_case::create($request->all());
 
         return redirect()->back();
     }

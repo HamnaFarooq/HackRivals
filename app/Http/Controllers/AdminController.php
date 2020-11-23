@@ -6,6 +6,7 @@ use App\User;
 use App\Classroom;
 use App\Competition;
 use App\Problem;
+use App\Test_case;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -55,8 +56,8 @@ class AdminController extends Controller
         {
             return redirect('/home');
         }
-        $hackrivals_problems = Problem::where("problem_type","hackrivals")->get();
-        $private_problems = Problem::where("problem_type","private")->get();
+        $hackrivals_problems = Problem::where("problem_type","hackrivals")->withCount('test_cases')->get();
+        $private_problems = Problem::where("problem_type","private")->withCount('test_cases')->get();
         return view('admin.problems',compact('hackrivals_problems','private_problems'));
     }
 
@@ -229,7 +230,18 @@ class AdminController extends Controller
         $problem = Problem::where('id',$id)->first();
         $copy = $problem->replicate();
         $copy->push();
-        $copy->update(['problem_type'=>'hackrivals' , 'user_id' => Auth::id()]);
+        $copy->update(['problem_type'=>'hackrivals' , 'user_id' => Auth::id() , 'solved_by'=> 0 , 'total_attempts'=> 0]);
+        // copy the test cases as well
+        $testcases = Test_case::where('problem_id',$id)->get();
+
+        foreach ($testcases as $case) {
+            $newcase = $case->replicate();
+            $newcase->push();
+            $newcase->update(['problem_id'=>$copy->id]);
+        }
+        
+        // Problem::where('id',$copy->id)->first()->delete();
+
         return redirect()->back();
     }
 

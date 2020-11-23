@@ -42,6 +42,7 @@ Problems
                             <th scope="col">Problem Name</th>
                             <th scope="col">Level</th>
                             <th scope="col">Sublevel</th>
+                            <th scope="col">Testcases</th>
                             <th scope="col">Solved By</th>
                             <th scope="col">Attempts</th>
                             <th scope="col">View</th>
@@ -56,6 +57,7 @@ Problems
                             <td> {{$problem->name}} </td>
                             <td> {{$problem->level}} </td>
                             <td> {{$problem->sub_level}}</td>
+                            <td> {{$problem->test_cases_count}} </td>
                             <td> {{$problem->solved_by}}</td>
                             <td> {{$problem->total_attempts}}</td>
                             <td><a href="/admin/viewProblem/{{$problem->id}}"><button type="button" class="btn btn-primary">View</button></td></a>
@@ -84,6 +86,7 @@ Problems
                             <th scope="col">Problem Name</th>
                             <th scope="col">Level</th>
                             <th scope="col">Sublevel</th>
+                            <th scope="col">Testcases</th>
                             <th scope="col">Solved By</th>
                             <th scope="col">Attempts</th>
                             <th scope="col">View</th>
@@ -97,6 +100,7 @@ Problems
                             <td> {{$problem->name}} </td>
                             <td> {{$problem->level}} </td>
                             <td> {{$problem->sub_level}}</td>
+                            <td> {{$problem->test_cases_count}} </td>
                             <td> {{$problem->solved_by}}</td>
                             <td> {{$problem->total_attempts}}</td>
                             <td><a href="/admin/viewProblem/{{$problem->id}}"><button type="button" class="btn btn-primary">View</button></td></a>
