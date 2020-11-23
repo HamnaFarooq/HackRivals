@@ -7,6 +7,13 @@ Problems
 
 @section('content')
 <div class="container">
+    @if($errors->any())
+    <div class="container">
+        <div class="row bg-light py-3 justify-content-center">
+            <div class="bg-light text-danger"> <b> {{ "There was an error. Please try again!" }} </b> </div>
+        </div>
+    </div>
+    @endif
 
     <div class="">
         <h3 class="text-center">All Problems List</h3>
@@ -54,11 +61,11 @@ Problems
                             <td><a href="/admin/viewProblem/{{$problem->id}}"><button type="button" class="btn btn-primary">View</button></td></a>
                             <td><a href="/problem/{{$problem->id}}/edit"><button type="button" class="btn btn-primary">Edit</button></td></a>
                             <td>
-                            <form method="POST" action="/problem/{{$problem->id}}">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-primary">Delete</button>
-                            </form>
+                                <form method="POST" action="/problem/{{$problem->id}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                </form>
                             </td>
                             <td><a href="/admin/copyProblem/{{$problem->id}}"><button type="button" class="btn btn-primary">Copy</button></a></td>
                         </tr>
@@ -95,11 +102,11 @@ Problems
                             <td><a href="/admin/viewProblem/{{$problem->id}}"><button type="button" class="btn btn-primary">View</button></td></a>
                             <td><a href="/problem/{{$problem->id}}/edit"><button type="button" class="btn btn-primary">Edit</button></td></a>
                             <td>
-                            <form method="POST" action="/problem/{{$problem->id}}">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-primary">Delete</button>
-                            </form>
+                                <form method="POST" action="/problem/{{$problem->id}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

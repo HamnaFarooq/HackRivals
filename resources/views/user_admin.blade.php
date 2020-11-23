@@ -10,6 +10,14 @@ User Administration
 @section('content')
 <div class="container">
 
+    @if($errors->any())
+    <div class="container">
+        <div class="row bg-light py-3 justify-content-center">
+            <div class="bg-light text-danger"> <b> {{ "There was an error. Please try again!" }} </b> </div>
+        </div>
+    </div>
+    @endif
+
     <h3>User Administration</h3>
     <ul class="nav nav-tabs mt-5">
         <li class="nav-item">
@@ -55,7 +63,7 @@ User Administration
         </div>
         <div class="tab-pane fade" id="competitions">
 
-            <div class="text-right"> <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_competition" >Create Competition</button> </div>
+            <div class="text-right"> <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#create_competition">Create Competition</button> </div>
             <div class="row">
                 <table class="table table-hover">
                     <thead>

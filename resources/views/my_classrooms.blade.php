@@ -7,6 +7,13 @@ My Classrooms
 
 @section('content')
 <div class="container">
+  @if($errors->any())
+  <div class="container">
+    <div class="row bg-light py-3 justify-content-center">
+      <div class="bg-light text-danger"> <b> {{ "There was an error. Please try again!" }} </b> </div>
+    </div>
+  </div>
+  @endif
 
   <h3 class="text-center">My Classrooms</h3>
 
@@ -19,7 +26,7 @@ My Classrooms
     @foreach ($user->joined_classrooms as $classroom)
     <div class="col-sm-4">
       <a href="/classroom/{{$classroom->id}}">
-        <div class="card bg-light text-primary mb-3" >
+        <div class="card bg-light text-primary mb-3">
           <div class="card-header"> <b>{{ $classroom->name }}</b> </div>
           <div class="card-body">
             <h5 class="card-title"></h5>

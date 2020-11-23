@@ -7,6 +7,13 @@
 @section('content')
 
 <div class="container">
+  @if($errors->any())
+  <div class="container">
+    <div class="row bg-light py-3 justify-content-center">
+      <div class="bg-light text-danger"> <b> {{ "There was an error. Please try again!" }} </b> </div>
+    </div>
+  </div>
+  @endif
 
   <h3 class="">Problem Name</h3>
   <br>
@@ -84,7 +91,7 @@
         @csrf
 
         <div class="form-group">
-        <label for="language">Language:</label>
+          <label for="language">Language:</label>
           <select name="language" class="form-control">
             <option value="cpp">cpp</option>
             <option value="c">c</option>
@@ -130,6 +137,14 @@
         <input type="hidden" name="source" value="{{$comp}}">
         @else
         <input type="hidden" name="source" value="practice">
+        @endif
+
+        @if($errors->any())
+        @foreach ($errors->all() as $error)
+        <div class="text-danger">
+          {{$error}}
+        </div>
+        @endforeach
         @endif
 
         <div class="text-right">

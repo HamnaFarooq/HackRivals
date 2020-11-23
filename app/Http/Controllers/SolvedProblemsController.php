@@ -9,6 +9,7 @@ use App\Competition_rankings;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Validator;
 
 class SolvedProblemsController extends Controller
 {
@@ -41,8 +42,10 @@ class SolvedProblemsController extends Controller
     //         );
     //         $res_id = json_decode($req, true)['id'];
     //         $response = file_get_contents("http://api.paiza.io:80/runners/get_details?id=" . $res_id . "&api_key=guest");
+    //         dd(json_decode($response, true));
     //         if(json_decode($response, true)['build_stderr'])
     //         {
+
     //             return redirect('/home');
     //         }
     //         $ans = json_decode($response, true)['stdout'];
@@ -60,18 +63,21 @@ class SolvedProblemsController extends Controller
 
     public function store(Request $request)
     {
+        Validator::make($request->all(), [
+            'solution' => 'required',
+        ])->validate();
+
         if ($request->source == 'practice') {
             $go = "/problem/" . $request->problem_id;
         } else {
             $go = "/competition/" . $request->source;
         }
 
-        //api function start
-        $prob = Problem::where('id',$request->problem_id)->with('test_cases')->first();
-        if($prob->user_id == Auth::id())
-        {
+        // api function start
+        $prob = Problem::where('id', $request->problem_id)->with('test_cases')->first();
+        if ($prob->user_id == Auth::id()) {
             $error = 'Creator cannot solve his own problem';
-            return redirect('/problem/'.$request->problem_id)->with('error',$error);
+            return redirect('/problem/' . $request->problem_id)->with('error', $error);
         }
         $test_cases = $prob->test_cases;
         function httpPost($url, $data)
@@ -93,14 +99,18 @@ class SolvedProblemsController extends Controller
             );
             $res_id = json_decode($req, true)['id'];
             $response = file_get_contents("http://api.paiza.io:80/runners/get_details?id=" . $res_id . "&api_key=guest");
-            $err = json_decode($response, true)['build_stderr'];
-            if($err)
-            {
-                if($go == "/competition/".$request->source)
-                {
-                    $go = $go . ("/problem/".$request->problem_id);
+            // dd(json_decode($response, true));
+            $err = json_decode($response, true)['result'];
+            if ($err == "faliure" || $err == "") {
+                if ($go == "/competition/" . $request->source) {
+                    $go = $go . ("/problem/" . $request->problem_id);
                 }
-                return view('problem.submit_error',compact('err','go')); // to a page that displays the error and returns back. 
+                if (json_decode($response, true)['build_stderr']) {
+                    $err = json_decode($response, true)['build_stderr'];
+                } else if (json_decode($response, true)['stderr']) {
+                    $err = json_decode($response, true)['stderr'];
+                }
+                return view('problem.submit_error', compact('err', 'go')); // to a page that displays the error and returns back. 
             }
             $ans = json_decode($response, true)['stdout'];
             $ans = rtrim($ans, "\n");
@@ -108,7 +118,7 @@ class SolvedProblemsController extends Controller
             if ($case->output == $ans) {
                 $matches = array_merge($matches, [$num => 'yes']);
             } else {
-                $matches = array_merge($matches, [$num => json_decode($response, true)['stderr'] ]);
+                $matches = array_merge($matches, [$num => json_decode($response, true)['stderr']]);
             }
             $num = $num + 1;
         }
@@ -184,56 +194,50 @@ class SolvedProblemsController extends Controller
         $total = $request->points;
         $id = $request->problem_id;
 
-        return view('problem.submit', compact('test_cases', 'points', 'aggregatepoints', 'pointspercent', 'aggregatepointspercent', "total" , 'go' , 'id'));
+        return view('problem.submit', compact('test_cases', 'points', 'aggregatepoints', 'pointspercent', 'aggregatepointspercent', "total", 'go', 'id'));
     }
 
 
     public function eval(Request $request)
     {
-        if(strpos($request->go, 'problem') !== false){
+        if (strpos($request->go, 'problem') !== false) {
             // from prob
             // add attempt and solved by to problem id
             $problem = Problem::where('id', $request->problem_id)->first();
-            $solved_by = $problem->solved_by ;
-            if($problem->points == $request->points)
-            {
-                $solved_by = $problem->solved_by + 1 ;
+            $solved_by = $problem->solved_by;
+            if ($problem->points == $request->points) {
+                $solved_by = $problem->solved_by + 1;
             }
-            $total_attempts = $problem->total_attempts + 1 ;
-            $problem->update([ 'solved_by' => $solved_by , 'total_attempts' => $total_attempts ]);
+            $total_attempts = $problem->total_attempts + 1;
+            $problem->update(['solved_by' => $solved_by, 'total_attempts' => $total_attempts]);
             // add points and agg points to user from Solved prob table
-            $data = Solved_problems::where([ ['user_id','=', Auth::id()],['problem_id','=', $request->problem_id],['source','=', 'practice'] ])->get();
-            $points = 0 ;
-            $aggregate_points = 0 ;
-            foreach( $data as $d )
-            {
-                $points = $points + $d->points_earned ;
-                $aggregate_points = $aggregate_points + $d->aggregated_points ;
+            $data = Solved_problems::where([['user_id', '=', Auth::id()], ['problem_id', '=', $request->problem_id], ['source', '=', 'practice']])->get();
+            $points = 0;
+            $aggregate_points = 0;
+            foreach ($data as $d) {
+                $points = $points + $d->points_earned;
+                $aggregate_points = $aggregate_points + $d->aggregated_points;
             }
             $current_date_time = Carbon::now()->toDateTimeString();
             $user = User::where('id', Auth::id())->first();
-            $user->update([ 'points' => $points , 'aggregate_points' => $aggregate_points , 'last_solved_on' => $current_date_time]);
-        } else{
+            $user->update(['points' => $points, 'aggregate_points' => $aggregate_points, 'last_solved_on' => $current_date_time]);
+        } else {
             // from comp
             //get competition id from $go and save data in rankings
-            $id = str_replace("/competition/","",$request->go);
-            $data = Solved_problems::where([ ['user_id','=', Auth::id()],['problem_id','=', $request->problem_id],['source','=', $id] ])->get();
-            $points = 0 ;
-            foreach( $data as $d )
-            {
-                $points = $points + $d->points_earned ;
+            $id = str_replace("/competition/", "", $request->go);
+            $data = Solved_problems::where([['user_id', '=', Auth::id()], ['problem_id', '=', $request->problem_id], ['source', '=', $id]])->get();
+            $points = 0;
+            foreach ($data as $d) {
+                $points = $points + $d->points_earned;
             }
             //if row already exists
-            $exists = Competition_rankings::where([['user_id','=',Auth::id()],['competition_id','=',$id]])->first();
-            if($exists)
-            {
+            $exists = Competition_rankings::where([['user_id', '=', Auth::id()], ['competition_id', '=', $id]])->first();
+            if ($exists) {
                 $exists->update(['points' => $points]);
+            } else {
+                Competition_rankings::create(['user_id' => Auth::id(), 'competition_id' => $id, 'points' => $points]);
             }
-            else{
-            Competition_rankings::create([ 'user_id' => Auth::id() , 'competition_id' => $id , 'points' => $points ]);
         }
-    }
         return redirect($request->go);
     }
-
 }

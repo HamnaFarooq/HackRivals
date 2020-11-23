@@ -14,6 +14,14 @@ Edit {{$competition->name}}
 
 <div class="container-fluid">
   <div class="container">
+    @if($errors->any())
+    <div class="container">
+      <div class="row bg-light py-3 justify-content-center">
+        <div class="bg-light text-danger"> <b> {{ "There was an error. Please try again!" }} </b> </div>
+      </div>
+    </div>
+    @endif
+
     <h3>Edit {{$competition->name}}</h3>
 
     <div class="text-right">
@@ -52,7 +60,7 @@ Edit {{$competition->name}}
           </thead>
           <tbody>
 
-          @foreach ( $competition->problems as $problem )
+            @foreach ( $competition->problems as $problem )
             <tr>
               <td>
                 <h5>{{$problem->name}}</h5>
@@ -103,10 +111,10 @@ Edit {{$competition->name}}
                     <tbody>
                       @foreach ( $competition->participents as $user)
                       <tr>
-                          <td> {{ $user->id }} </td>
-                          <td> {{ $user->email }} </td>
-                        </tr>
-                        @endforeach
+                        <td> {{ $user->id }} </td>
+                        <td> {{ $user->email }} </td>
+                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

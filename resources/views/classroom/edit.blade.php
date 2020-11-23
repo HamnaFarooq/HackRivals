@@ -11,6 +11,14 @@ Edit {{$classroom->name}}
 
 
 <div class="container">
+  @if($errors->any())
+  <div class="container">
+    <div class="row bg-light py-3 justify-content-center">
+      <div class="bg-light text-danger"> <b> {{ "There was an error. Please try again!" }} </b> </div>
+    </div>
+  </div>
+  @endif
+
   <h3 class="text-center">{{$classroom->name}}</h3>
 
   <div class="text-right py-3 my-3">
@@ -50,8 +58,8 @@ Edit {{$classroom->name}}
                   </div>
                 </div>
               </td>
-              <td> 
-              @include('partials.edit_material_form')
+              <td>
+                @include('partials.edit_material_form')
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_{{$material->id}}">Edit</button> </td>
               <td>
                 <form action="/classroom/{{$classroom->id}}/class_material/{{$material->id}}" method="post">

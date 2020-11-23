@@ -8,6 +8,13 @@ Add Test_cases
 
 
 <div class="content">
+    @if($errors->any())
+    <div class="container">
+        <div class="row bg-light py-3 justify-content-center">
+            <div class="bg-light text-danger"> <b> {{ "There was an error. Please try again!" }} </b> </div>
+        </div>
+    </div>
+    @endif
     <h3>Test Cases</h3>
 
     <div class="">
